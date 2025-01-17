@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>PanExprés</title>
+    <title>{{config('app.name')}}</title>
     <meta name="description" content="Compra y vende Pan de Jamón y Combos Navideños Caracas">
     <meta name="keywords" content="vende, compra, Pan, Jamón, Pan de Jamón, Combos Navideños, Caracas, directo a tu mesa, @panexpres.vezla, Panexprés, Panexpres">
     <link rel="shortcut icon" type="x-icon" href="/img/logo_repuestos.png" />

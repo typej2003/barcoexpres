@@ -20,16 +20,30 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
                     <div class="overlay-header">
-                        <img class="logo-responsive" src="{{ $comercio->avatar_url }}" alt="">
+                        <img class="logo-responsive" src="<?php echo e($comercio->avatar_url); ?>" alt="">
                         <div class="currency-responsive">
-                            @livewire('components.currency')
+                            <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('components.currency')->html();
+} elseif ($_instance->childHasBeenRendered('l1253356196-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l1253356196-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l1253356196-0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l1253356196-0');
+} else {
+    $response = \Livewire\Livewire::mount('components.currency');
+    $html = $response->html();
+    $_instance->logRenderedChild('l1253356196-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                         </div>
                     </div>
 
                     <div class="nav-overlay">
 
                         <div class="accordion-container">
-                            @guest
+                            <?php if(auth()->guard()->guest()): ?>
                                 <div class="set">
                                     <a href="#" style="font-weight: bold; font-size: 1.5rem;">
                                     Cuenta
@@ -47,40 +61,41 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endguest
-                            @auth
+                            <?php endif; ?>
+                            <?php if(auth()->guard()->check()): ?>
                                 <div class="set">
                                     <a href="#" style="font-weight: bold; font-size: 1.5rem;">
-                                        <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
-                                        Hola, {{ auth()->user()->name }}
+                                        <img src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                        Hola, <?php echo e(auth()->user()->name); ?>
+
                                     </a>
                                     <div class="content">
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="profileLink">Perfil</a>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Escritorio</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.dashboard')); ?>" x-ref="profileLink">Escritorio</a>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="{{ route('listPedidosCliente') }}" x-ref="profileLink">Mis Pedidos</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('listPedidosCliente')); ?>" x-ref="profileLink">Mis Pedidos</a>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="changePasswordLink">Cambiar Contraseña</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
                                         </div>
-                                        @if(auth()->user()->role == 'admin')
+                                        <?php if(auth()->user()->role == 'admin'): ?>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="{{ route('admin.settings') }}">Configuración</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
                                         </div>
-                                        @endif
+                                        <?php endif; ?>
                                         <div class="dropdown-divider"></div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <form method="post" action="{{ route('logout') }}">
-                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
+                                            <form method="post" action="<?php echo e(route('logout')); ?>">
+                                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                            @endauth
+                            <?php endif; ?>
                         </div>
                             
                     </div>
@@ -90,44 +105,46 @@
                     <div class="nav-overlay">
                         <div class="accordion-container">
                             <h4>Categorías</h4>
-                            @foreach($categories as $category)
-                                    @if($category->subcategories->count() == 0)
+                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category->subcategories->count() == 0): ?>
                                         <div class="set">
-                                            <a class="mx-4" style="cursor:pointer;" href="{{ route('cat', [
+                                            <a class="mx-4" style="cursor:pointer;" href="<?php echo e(route('cat', [
                                                 'categ' => $category->name,
                                                 'manufacturer_id' => $state['manufacturer_id'],
                                                 'modelo_id' => $state['modelo_id'],
                                                 'motor_id' => $state['motor_id'],
-                                                ]) }}" style="font-weight: bold; ">
-                                                {{$category->name}}
+                                                ])); ?>" style="font-weight: bold; ">
+                                                <?php echo e($category->name); ?>
+
                                             </a>
                                         </div>
-                                    @else
+                                    <?php else: ?>
                                         <div class="set" style="font-weight: bold; ">
                                             <a href="#">
                                                 <i class="fa fa-plus mr-3"></i>
-                                                {{$category->name}}                                                
+                                                <?php echo e($category->name); ?>                                                
                                             </a>
                                     
-                                            @foreach($category->subcategories as $subcategory)
+                                            <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <div class="content">
                                                     <div class="d-flex justify-content-between mx-5">
-                                                        <a class="" href="{{ route('cat', [
+                                                        <a class="" href="<?php echo e(route('cat', [
                                                                                     'categ' => $subcategory->name,
                                                                                     'manufacturer_id' => $state['manufacturer_id'],
                                                                                     'modelo_id' => $state['modelo_id'],
                                                                                     'motor_id' => $state['motor_id'],
-                                                                                    ]) }}">
-                                                            {{ $subcategory->name}}
+                                                                                    ])); ?>">
+                                                            <?php echo e($subcategory->name); ?>
+
                                                         </a>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             
                                         </div>
-                                    @endif                                
+                                    <?php endif; ?>                                
                                 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>        
                     </div>
                     <div class="nav-overlay">
@@ -141,7 +158,7 @@
                                 <div class="content">
                                     <div class="d-flex justify-content-between mx-5">
                                         <form action="searchM" method="get" id="Pan de Jamón">
-                                            @csrf
+                                            <?php echo csrf_field(); ?>
                                             <input type="hidden" name="words" value="Pan de Jamón">
                                             <input type="hidden" name="manufacturer_id" value="0">
                                             <input type="hidden" name="modelo_id" value="0">
@@ -154,7 +171,7 @@
                                 <div class="content">
                                     <div class="d-flex justify-content-between mx-5">
                                         <form action="searchM" method="get" id="Ofertas">
-                                            @csrf
+                                            <?php echo csrf_field(); ?>
                                             <input type="hidden" name="words" value="Ofertas">
                                             <input type="hidden" name="manufacturer_id" value="0">
                                             <input type="hidden" name="modelo_id" value="0">
@@ -179,7 +196,7 @@
 
                     <!-- Social Media Buttons HTML -->
                     <div class="wrapperRedes d-flex justify-content-start navigationMap">
-                        <a href="{{ $comercio->instagram }}" class="icon instagram">
+                        <a href="<?php echo e($comercio->instagram); ?>" class="icon instagram">
                             <div class="tooltip">Instagram</div>
                             <span><i class="fab fa-instagram"></i></span>
                         </a>
@@ -193,11 +210,11 @@
             <div class="header-main fixed-top ">
                 <div class="header">
                     <div class="logo">
-                        <a href="/"><img class="logo-navbar" src="{{ $comercio->avatar_url }}" alt=""></a>
+                        <a href="/"><img class="logo-navbar" src="<?php echo e($comercio->avatar_url); ?>" alt=""></a>
                     </div>
                     <!-- The form -->
                     <div class="search">
-                        <form class="d-flex justify-content-center" action="{{ route('search') }}" method="GET" wire:ignore>
+                        <form class="d-flex justify-content-center" action="<?php echo e(route('search')); ?>" method="GET" wire:ignore>
                             <input wire:model.defer="state.manufacturer_id" type="hidden" class ="manufacturerS_id" name = "manufacturerS_id">
                             <input wire:model.defer="state.modelo_id" type="hidden" class ="modeloS_id" name = "modeloS_id">
                             <input wire:model.defer="state.motor_id" type="hidden" class ="motorS_id" name = "motorS_id">
@@ -207,33 +224,33 @@
                     </div>
                     <!-- Menu horizontal -->
                     <ul class="menu-horizontal d-flex justify-content-end" style="z-index: 10!important;">
-                        @auth
+                        <?php if(auth()->guard()->check()): ?>
                             <li class="nav-item p-3 py-md-1">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item dropdown">
                                         <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
-                                            <span class="ml-1" x-ref="username">Hola, {{ auth()->user()->name }}</span>
+                                            <img src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                            <span class="ml-1" x-ref="username">Hola, <?php echo e(auth()->user()->name); ?></span>
                                         </a>
                                         <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Escritorio</a>
-                                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="profileLink">Perfil</a>
-                                            <a class="dropdown-item" href="{{ route('listPedidosCliente') }}" x-ref="profileLink">Mis Pedidos</a>
-                                            <a class="dropdown-item" href="{{ route('admin.profile.edit') }}" x-ref="changePasswordLink">Cambiar Contraseña</a>
-                                            @if(auth()->user()->role =='admin')
-                                            <a class="dropdown-item" href="{{ route('admin.settings') }}">Configuración</a>
-                                            @endif
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.dashboard')); ?>" x-ref="profileLink">Escritorio</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="profileLink">Perfil</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('listPedidosCliente')); ?>" x-ref="profileLink">Mis Pedidos</a>
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
+                                            <?php if(auth()->user()->role =='admin'): ?>
+                                            <a class="dropdown-item" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
+                                            <?php endif; ?>
                                             <div class="dropdown-divider"></div>
-                                            <form method="post" action="{{ route('logout') }}">
-                                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
+                                            <form method="post" action="<?php echo e(route('logout')); ?>">
+                                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
                                             </form>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
-                        @endauth
+                        <?php endif; ?>
                             
-                        @guest
+                        <?php if(auth()->guard()->guest()): ?>
                             <li class="">                                
                                 <a class="dropdown-toggle botonera" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
                                     <img style="height:45px" src="/img/icon_miperfil.png" id="profileImage" alt="User Image">Perfil
@@ -254,7 +271,7 @@
                                 </div>
                                 
                             </li> 
-                        @endguest
+                        <?php endif; ?>
                         <li class="d-none">
                             <a class="botonera" href="">
                                 <img style="height:45px" src="/img/icon_heart.png" alt="">
@@ -266,10 +283,24 @@
                                     <div class="dropdown-cart-drop">
                                         <a class="btn-cart-drop d-flex justify-content-between botonera" href="/goCart">
                                             <img src="/img/icon_carrito.png" style="height:45px cursor:pointer;">
-                                            <span class="text-dark">({{$totalQuantityCart}})</span>
-                                            <!-- <span class="text-dark">({{\Cart::getTotalQuantity()}})</span> -->
+                                            <span class="text-dark">(<?php echo e($totalQuantityCart); ?>)</span>
+                                            <!-- <span class="text-dark">(<?php echo e(\Cart::getTotalQuantity()); ?>)</span> -->
                                         </a>
-                                        @livewire('carrito.cart-drop')
+                                        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('carrito.cart-drop')->html();
+} elseif ($_instance->childHasBeenRendered('l1253356196-1')) {
+    $componentId = $_instance->getRenderedChildComponentId('l1253356196-1');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l1253356196-1');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l1253356196-1');
+} else {
+    $response = \Livewire\Livewire::mount('carrito.cart-drop');
+    $html = $response->html();
+    $_instance->logRenderedChild('l1253356196-1', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                                     </div>
                                 </div>
                             </div>
@@ -281,48 +312,95 @@
                     <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu">MENÚ</span></div> 
                     <div class="menu-center w-full ">
                         <div class="d-flex justify-content-around ">
-                        @livewire('components.menu-component',[
+                        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('components.menu-component',[
                             'comercioId' => 1,
                             'manufacturer_id' => $manufacturer_id,
                             'modelo_id' => $modelo_id,
                             'motor_id' => $motor_id,
-                        ])
+                        ])->html();
+} elseif ($_instance->childHasBeenRendered('l1253356196-2')) {
+    $componentId = $_instance->getRenderedChildComponentId('l1253356196-2');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l1253356196-2');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l1253356196-2');
+} else {
+    $response = \Livewire\Livewire::mount('components.menu-component',[
+                            'comercioId' => 1,
+                            'manufacturer_id' => $manufacturer_id,
+                            'modelo_id' => $modelo_id,
+                            'motor_id' => $motor_id,
+                        ]);
+    $html = $response->html();
+    $_instance->logRenderedChild('l1253356196-2', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                         </div>
                         
                     </div>
                     <div class="button-search w-full" style="display: none; cursor: pointer;"><img src="/img/icon_buscar.png" alt=""></div>
                     <span class="fw-bold w-full">Divisa:</span>
                     <div class="menu-right w-full d-flex justify-content-between">
-                        @livewire('components.currency')
+                        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('components.currency')->html();
+} elseif ($_instance->childHasBeenRendered('l1253356196-3')) {
+    $componentId = $_instance->getRenderedChildComponentId('l1253356196-3');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l1253356196-3');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l1253356196-3');
+} else {
+    $response = \Livewire\Livewire::mount('components.currency');
+    $html = $response->html();
+    $_instance->logRenderedChild('l1253356196-3', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                     </div>
                     <div class="menu-responsive">
                         <div class="menu-responsive">
                             <!-- Menu horizontal -->
-                            <a href="/"><img class="logo-movil" src="{{ $comercio->avatar_url }}" alt=""></a>
+                            <a href="/"><img class="logo-movil" src="<?php echo e($comercio->avatar_url); ?>" alt=""></a>
                             <div class="button-search"><img class="icon-movil" src="/img/icon_buscar.png" alt=""></div>
-                            @auth
+                            <?php if(auth()->guard()->check()): ?>
                                 <div><a href="">
-                                        <img class="icon-movil img-circle elevation-1"  src="{{ auth()->user()->avatar_url }}" id="profileImage" alt="User Image" style="height: 30px; width: 30px;">
+                                        <img class="icon-movil img-circle elevation-1"  src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" alt="User Image" style="height: 30px; width: 30px;">
                                     </a>
                                 </div>
                                 
-                            @else
+                            <?php else: ?>
                                 <div><a href=""><img class="icon-movil" src="/img/icon_miperfil.png" alt=""></a></div>
-                            @endauth
+                            <?php endif; ?>
                             <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>
                             
                             <div>
                                 <a class="d-flex justify-content-between" href="/goCart">
                                     <img class="icon-movil" src="/img/icon_carrito.png" style="cursor:pointer;">
-                                    <span class="fs-5 my-2 text-dark">({{$totalQuantityCart}})</span>
-                                    <!-- <span class="text-dark">({{\Cart::getTotalQuantity()}})</span> -->
+                                    <span class="fs-5 my-2 text-dark">(<?php echo e($totalQuantityCart); ?>)</span>
+                                    <!-- <span class="text-dark">(<?php echo e(\Cart::getTotalQuantity()); ?>)</span> -->
                                 </a>
-                                @livewire('carrito.cart-drop')
+                                <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('carrito.cart-drop')->html();
+} elseif ($_instance->childHasBeenRendered('l1253356196-4')) {
+    $componentId = $_instance->getRenderedChildComponentId('l1253356196-4');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l1253356196-4');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l1253356196-4');
+} else {
+    $response = \Livewire\Livewire::mount('carrito.cart-drop');
+    $html = $response->html();
+    $_instance->logRenderedChild('l1253356196-4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
                             </div>
                         </div>                                
                         
                         <div class="div-search d-none w-100">
-                            <form action="{{ route('search') }}" method="GET" >
+                            <form action="<?php echo e(route('search')); ?>" method="GET" >
                                 <input wire:model.defer="state.manufacturer_id" type="hidden" class ="manufacturerS_id" name = "manufacturerS_id">
                                 <input wire:model.defer="state.modelo_id" type="hidden" class ="modeloS_id" name = "modeloS_id">
                                 <input wire:model.defer="state.motor_id" type="hidden" class ="motorS_id" name = "motorS_id">
@@ -466,34 +544,37 @@
 </div>
 
 
-<!-- @foreach($categories as $category)
-    @if($category->subcategories->count() == 0)
-        <a class="dropdown-item" style="cursor:pointer;" href="{{ route('cat', [
+<!-- <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php if($category->subcategories->count() == 0): ?>
+        <a class="dropdown-item" style="cursor:pointer;" href="<?php echo e(route('cat', [
             'categ' => $category->name,
             'manufacturer_id' => $state['manufacturer_id'],
             'modelo_id' => $state['modelo_id'],
             'motor_id' => $state['motor_id'],
-            ]) }}">
-            {{$category->name}}
+            ])); ?>">
+            <?php echo e($category->name); ?>
+
         </a>
-    @else
+    <?php else: ?>
         <div class="dropdown">
             <a class="dropdown-item dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{$category->name}}
+                <?php echo e($category->name); ?>
+
             </a>
             
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    @foreach($category->subcategories as $subcategory)
-                        <a class="dropdown-item" href="{{ route('cat', [
+                    <?php $__currentLoopData = $category->subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <a class="dropdown-item" href="<?php echo e(route('cat', [
                                                     'categ' => $subcategory->name,
                                                     'manufacturer_id' => $state['manufacturer_id'],
                                                     'modelo_id' => $state['modelo_id'],
                                                     'motor_id' => $state['motor_id'],
-                                                    ]) }}">
-                            {{ $subcategory->name}}
+                                                    ])); ?>">
+                            <?php echo e($subcategory->name); ?>
+
                         </a>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
         </div>
-    @endif
-@endforeach -->
+    <?php endif; ?>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> --><?php /**PATH /home/typej/Documentos/github/barcoexpres/resources/views/livewire/layouts/navbar-nuevo.blade.php ENDPATH**/ ?>

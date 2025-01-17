@@ -9,6 +9,7 @@ use App\Http\Livewire\Afiliado\ListCategories;
 use App\Http\Livewire\Afiliado\ListCategorieslist;
 use App\Http\Livewire\Afiliado\ListSubcategories;
 use App\Http\Livewire\Afiliado\ListProducts;
+use App\Http\Livewire\Afiliado\ListBoats;
 use App\Http\Livewire\Afiliado\ViewDetails;
 use App\Http\Livewire\Afiliado\Repuestoexpres\ListMenus;
 use App\Http\Livewire\Afiliado\ListPedidos;
@@ -49,12 +50,13 @@ Route::get('/newSubcategory/{comercioId}/{categoryId}', listSubcategories::class
 
 Route::get('/listProducts/{comercioId}', ListProducts::class)->name('listProducts')->middleware('auth');
 
+Route::get('/listBoats/{comercioId}', ListBoats::class)->name('listBoats')->middleware('auth');
+
 Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $productId){
     if(auth()->user()){
         return redirect()->route('viewdetails', ['comercioId' => $comercioId, 'productId' => $productId]);
     }
-    else{
-        
+    else{        
         $product = Product::find($productId);
         $comercio = Comercio::find($comercioId);
         $setting = SettingComercio::where('comercio_id', $comercioId)->first();
