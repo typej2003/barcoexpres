@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'site_title' => 'PanExpres',
+    'site_title' => 'BarcoExpres',
 
     'currencyGlobal' => env('APP_CURRENCY', 'Bs'),
 
@@ -58,7 +58,7 @@ return [
 
     //'url' => env('APP_URL', 'http://localhost'),
     //'url' => env('APP_URL', 'http://127.0.0.1:8000'),
-    'url' => env('APP_URL', 'http://192.168.1.4:8000'),
+    'url' => env('APP_URL', 'http://192.168.0.102:8000'),
 
     'asset_url' => env('ASSET_URL', null),
 

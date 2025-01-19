@@ -12,9 +12,16 @@ class Promociones extends Component
         ->where('active', 'active')
         ->orderBy('order', 'asc')
         ->first();
+
         $promociones = Promocion::query()
-			->where('active', 'active')
-            ->whereNotIn('id', [$promocionFirst->id])
+			->where('active', 'active');
+        
+        if($promocionFirst){
+            $promociones = $promociones
+                ->whereNotIn('id', [$promocionFirst->id]);
+        }
+        
+        $promociones = $promociones
             ->orderBy('order', 'asc')
             ->get();
 

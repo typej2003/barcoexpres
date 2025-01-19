@@ -72,7 +72,9 @@
                 <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
+                            @if($promocionFirst)
                             <a href="/viewdetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->product_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
+                            @endif
                         </div>
                         @foreach($promociones as $clave => $promocion)
                         <div class="carousel-item">

@@ -20,7 +20,7 @@ class SupplierSeeder extends Seeder
             'email' => 'proveedor1@gmail.com',
             'address' => 'CARACAS VENEZUELA',
             'phone' => '04165080408',
-            'area_id' => 2,
+            'area_id' => 3,
             'comercio_id' => 1,
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'

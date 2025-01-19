@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-bottom">
+<div class="navbar navbar-fixed-bottom footer-navigation">
 	<?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.navigation-map', ['comercio_id' => $comercio_id])->html();

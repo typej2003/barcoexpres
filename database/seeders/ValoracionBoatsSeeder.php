@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CategorySeeder extends Seeder
+class ValoracionBoatsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,20 +14,14 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
-            'name' => 'Panaderia',
-            'avatar' => '',
+        DB::table('valoracion_boats')->insert([
             'user_id' => '1',
-            'area_id' => '3',
-            'comercio_id' => '1',
-            'itemMenu' => '1',
-            'itemSubmenu' => '1',
-            'posicionMenu' => 1,
+            'embarcacion_id' => '1',
+            'ca_valoracion' => '5',
+            'class'  => 'five',
+            'comment'  => 'Excelente Producto',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
-    
-
     }
 }
-

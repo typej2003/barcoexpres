@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Livewire\Admin\AdminComponent;
 use Illuminate\Support\Facades\Validator;
 
-use App\Models\Product;
 use App\Models\Comercio;
+use App\Models\Embarcacion;
 use App\Models\Setting;
 use App\Models\SettingUser;
-use App\Models\ValoracionProduct;
+use App\Models\ValoracionBoat;
 
 use Cart;
 
@@ -38,9 +38,9 @@ class ShowProducts extends AdminComponent
         'emitCurrency' => 'emitCurrency'
     ];
 
-    public function sendCard($product_id, $quantity )
+    public function sendCard($embarcacion_id, $quantity )
     {
-        $product = Product::find($product_id);
+        $product = Embarcacion::find($embarcacion_id);
         
         \Cart::add(array(
             'id' => $product->id,
@@ -106,7 +106,7 @@ class ShowProducts extends AdminComponent
 
         $this->comercio = Comercio::find($this->comercio_id);
 
-        $this->state['product_id'] = '0';
+        $this->state['embarcacion_id'] = '0';
         $this->state['ca_valoracion'] = 0;
         $this->state['class'] = 'star';
 
@@ -135,7 +135,7 @@ class ShowProducts extends AdminComponent
         }
     }
 
-    public function refreshValoracion($product_id, $ca_valoracion, $class)
+    public function refreshValoracion($embarcacion_id, $ca_valoracion, $class)
     {
         $this->state['ca_valoracion'] = $ca_valoracion;
         $this->state['class'] = $class;
@@ -145,18 +145,18 @@ class ShowProducts extends AdminComponent
     {
         $validatedData = Validator::make($this->state, [
 			'comment' => 'nullable',
-            'product_id' => 'required',
+            'embarcacion_id' => 'required',
 		])->validate();
 
         if(auth()->user())
         {
-            $valoracion = ValoracionProduct::where('user_id', auth()->user()->id)->where('product_id', $validatedData['product_id'])->first();
+            $valoracion = ValoracionBoat::where('user_id', auth()->user()->id)->where('embarcacion_id', $validatedData['embarcacion_id'])->first();
             if($valoracion){
                 $valoracion->update(['ca_valoracion' => $this->state['ca_valoracion'], 'class' => $this->searchClass($this->state['ca_valoracion']), 'comment' => $validatedData['comment']]);
             }else{
-                ValoracionProduct::create([
+                ValoracionBoat::create([
                     'user_id' => auth()->user()->id,
-                    'product_id' => $validatedData['product_id'],
+                    'embarcacion_id' => $validatedData['embarcacion_id'],
                     'ca_valoracion' => $this->state['ca_valoracion'],
                     'class' => $this->searchClass($this->state['ca_valoracion']),
                     'comment' => $validatedData['comment'],
@@ -175,21 +175,21 @@ class ShowProducts extends AdminComponent
         }
     }
 
-    public function valorar($product_id, $puntuacion, $classV)
+    public function valorar($embarcacion_id, $puntuacion, $classV)
 	{
         $this->skipRender();
         if (auth()->user()) {
 
-            $this->state['product_id'] = $product_id;
+            $this->state['embarcacion_id'] = $embarcacion_id;
             $this->state['class'] = $classV;
             $this->state['ca_valoracion'] = $puntuacion;
             $this->state['comment'] = '';
 
             $this->ca_valoracion = $puntuacion;
 
-            $this->emit('refreshStar', $product_id, $puntuacion, $classV);
+            $this->emit('refreshStar', $embarcacion_id, $puntuacion, $classV);
 
-            $this->dispatchBrowserEvent('show-valoracionModal', ['classV' => $classV, 'ca_valoracion' => $puntuacion, 'product_id' => $product_id]);
+            $this->dispatchBrowserEvent('show-valoracionModal', ['classV' => $classV, 'ca_valoracion' => $puntuacion, 'embarcacion_id' => $embarcacion_id]);
         }
         else{
             // $this->dispatchBrowserEvent('show-loginModalShow');
@@ -227,12 +227,12 @@ class ShowProducts extends AdminComponent
         
         
         if($this->comercio_id == 1){
-            $products = Product::query()
-                    ->with('valoracionProduct')
+            $products = Embarcacion::query()
+                    ->with('ValoracionBoat')
                             ->paginate();
         }else{
-            $products = Product::where('comercio_id', $this->comercio_id)
-                    ->with('valoracionProduct')
+            $products = Embarcacion::where('comercio_id', $this->comercio_id)
+                    ->with('ValoracionBoat')
                             ->paginate();
         }
         if($this->parametro == null){

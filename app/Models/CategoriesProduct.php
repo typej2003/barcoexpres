@@ -11,6 +11,7 @@ class CategoriesProduct extends Model
 
     protected $fillable = [
         'product_id',
+        'area_id',
         'comercio_id',
         'category_id',
         'subcategory_id',

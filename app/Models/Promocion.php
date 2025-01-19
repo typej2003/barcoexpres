@@ -16,6 +16,8 @@ class Promocion extends Model
         'avatar',
         'order',
         'active',
+        'comercio_id',
+        'embarcacion_id',
     ];
 
     protected $appends = [

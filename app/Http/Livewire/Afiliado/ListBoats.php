@@ -7,10 +7,11 @@ use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\User;
 use App\Models\Comercio;
 use App\Models\Product;
+use App\Models\Embarcacion;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\CategoriesProduct;
-use App\Models\Valoracion;
+use App\Models\ValoracionProduct;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -47,7 +48,6 @@ class ListBoats extends AdminComponent
 
 	public $screenResolution;
 
-	#[Validate] 
 	public $category;
 	public function rules()
     {
@@ -85,20 +85,6 @@ class ListBoats extends AdminComponent
 		// $this->subcategory = $this->subcategories->first()->id ?? null;
 	}
 
-	public function changeRole(Comercio $product, $status)
-	{
-		Validator::make(['status' => $status], [
-			'status' => [
-				'required',
-				Rule::in(User::ROLE_ACTIVE, User::ROLE_NOACTIVE),
-			],
-		])->validate();
-
-		$comercio->update(['status' => $status]);
-
-		$this->dispatchBrowserEvent('updated', ['message' => "Estado cambió a {$role} satisfactoriamente."]);
-	}
-
 	public function changeCategory($categoryId, $subcategory)
 	{	
 		$subcategories = Subcategory::where('category_id', $categoryId)->get();	
@@ -131,13 +117,13 @@ class ListBoats extends AdminComponent
 		$product_id = 0;
 		
 		if ($this->screenResolution < 1024) {
-			return redirect()->route('newProductRE', ['comercioId' => $this->comercio_id, 'productId' => $product_id, 'editModal' => $editModal] );
+			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'productId' => $product_id, 'editModal' => $editModal] );
 			//$this->dispatchBrowserEvent('show-form');	
 		}elseif ($this->screenResolution < 1280) {
-			return redirect()->route('newProductRE', ['comercioId' => $this->comercio_id, 'productId' => $product_id,  'editModal' => $editModal] );
+			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'productId' => $product_id,  'editModal' => $editModal] );
 			//$this->dispatchBrowserEvent('show-form');
 		}else {
-			return redirect()->route('newProductRE', ['comercioId' => $this->comercio_id, 'productId' => $product_id,  'editModal' => $editModal] );
+			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'productId' => $product_id,  'editModal' => $editModal] );
 		}
 		
 	}
@@ -171,13 +157,13 @@ class ListBoats extends AdminComponent
 		$editModal = 'true';
 		
 		if ($this->screenResolution < 1024) {
-			return redirect()->route('editProductRE', ['comercioId' => $this->comercio_id, 'productId' => $product_id, 'editModal' => $editModal] );
+			return redirect()->route('editBoat', ['comercioId' => $this->comercio_id, 'embarcacionId' => $product_id, 'editModal' => $editModal] );
 			$this->dispatchBrowserEvent('show-form');	
 		}elseif ($this->screenResolution < 1280) {
-			return redirect()->route('editProductRE', ['comercioId' => $this->comercio_id, 'productId' => $product_id, 'editModal' => $editModal] );
+			return redirect()->route('editBoat', ['comercioId' => $this->comercio_id, 'embarcacionId' => $product_id, 'editModal' => $editModal] );
 			$this->dispatchBrowserEvent('show-form');
 		}else {
-			return redirect()->route('editProductRE', ['comercioId' => $this->comercio_id, 'productId' => $product_id, 'editModal' => $editModal] );
+			return redirect()->route('editBoat', ['comercioId' => $this->comercio_id, 'embarcacionId' => $product_id, 'editModal' => $editModal] );
 		}
 
 		$comercio_id = $this->comercio_id;
@@ -273,13 +259,10 @@ class ListBoats extends AdminComponent
 
 	public function createCategories()
 	{
-		// $validatedData = Validator::make($this->state, [
-			
-		// ])->validate();
 		$this->validate();
 		$comercio = Comercio::find($this->comercio_id);
-
         $validatedData['user_id'] = $comercio->user_id;
+		$validatedData['area_id'] = 3;
         $validatedData['comercio_id'] = $this->comercio_id;
 		$validatedData['product_id'] = $this->product_id;
 		$validatedData['category_id'] = $this->category;
@@ -293,9 +276,6 @@ class ListBoats extends AdminComponent
 		else{
 			$validatedData['primary'] = 'secundary';
 		}
-
-        // 'order',
-
 
 		CategoriesProduct::create($validatedData);
 
@@ -325,13 +305,13 @@ class ListBoats extends AdminComponent
 
 	public function valorar($referred, $product_id, $puntuacion)
 	{
-		$valoracion = Valoracion::where('referred', $referred)->where('user_id', auth()->user()->id)->first();
+		$valoracion = ValoracionProduct::where('referred', $referred)->where('user_id', auth()->user()->id)->first();
 		if($valoracion){
 			$valoracion->update(['ca_valoracion' => $puntuacion]);
 		}else{
-			Valoracion::create([
+			ValoracionProduct::create([
 				'user_id' => auth()->user()->id,
-				'comercio_id' => $comercio_id,
+				'comercio_id' => $this->comercio_id,
 				'product_id' => 0,
 				'ca_valoracion' => $puntuacion,
 				'referred' => $referred,
@@ -367,13 +347,13 @@ class ListBoats extends AdminComponent
     public function render()
     {
         if($this->comercio_id > 1 ){
-            $products = Product::query()
+            $boats = Embarcacion::query()
                 ->where('comercio_id', $this->comercio_id);
         }else{
-            $products = Product::query();
+            $boats = Embarcacion::query();
         }
         
-    	$products = $products
+    	$boats = $boats
             ->where(function($q){
                 $q->where('name', 'like', '%'.$this->searchTerm.'%');                
             })
@@ -391,7 +371,7 @@ class ListBoats extends AdminComponent
         return view('livewire.afiliado.list-boats', [
             'user'  => $user,
             'comercio'  => $comercio,
-        	'products' => $products,
+        	'boats' => $boats,
         ]);
     }
 }

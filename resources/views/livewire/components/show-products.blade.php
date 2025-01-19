@@ -43,7 +43,7 @@
                         <div>
                             <form action="/add" method="post">
                                 @csrf
-                                <input name="product_id" type="hidden" value="{{ $product->id }}">
+                                <input name="embarcacion_id" type="hidden" value="{{ $product->id }}">
                                 <input name="name" type="hidden" value="{{ $product->name }}">
                                 <input name="price1" type="hidden" value="{{ $product->price1 }}">
                                 <input name="quantity" type="hidden" value="1">
@@ -70,14 +70,14 @@
                                                     <br>                                                     
                                                     <div class="cardStar" product="{{$product->id}}" >
                                                         @for ($i = 1; $i <=5; $i++)
-                                                            @if($product->valoracionProduct->ca_valoracion >= $i)
-                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionProduct->ca_valoracion }}, '{{ $product->valoracionProduct->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star {{ $product->valoracionProduct->class }}">★</span>
+                                                            @if($product->valoracionBoat->ca_valoracion >= $i)
+                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionBoat->ca_valoracion }}, '{{ $product->valoracionBoat->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star {{ $product->valoracionBoat->class }}">★</span>
                                                             @else
-                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionProduct->ca_valoracion }}, '{{ $product->valoracionProduct->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star">★</span>
+                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionBoat->ca_valoracion }}, '{{ $product->valoracionBoat->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star">★</span>
                                                             @endif
                                                         @endfor
                                                         <h5 class="output" output="show{{ $product->id }}">
-                                                            Puntuación: {{ $product->valoracionProduct->ca_valoracion }}/5
+                                                            Puntuación: {{ $product->valoracionBoat->ca_valoracion }}/5
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -130,7 +130,7 @@
                                 <div class="modal-body">
                                     
                                     <div class="form-group my-2">
-                                        @livewire('components.star', ['product_id' => $state['product_id'], 'ca_valoracion' => $state['ca_valoracion'], 'class' => $state['class']])
+                                        @livewire('components.star', ['embarcacion_id' => $state['embarcacion_id'], 'ca_valoracion' => $state['ca_valoracion'], 'class' => $state['class']])
                                     </div>
                                     
                                     <div class="form-group">

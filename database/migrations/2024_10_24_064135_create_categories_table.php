@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->bigInteger('area_id');
             $table->unsignedBigInteger('comercio_id');
             $table->foreign('comercio_id')->references('id')
                 ->on('comercios')

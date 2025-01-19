@@ -170,15 +170,6 @@
                   </a>
                 </li>
 
-                <li class="nav-item">
-                  <a href="/listPromociones" class="nav-link {{ request()->is('listPromociones') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-comments"></i>
-                    <p>
-                      Promociones
-                    </p>
-                  </a>
-                </li>
-
               </ul>
             </li>
             <!-- fin arbol -->
@@ -207,6 +198,15 @@
                     <i class="nav-icon fas fa-comments"></i>
                     <p>
                       Configurar Comercio
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="/listPromociones/1" class="nav-link {{ request()->is('listPromociones') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-comments"></i>
+                    <p>
+                      Promociones
                     </p>
                   </a>
                 </li>

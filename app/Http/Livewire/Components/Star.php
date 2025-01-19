@@ -10,11 +10,11 @@ class Star extends Component
 
     protected $listeners = ['refreshStar' => 'refreshStar'];
 
-    public function mount($product_id = 1, $ca_valoracion = 4, $class= 'four')
+    public function mount($embarcacion_id = 1, $ca_valoracion = 4, $class= 'four')
     {
         $this->state['ca_valoracion'] = $ca_valoracion;
         $this->state['class'] = $class;
-        $this->state['product_id'] = $product_id;
+        $this->state['embarcacion_id'] = $embarcacion_id;
     }
 
     public function valorar1($puntuacion)
@@ -38,19 +38,19 @@ class Star extends Component
                 $this->state['class'] = 'five';
                 break;
         }
-        $this->mount($this->state['product_id'], $this->state['ca_valoracion'], $this->state['class']);
+        $this->mount($this->state['embarcacion_id'], $this->state['ca_valoracion'], $this->state['class']);
 
-        $this->emit('refreshValoracion', $this->state['product_id'], $this->state['ca_valoracion'], $this->state['class']);
+        $this->emit('refreshValoracion', $this->state['embarcacion_id'], $this->state['ca_valoracion'], $this->state['class']);
         
 	}
 
-    public function refreshStar($product_id = 1, $ca_valoracion = 1, $class= 'one')
+    public function refreshStar($embarcacion_id = 1, $ca_valoracion = 1, $class= 'one')
     {
         $this->state['ca_valoracion'] = $ca_valoracion;
         $this->state['class'] = $class;
-        $this->state['product_id'] = $product_id;
+        $this->state['embarcacion_id'] = $embarcacion_id;
 
-        $this->mount($this->state['product_id'], $this->state['ca_valoracion'], $this->state['class']);
+        $this->mount($this->state['embarcacion_id'], $this->state['ca_valoracion'], $this->state['class']);
         
     }
 

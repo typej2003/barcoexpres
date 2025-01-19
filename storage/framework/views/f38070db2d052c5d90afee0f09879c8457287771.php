@@ -44,7 +44,7 @@
                         <div>
                             <form action="/add" method="post">
                                 <?php echo csrf_field(); ?>
-                                <input name="product_id" type="hidden" value="<?php echo e($product->id); ?>">
+                                <input name="embarcacion_id" type="hidden" value="<?php echo e($product->id); ?>">
                                 <input name="name" type="hidden" value="<?php echo e($product->name); ?>">
                                 <input name="price1" type="hidden" value="<?php echo e($product->price1); ?>">
                                 <input name="quantity" type="hidden" value="1">
@@ -71,14 +71,14 @@
                                                     <br>                                                     
                                                     <div class="cardStar" product="<?php echo e($product->id); ?>" >
                                                         <?php for($i = 1; $i <=5; $i++): ?>
-                                                            <?php if($product->valoracionProduct->ca_valoracion >= $i): ?>
-                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionProduct->ca_valoracion); ?>, '<?php echo e($product->valoracionProduct->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star <?php echo e($product->valoracionProduct->class); ?>">★</span>
+                                                            <?php if($product->valoracionBoat->ca_valoracion >= $i): ?>
+                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionBoat->ca_valoracion); ?>, '<?php echo e($product->valoracionBoat->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star <?php echo e($product->valoracionBoat->class); ?>">★</span>
                                                             <?php else: ?>
-                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionProduct->ca_valoracion); ?>, '<?php echo e($product->valoracionProduct->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star">★</span>
+                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionBoat->ca_valoracion); ?>, '<?php echo e($product->valoracionBoat->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star">★</span>
                                                             <?php endif; ?>
                                                         <?php endfor; ?>
                                                         <h5 class="output" output="show<?php echo e($product->id); ?>">
-                                                            Puntuación: <?php echo e($product->valoracionProduct->ca_valoracion); ?>/5
+                                                            Puntuación: <?php echo e($product->valoracionBoat->ca_valoracion); ?>/5
                                                         </h5>
                                                     </div>
                                                 </div>
@@ -133,14 +133,14 @@
                                     <div class="form-group my-2">
                                         <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('components.star', ['product_id' => $state['product_id'], 'ca_valoracion' => $state['ca_valoracion'], 'class' => $state['class']])->html();
+    $html = \Livewire\Livewire::mount('components.star', ['embarcacion_id' => $state['embarcacion_id'], 'ca_valoracion' => $state['ca_valoracion'], 'class' => $state['class']])->html();
 } elseif ($_instance->childHasBeenRendered('l2782931365-0')) {
     $componentId = $_instance->getRenderedChildComponentId('l2782931365-0');
     $componentTag = $_instance->getRenderedChildComponentTagName('l2782931365-0');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
     $_instance->preserveRenderedChild('l2782931365-0');
 } else {
-    $response = \Livewire\Livewire::mount('components.star', ['product_id' => $state['product_id'], 'ca_valoracion' => $state['ca_valoracion'], 'class' => $state['class']]);
+    $response = \Livewire\Livewire::mount('components.star', ['embarcacion_id' => $state['embarcacion_id'], 'ca_valoracion' => $state['ca_valoracion'], 'class' => $state['class']]);
     $html = $response->html();
     $_instance->logRenderedChild('l2782931365-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }

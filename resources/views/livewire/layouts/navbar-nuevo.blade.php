@@ -10,7 +10,12 @@
         .logo-navbar {
             height: 54px !important;
         }
-        
+        .logo-movil {
+            height: 54px !important;
+        }
+        .logo-responsive {
+            height: 54px !important;
+        }
     </style>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
     
@@ -49,6 +54,7 @@
                                 </div>
                             @endguest
                             @auth
+                            <div class="accordion-container">
                                 <div class="set">
                                     <a href="#" style="font-weight: bold; font-size: 1.5rem;">
                                         <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
@@ -80,6 +86,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             @endauth
                         </div>
                             

@@ -349,6 +349,10 @@
     width: 250px !important;
   }
 
+  .footer-navigation{
+    margin-left: 70px;
+  }
+
   @media only screen and (max-width: 1070px) {
     .logo-responsive {
       /* Arriba | Derecha | Abajo | Izquierda */

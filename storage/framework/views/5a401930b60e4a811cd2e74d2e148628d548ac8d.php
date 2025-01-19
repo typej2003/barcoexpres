@@ -72,7 +72,9 @@
                 <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
+                            <?php if($promocionFirst): ?>
                             <a href="/viewdetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->product_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
+                            <?php endif; ?>
                         </div>
                         <?php $__currentLoopData = $promociones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clave => $promocion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="carousel-item">

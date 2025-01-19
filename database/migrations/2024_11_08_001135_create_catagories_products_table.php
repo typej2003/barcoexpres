@@ -15,6 +15,7 @@ class CreateCatagoriesProductsTable extends Migration
     {
         Schema::create('categories_products', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('area_id');
             $table->bigInteger('comercio_id');
             $table->bigInteger('product_id');            
             $table->string('primary')->nullable()->default('primary'); 

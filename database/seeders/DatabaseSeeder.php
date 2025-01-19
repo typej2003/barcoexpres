@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Embarcacion;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,14 +27,10 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             SubCategorySeeder::class,
             SupplierSeeder::class,
-            BrandSeeder::class,
-            ContainerSeeder::class,
-            ProductsSeeder::class,
-            ValoracionProductsSeeder::class,
+            EmbarcacionSeeder::class,
+            ValoracionBoatsSeeder::class,
             MenuSeeder::class,
             MetodoPagoComercioSeeder::class,
-            PromocionSeeder::class,
-            DeliveryAreaSeeder::class,
         ]);
     }
 }

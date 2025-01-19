@@ -1,31 +1,30 @@
 <?php
 
-namespace App\Http\Livewire\Afiliado\Product\Repuestoexpres;
+namespace App\Http\Livewire\Afiliado\Product\Barcoexpres;
 
 use App\Http\Livewire\Admin\AdminComponent;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 use App\Models\Area;
 use App\Models\Comercio;
 use App\Models\Manufacturer;
-use App\Models\Brand;
-use App\Models\Modelo;
-use App\Models\Motor;
 use App\Models\Category;
+use App\Models\Embarcacion;
 use App\Models\Subcategory;
-use App\Models\Container;
-use App\Models\Product;
-use App\Models\Supplier;
-
+use App\Models\ValoracionBoat;
 
 class NewBoat extends AdminComponent
 {
     use WithFileUploads;
     
-    public $comercioId; 
+    public $comercio_id; 
+    public $comercio; 
+    public $embarcacion_id; 
+    public $embarcacion;
     public $editModal;
     public $controlActivity = true;
     public $state = [];
@@ -35,11 +34,11 @@ class NewBoat extends AdminComponent
     public $photo3;
     public $photo4;
 
-    public function mount($comercioId, $productId, $editModal )
+    public function mount($comercioId, $embarcacionId, $editModal )
     {
-
-        $this->comercioId = $comercioId;
-        $this->product_id = $productId;
+        
+        $this->comercio_id = $comercioId;
+        $this->embarcacion_id = $embarcacionId;
         $this->editModal = $editModal;
 
         // dd($this->showEditModal);
@@ -48,7 +47,7 @@ class NewBoat extends AdminComponent
             $this->controlActivity = false;
             $this->state['in_delivery'] = false;
             $this->state['container_id'] = "0";
-            $this->comercio = Comercio::find($comercioId);
+            $this->comercio = Comercio::find($this->comercio_id);
             $this->state['area_id'] = $this->comercio->area_id;
             $this->state['in_pedido'] = "0";
             $this->state['in_envio_gratis'] = "0";
@@ -57,22 +56,18 @@ class NewBoat extends AdminComponent
             $this->state['in_por_encargo'] = "0";
             $this->state['in_valido'] = "1";
         }else{
-            $this->product = Product::find($this->product_id);
+            $this->comercio = Comercio::find($this->comercio_id);
+            $this->embarcacion = Embarcacion::find($this->embarcacion_id);
             
-		    $this->state = $this->product->toArray();
+		    $this->state = $this->embarcacion->toArray();
             
             $this->state['in_pedido'] = $this->checkear($this->state['in_pedido']);
             $this->state['in_pickup'] = $this->checkear($this->state['in_pickup']);
             $this->state['in_delivery'] = $this->checkear($this->state['in_delivery']);
             $this->state['in_envio_nacional'] = $this->checkear($this->state['in_envio_nacional']);
-            $this->state['in_envio_gratis'] = $this->checkear($this->state['in_envio_gratis']);
             $this->state['in_offer'] = $this->checkear($this->state['in_offer']);
-            $this->state['in_fragil'] = $this->checkear($this->state['in_fragil']);
-            $this->state['in_por_encargo'] = $this->checkear($this->state['in_por_encargo']);
-            $this->state['in_olor_fuerte'] = $this->checkear($this->state['in_olor_fuerte']);
             $this->state['in_valido'] = $this->checkear($this->state['in_valido']);
-            $this->state['in_combo'] = $this->checkear($this->state['in_combo']);
-
+            
         }
         
     }
@@ -108,203 +103,198 @@ class NewBoat extends AdminComponent
 
     public function createProduct()
 	{
-        //dd($this->state);
-
-		$validatedData = Validator::make($this->state, [
-            'code_lote' => 'nullable',
-            'code' => 'required',
-			'name' => 'required',
-            'manufacturer_id' => 'nullable',
-            'brand_id'  => 'nullable',
-            'model_id' => 'nullable',
-            'motor_id' => 'nullable',
-            'container_id' => 'required|not_in:0',
-            'details1' => 'nullable',
-            'details2' => 'nullable',
-            'description' => 'nullable',
-            'price1' => 'required',
-            'price2' => 'nullable',
-            'profit_price' => 'nullable',
-            'price_mayor' => 'nullable',
-            'profit_mayor' => 'nullable',
-            'price_offer' => 'nullable',
-            'profit_offer' => 'nullable',
-            'price_divisa' => 'nullable',
-            'shipping_cost' => 'nullable',
-            'stock_min' => 'nullable',
-            'stock_max' => 'nullable',
-            'stock' => 'nullable',
+        $validatedData = Validator::make($this->state, [
             'area_id' => 'required|not_in:0',
             'category_id' => 'required|not_in:0',
             'subcategory_id' => 'nullable',
-            'supplier_id' => 'required|not_in:0',
-            'pack_products_id' => 'required|not_in:0',
-            'pack_price' => 'nullable',
-
-            'tx_peso' => 'nullable',
-            'tx_tamanio' => 'nullable',
-            'tx_presentacion' => 'nullable',
-            'tx_tamanio_carga' => 'nullable',
-            'tx_tamanio_venta' => 'nullable',
-            'fe_expedicion' => 'nullable',
+            'code' => 'required',
+			'name' => 'required',
+            'manufacturer_id' => 'nullable',
+            'details1' => 'nullable',
+            'additional_information' => 'nullable',
+            'price1' => 'required',
+            'price2' => 'nullable',
+            'price_divisa' => 'nullable',
+            'stock_min' => 'nullable',
+            'stock_max' => 'nullable',
+            'stock' => 'nullable',
+            'fe_fabricacion' => 'nullable',
             'madein' => 'nullable',
             'in_pedido' => 'nullable',
-            'tx_adicionales' => 'nullable',
-
             'in_pickup'  => 'nullable',
             'in_envio_nacional' => 'nullable',
             'in_delivery' => 'nullable',            
-            'in_envio_gratis' => 'nullable',
-            
             'in_offer' => 'nullable',
             'tx_recomendacion_consumo' => 'nullable',
-            'in_fragil' => 'nullable',
-            'in_por_encargo' => 'nullable',
             'ca_valoracion' => 'nullable',
             'in_valido' => 'nullable',
+            'condition' => 'nullable',
+            'eslora' => 'nullable',
+            'manga' => 'nullable',
+            'color' => 'nullable',
+            'material' => 'nullable',
+            'maximumcrew' => 'nullable',
+            'nroengines' => 'nullable',
+            'anno_motor' => 'nullable',
+            'enginebrand' => 'nullable',
+            'enginemodel' => 'nullable',
+            'enginetype' => 'nullable',
+            'hoursofuse' => 'nullable',
+            'power' => 'nullable',
+            'estereo' => 'nullable',
+            'negotiable' => 'nullable',
+            'matricula' => 'nullable',
+            'distintivollamada' => 'nullable',
+            'nroomi' => 'nullable',
+            'nrommsi' => 'nullable',
+            'armador' => 'nullable',
+            'puntal' => 'nullable',
+            'arqueobruto' => 'nullable',
+            'arqueoneto' => 'nullable',
+            'capaciadadcombustible' => 'nullable',
+            'capaciadadalmacenamiento' => 'nullable',
+            'puertoregistro' => 'nullable',
+            'artepesca' => 'nullable',
 		])->validate();
 
-        $filename = $validatedData['code'].'-'.$this->comercioId;
+        $filename = $validatedData['code'].'-'.$this->comercio_id;
 
 		if ($this->photo1) {
             // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
 			$validatedData['image_path1'] = $this->photo1->storeAs(null,
-                $filename . '-1.png', 'avatarsproducts'
+                $filename . '-1.png', 'avatarsboats'
             );     
 		}
         if ($this->photo2) {
 			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
             $validatedData['image_path2'] = $this->photo2->storeAs(null,
-                $filename . '-1.png', 'avatarsproducts'
+                $filename . '-1.png', 'avatarsboats'
             ); 
 		}
         if ($this->photo3) {
 			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
             $validatedData['image_path3'] = $this->photo3->storeAs(null,
-                $filename . '-1.png', 'avatarsproducts'
+                $filename . '-1.png', 'avatarsboats'
             ); 
 		}
         if ($this->photo4) {
 			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
             $validatedData['image_path4'] = $this->photo4->storeAs(null,
-                $filename . '-1.png', 'avatarsproducts'
+                $filename . '-1.png', 'avatarsboats'
             ); 
 		}
 
-        $comercio = Comercio::find($this->comercioId);
+        $comercio = Comercio::find($this->comercio_id);
 
         $validatedData['user_id'] = $comercio->user_id;
         $validatedData['userCreated_at'] = auth()->user()->id;
         $validatedData['userUpdated_at'] = auth()->user()->id;
-        $validatedData['comercio_id'] = $this->comercioId;
+        $validatedData['comercio_id'] = $this->comercio_id;
+        $validatedData['currencyValue'] = request()->cookie('currency');
 
-		Product::create($validatedData);
+		$embarcacion = Embarcacion::create($validatedData);
+
+        ValoracionBoat::create([
+            'user_id' => $embarcacion->user_id,
+            'embarcacion_id' => $embarcacion->id,
+            'ca_valoracion' => '5',
+            'class' => 'five',
+            'comment' => 'Excelente',
+        ]);
 
 		// session()->flash('message', 'User added successfully!');
 
-		$this->dispatchBrowserEvent('hide-form', ['message' => 'Producto agregado satisfactoriamente!']);
+		$this->dispatchBrowserEvent('hide-form', ['message' => 'Embarcación agregada satisfactoriamente!']);
 
-        return redirect()->route('listProducts', ['comercioId' => $this->comercioId, ] );
+        return redirect()->route('listBoats', ['comercioId' => $this->comercio_id, ] );
 	}
 
     public function updateProduct()
 	{
         $validatedData = Validator::make($this->state, [
-            'code_lote' => 'nullable',
-            'code' => 'required',
-			'name' => 'required',
-            'manufacturer_id' => 'nullable',
-            'brand_id'  => 'nullable',
-            'model_id' => 'nullable',
-            'motor_id' => 'nullable',
-            'container_id' => 'nullable',
-            'details1' => 'nullable',
-            'details2' => 'nullable',
-            'description' => 'nullable',
-            'price1' => 'required',
-            'price2' => 'nullable',
-            'profit_price' => 'nullable',
-            'price_mayor' => 'nullable',
-            'profit_mayor' => 'nullable',
-            'price_offer' => 'nullable',
-            'profit_offer' => 'nullable',
-            'price_divisa' => 'nullable',
-            
-            'shipping_cost' => 'nullable',
-            'stock_min' => 'nullable',
-            'stock_max' => 'nullable',
-            'stock' => 'nullable',
             'area_id' => 'required|not_in:0',
             'category_id' => 'required|not_in:0',
             'subcategory_id' => 'nullable',
-            'supplier_id' => 'required|not_in:0',
-            'pack_products_id' => 'nullable',
-            'pack_price' => 'nullable',
-
-            'tx_peso' => 'nullable',
-            'tx_tamanio' => 'nullable',
-            'tx_presentacion' => 'nullable',
-            'tx_tamanio_carga' => 'nullable',
-            'tx_tamanio_venta' => 'nullable',
-            'fe_expedicion' => 'nullable',
+            'code' => 'required',
+			'name' => 'required',
+            'manufacturer_id' => 'nullable',
+            'details1' => 'nullable',
+            'additional_information' => 'nullable',
+            'price1' => 'required',
+            'price2' => 'nullable',
+            'price_divisa' => 'nullable',
+            'stock_min' => 'nullable',
+            'stock_max' => 'nullable',
+            'stock' => 'nullable',
+            'fe_fabricacion' => 'nullable',
             'madein' => 'nullable',
             'in_pedido' => 'nullable',
-            'tx_adicionales' => 'nullable',
             'in_pickup'  => 'nullable',
             'in_envio_nacional' => 'nullable',
             'in_delivery' => 'nullable',            
-            'in_envio_gratis' => 'nullable',
             'in_offer' => 'nullable',
             'tx_recomendacion_consumo' => 'nullable',
-            'in_fragil' => 'nullable',
-            'in_por_encargo' => 'nullable',
             'ca_valoracion' => 'nullable',
             'in_valido' => 'nullable',
+            'condition' => 'nullable',
+            'eslora' => 'nullable',
+            'manga' => 'nullable',
+            'color' => 'nullable',
+            'material' => 'nullable',
+            'maximumcrew' => 'nullable',
+            'nroengines' => 'nullable',
+            'anno_motor' => 'nullable',
+            'enginebrand' => 'nullable',
+            'enginemodel' => 'nullable',
+            'enginetype' => 'nullable',
+            'hoursofuse' => 'nullable',
+            'power' => 'nullable',
+            'estereo' => 'nullable',
+            'negotiable' => 'nullable',
+            'matricula' => 'nullable',
+            'distintivollamada' => 'nullable',
+            'nroomi' => 'nullable',
+            'nrommsi' => 'nullable',
+            'armador' => 'nullable',
+            'puntal' => 'nullable',
+            'arqueobruto' => 'nullable',
+            'arqueoneto' => 'nullable',
+            'capaciadadcombustible' => 'nullable',
+            'capaciadadalmacenamiento' => 'nullable',
+            'puertoregistro' => 'nullable',
+            'artepesca' => 'nullable',
 		])->validate();
 
         
-        $filename = $validatedData['code'].'-'.$this->comercioId;
+        $filename = $validatedData['code'].'-'.$this->comercio_id;
+        $validatedData['currencyValue'] = request()->cookie('currency');
 
         if ($this->photo1) {
             // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
-			if (Storage::disk('avatarsproducts')->exists($this->product->image_path1)) {
-				Storage::disk('avatarsproducts')->delete($this->product->image_path1);
+			if (Storage::disk('avatarsboats')->exists($this->embarcacion->image_path1)) {
+				Storage::disk('avatarsboats')->delete($this->embarcacion->image_path1);
 			}
 			$validatedData['image_path1'] = $this->photo1->storeAs(null,
-                $filename . '-1.png', 'avatarsproducts'
+                $filename . '-1.png', 'avatarsboats'
             );     
 		}
 
-        $this->product->update($validatedData);
+        $this->embarcacion->update($validatedData);
 
-		$this->dispatchBrowserEvent('hide-form', ['message' => 'Producto actualizado satisfactoriamente!']);
+		$this->dispatchBrowserEvent('hide-form', ['message' => 'Embarcación actualizada satisfactoriamente!']);
     }
 
     public function render()
     {
         $areas = Area::all();
-        $comercio = Comercio::find($this->comercioId);
-        $manufacturers = Manufacturer::where('comercio_id', $this->comercioId)->get();
-        $brands = Brand::where('comercio_id', $this->comercioId)->get();
-        $models = Modelo::where('comercio_id', $this->comercioId)->get();
-        $motors = Motor::where('comercio_id', $this->comercioId)->get();
-        $categories = Category::where('comercio_id', $this->comercioId)->get();
-        $containers = Container::where('comercio_id', $this->comercioId)->get();
-        $suppliers = Supplier::where('comercio_id', $this->comercioId)->get();
-
-        $suppliers = Supplier::where('comercio_id', $this->comercioId)->get();
-        
-
+        $manufacturers = Manufacturer::where('comercio_id', $this->comercio_id)->get();
+        $categories = Category::where('comercio_id', $this->comercio_id)->get();
+        $years = range(date('Y'), 1900);
         return view('livewire.afiliado.product.barcoexpres.new-boat', [
             'areas' => $areas,
-            'comercio' => $comercio,
             'categories' => $categories,
-            'manufacturers' => $manufacturers,
-            'brands' => $brands,
-            'models' => $models,
-            'motors' => $motors,
-            'containers' => $containers,
-            'suppliers' => $suppliers,            
+            'manufacturers' => $manufacturers,    
+            'years' => $years,
         ]);
     }
 }

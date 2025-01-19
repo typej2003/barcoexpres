@@ -16,7 +16,7 @@ class CreateValoracionProductsTable extends Migration
         Schema::create('valoracion_products', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('product_id');
+            $table->bigInteger('embarcacion_id');
             $table->integer('ca_valoracion')->default(0);
             $table->string('class')->nullable()->default('star');
             $table->string('comment')->nullable();

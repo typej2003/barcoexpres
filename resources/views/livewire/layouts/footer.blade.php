@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-bottom">
+<div class="navbar navbar-fixed-bottom footer-navigation">
 	@livewire('components.navigation-map', ['comercio_id' => $comercio_id])
 	<div class="footer footer-color">  
 		<div class="row">

@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Afiliado;
 use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\Promocion;
 use App\Models\Comercio;
-use App\Models\Product;
+use App\Models\Embarcacion;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -28,6 +28,7 @@ class ListPromociones extends AdminComponent
     ];
 
 	public $promocion;
+	public $comercio_id;
 
 	public $showEditModal = false;
 
@@ -45,12 +46,13 @@ class ListPromociones extends AdminComponent
 
 	public function updatedComercio($value)
 	{
-		$this->products = Product::where('comercio_id', $value)->get();
+		$this->products = Embarcacion::where('comercio_id', $value)->get();
 		$this->product = $this->products->first()->id ?? null;
 	}
 
-    public function mount()
+    public function mount($comercioId)
     {
+		$this->comercio_id = $comercioId;
     }
 
     public function addNew()
@@ -79,9 +81,8 @@ class ListPromociones extends AdminComponent
         if ($this->photo) {
 			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');
 		}
-
 		$validatedData['comercio_id'] = $this->comercio_id;
-		$validatedData['product_id'] = $this->product_id;
+		$validatedData['embarcacion_id'] = $this->product;
 
 		Promocion::create($validatedData);
 
@@ -102,10 +103,10 @@ class ListPromociones extends AdminComponent
 		$this->state = $promocion->toArray();
 
 		$this->comercios = Comercio::all();
-        $this->comercio = $this->state['comercio_id'];        
-        $this->product = $this->state['product_id'];
+        $this->comercio = $this->state['comercio_id'];
+        $this->product = $this->state['embarcacion_id'];
 
-		$this->products = Product::where('comercio_id', $this->comercio)->get();
+		$this->products = Embarcacion::where('comercio_id', $this->comercio)->get();
 
 		$this->dispatchBrowserEvent('show-form');
 	}
@@ -121,6 +122,9 @@ class ListPromociones extends AdminComponent
         if ($this->photo) {
 			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');            
 		}
+
+		$validatedData['comercio_id'] = $this->comercio;
+		$validatedData['embarcacion_id'] = $this->product;
 
 		$this->promocion->update($validatedData);
 

@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Embarcaciones</h1>
+                    <h1 class="m-0 text-dark">Productos</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between mb-2">
-                        <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Nueva Embarcación</button>
+                        <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Nuevo Producto</button>
                         <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.search-input','data' => ['wire:model' => 'searchTerm']]); ?>
 <?php $component->withName('search-input'); ?>
@@ -94,20 +94,20 @@
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
-                                    <?php $__empty_1 = true; $__currentLoopData = $boats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $boat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
-                                        <th scope="row"><?php echo e($boats->firstItem() + $index); ?></th>
-                                        <td><?php echo e($boat->comercio->name); ?></td>
+                                        <th scope="row"><?php echo e($products->firstItem() + $index); ?></th>
+                                        <td><?php echo e($product->comercio->name); ?></td>
                                         <td>
-                                            <img src="<?php echo e($boat->image1_url); ?>" style="width: 50px;" class="img img-circle mr-1" alt="">
-                                            <?php echo e($boat->name); ?>
+                                            <img src="<?php echo e($product->image1_url); ?>" style="width: 50px;" class="img img-circle mr-1" alt="">
+                                            <?php echo e($product->name); ?>
 
                                         </td>
-                                        <td><?php echo e($boat->category_id); ?></td>
+                                        <td><?php echo e($product->category_id); ?></td>
                                         <td>
-                                            <a wire:click.prevent="addNewCategory(<?php echo e($boat->id); ?>)" style="cursor:pointer" ><i class="fa fa-plus-circle mr-1"></i> Nueva Categoria</a>
+                                            <a wire:click.prevent="addNewCategory(<?php echo e($product->id); ?>)" style="cursor:pointer" ><i class="fa fa-plus-circle mr-1"></i> Nueva Categoria</a>
                                             <ul>
-                                            <?php $__currentLoopData = $boat->showSubcategories(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categorias): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php $__currentLoopData = $product->showSubcategories(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categorias): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <li class="d-flex justify-content-between">
                                                     <div class="mx-2"><?php echo e($categorias->subcategory()->name); ?></div>
                                                     <a href="" wire:click.prevent="confirmProductCategories(<?php echo e($categorias->id); ?>)">
@@ -117,13 +117,13 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </ul>
                                         </td>
-                                        <td><?php echo e($boat->created_at->toFormattedDate() ?? 'N/A'); ?></td>
+                                        <td><?php echo e($product->created_at->toFormattedDate() ?? 'N/A'); ?></td>
                                         <td>
-                                            <a href="" wire:click.prevent="edit(<?php echo e($boat->id); ?>)">
+                                            <a href="" wire:click.prevent="edit(<?php echo e($product->id); ?>)">
                                                 <i class="fa fa-edit mr-2"></i>
                                             </a>
 
-                                            <a href="" wire:click.prevent="confirmProductRemoval(<?php echo e($boat->id); ?>)">
+                                            <a href="" wire:click.prevent="confirmProductRemoval(<?php echo e($product->id); ?>)">
                                                 <i class="fa fa-trash text-danger"></i>
                                             </a>
                                         </td>
@@ -140,7 +140,7 @@
                             </table>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <?php echo e($boats->links()); ?>
+                            <?php echo e($products->links()); ?>
 
                         </div>
                     </div>
@@ -534,4 +534,4 @@ unset($__errorArgs, $__bag); ?>
 
 
    
-<?php /**PATH /home/typej/Documentos/github/barcoexpres/resources/views/livewire/afiliado/list-boats.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/typej/Documentos/github/barcoexpres/resources/views/livewire/afiliado/list-products.blade.php ENDPATH**/ ?>

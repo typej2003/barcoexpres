@@ -92,9 +92,9 @@ class Embarcacion extends Model
         'image4_url',
     ];
         
-    public function valoracionProduct()
+    public function valoracionBoat()
     {
-        return $this->hasOne(ValoracionProduct::class, 'embarcacion_id', 'id')->withDefault([
+        return $this->hasOne(ValoracionBoat::class, 'embarcacion_id', 'id')->withDefault([
             'ca_valoracion' => '0',
             'class' => 'star',
             'comment' => '',
@@ -133,32 +133,32 @@ class Embarcacion extends Model
 
     public function getImage1UrlAttribute()
     {
-        if ($this->image_path1 && Storage::disk('avatarsboat')->exists($this->image_path1)) {   
-            return Storage::disk('avatarsboat')->url($this->image_path1);
+        if ($this->image_path1 && Storage::disk('avatarsboats')->exists($this->image_path1)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path1);
         }
         return asset('noimage.png');
     }
 
     public function getImage2UrlAttribute()
     {
-        if ($this->image_path2 && Storage::disk('avatarsboat')->exists($this->image_path2)) {   
-            return Storage::disk('avatarsboat')->url($this->image_path2);
+        if ($this->image_path2 && Storage::disk('avatarsboats')->exists($this->image_path2)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path2);
         }
         return asset('noimage.png');
     }
 
     public function getImage3UrlAttribute()
     {
-        if ($this->image_path3 && Storage::disk('avatarsboat')->exists($this->image_path3)) {   
-            return Storage::disk('avatarsboat')->url($this->image_path3);
+        if ($this->image_path3 && Storage::disk('avatarsboats')->exists($this->image_path3)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path3);
         }
         return asset('noimage.png');
     }
 
     public function getImage4UrlAttribute()
     {
-        if ($this->image_path4 && Storage::disk('avatarsboat')->exists($this->image_path4)) {   
-            return Storage::disk('avatarsboat')->url($this->image_path4);
+        if ($this->image_path4 && Storage::disk('avatarsboats')->exists($this->image_path4)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path4);
         }
         return asset('noimage.png');
     }
@@ -343,6 +343,12 @@ class Embarcacion extends Model
         }
     }
 
+    public function showSubcategories()
+    {
+        $categorias = CategoriesProduct::where('product_id', $this->id)->where('comercio_id', $this->comercio_id)->get();
+        return $categorias;
+        
+    }
 
 }
 

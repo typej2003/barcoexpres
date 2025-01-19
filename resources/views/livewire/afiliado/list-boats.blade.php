@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between mb-2">
-                        <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Nuevo Producto</button>
+                        <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Nueva Embarcación</button>
                         <x-search-input wire:model="searchTerm" />
                     </div>
                     <div class="card">
@@ -83,19 +83,19 @@
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
-                                    @forelse ($products as $index => $product)
+                                    @forelse ($boats as $index => $boat)
                                     <tr>
-                                        <th scope="row">{{ $products->firstItem() + $index }}</th>
-                                        <td>{{ $product->comercio->name }}</td>
+                                        <th scope="row">{{ $boats->firstItem() + $index }}</th>
+                                        <td>{{ $boat->comercio->name }}</td>
                                         <td>
-                                            <img src="{{ $product->image1_url }}" style="width: 50px;" class="img img-circle mr-1" alt="">
-                                            {{ $product->name }}
+                                            <img src="{{ $boat->image1_url }}" style="width: 50px;" class="img img-circle mr-1" alt="">
+                                            {{ $boat->name }}
                                         </td>
-                                        <td>{{ $product->category_id }}</td>
+                                        <td>{{ $boat->category_id }}</td>
                                         <td>
-                                            <a wire:click.prevent="addNewCategory({{ $product->id }})" style="cursor:pointer" ><i class="fa fa-plus-circle mr-1"></i> Nueva Categoria</a>
+                                            <a wire:click.prevent="addNewCategory({{ $boat->id }})" style="cursor:pointer" ><i class="fa fa-plus-circle mr-1"></i> Nueva Categoria</a>
                                             <ul>
-                                            @foreach ($product->showSubcategories() as $categorias)
+                                            @foreach ($boat->showSubcategories() as $categorias)
                                                 <li class="d-flex justify-content-between">
                                                     <div class="mx-2">{{ $categorias->subcategory()->name }}</div>
                                                     <a href="" wire:click.prevent="confirmProductCategories({{ $categorias->id }})">
@@ -105,13 +105,13 @@
                                             @endforeach
                                             </ul>
                                         </td>
-                                        <td>{{ $product->created_at->toFormattedDate() ?? 'N/A' }}</td>
+                                        <td>{{ $boat->created_at->toFormattedDate() ?? 'N/A' }}</td>
                                         <td>
-                                            <a href="" wire:click.prevent="edit({{ $product->id }})">
+                                            <a href="" wire:click.prevent="edit({{ $boat->id }})">
                                                 <i class="fa fa-edit mr-2"></i>
                                             </a>
 
-                                            <a href="" wire:click.prevent="confirmProductRemoval({{ $product->id }})">
+                                            <a href="" wire:click.prevent="confirmProductRemoval({{ $boat->id }})">
                                                 <i class="fa fa-trash text-danger"></i>
                                             </a>
                                         </td>
@@ -128,7 +128,7 @@
                             </table>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            {{ $products->links() }}
+                            {{ $boats->links() }}
                         </div>
                     </div>
                 </div>

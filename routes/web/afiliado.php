@@ -29,6 +29,8 @@ use App\Http\Livewire\Afiliado\ListDeliveryArea;
 use App\Http\Livewire\Afiliado\Repuestoexpres\ListUsersComercio;
 use App\Http\Livewire\Afiliado\ListPromociones;
 
+use App\Http\Livewire\Afiliado\Product\Barcoexpres\NewBoat;
+
 use App\Models\Comercio;
 use App\Models\Product;
 use App\Models\Setting;
@@ -95,7 +97,11 @@ Route::get('/listTasas/{comercioId}', ListTasas::class)->name('listTasas')->midd
 
 Route::get('/newProductRE/{comercioId}/{productId}/{editModal}', NewProductRE::class)->name('newProductRE')->middleware('auth');
 
+Route::get('/newBoat/{comercioId}/{embarcacionId}/{editModal}', NewBoat::class)->name('newBoat')->middleware('auth');
+
 Route::get('/editProductRE/{comercioId}/{productId}/{editModal}', NewProductRE::class)->name('editProductRE')->middleware('auth');
+
+Route::get('/editBoat/{comercioId}/{embarcacionId}/{editModal}', NewBoat::class)->name('editBoat')->middleware('auth');
 
 Route::get('/newComboRE/{comercioId}/{editModal}', NewComboRE::class)->name('newComboRE')->middleware('auth');
 
@@ -115,4 +121,4 @@ Route::get('/listDeliveryArea/{comercioId}', ListDeliveryArea::class)->name('lis
 
 Route::get('/listUsersComercio/{comercioId}', ListUsersComercio::class)->name('listUsersComercio')->middleware('auth');
 
-Route::get('/listPromociones', ListPromociones::class)->name('listPromociones')->middleware('auth');
+Route::get('/listPromociones/{comercioId}', ListPromociones::class)->name('listPromociones')->middleware('auth');
