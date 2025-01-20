@@ -1,4 +1,5 @@
-<div class="footer container-fluid">  
+<div class="footer container-fluid footer-navigation">  
+	accfsdfd
 	<div class="row">
 			<div class="col-md-3 my-1">
 				<span><img class="img-fluid footer-img" style="width: 60%" src="/img/LOGO_DDR.png" alt=""></span>

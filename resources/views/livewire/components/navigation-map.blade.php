@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/css/navigationMap.css">
     <div class="row">
         <div class="col-xl-4 logoNM">
-            <img class="logo-responsiveNM" src="/img/panexpres_logo_blanco.png" alt="">
+            <img class="logo-responsiveNM" src="/img/barcoexpres_logo_blanco_01.png" alt="">
         </div>
         <div class="col-xl-8 d-flex flex-column align-self-start">
             <div class="row">
@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <!-- Social Media Buttons HTML -->
             <div class="wrapperRedes d-flex justify-content-start navigationMap">
-                <a href="{{ $comercio->instagram }}" class="icon instagram">
+                <a href="{{ $comercio->instagram }}" class="icon instagram centrar">
                     <div class="tooltip">Instagram</div>
                     <span><i class="fab fa-instagram"></i></span>
                 </a>

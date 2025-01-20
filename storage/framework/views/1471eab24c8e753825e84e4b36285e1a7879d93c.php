@@ -218,7 +218,7 @@ echo $html;
                 </div>
             </div>
             <!-- Vista escritorio -->
-            <div class="header-main fixed-top ">
+            <div class="header-main fixed-top">
                 <div class="header">
                     <div class="logo">
                         <a href="/"><img class="logo-navbar" src="<?php echo e($comercio->avatar_url); ?>" alt=""></a>
@@ -316,9 +316,27 @@ echo $html;
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12 mx-2 ">
+                                    <div class="centro bg-secondary text-white border rounded-circle">
+                                    <i class="fas fa-regular fa-envelope mx-auto"></i>
+                                    </div>
+                                </div>
+                            </div>                                
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12 mx-2 ">
+                                    <div class="centro bg-secondary text-white border rounded-circle mx-2">
+                                    <i class="fas fa-solid fa-phone mx-auto"></i>
+                                    </div>
+                                </div>
+                            </div>                                
+                        </li>
                     </ul>                    
                 </div>
-
+                <!-- menu horizontal vista escritorio -->
                 <div class="menu" style="z-index: 6!important">
                     <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu">MENÚ</span></div> 
                     <div class="menu-center w-full ">
@@ -376,11 +394,11 @@ echo $html;
                             <a href="/"><img class="logo-movil" src="<?php echo e($comercio->avatar_url); ?>" alt=""></a>
                             <div class="button-search"><img class="icon-movil" src="/img/icon_buscar.png" alt=""></div>
                             <?php if(auth()->guard()->check()): ?>
-                                <div><a href="">
+                                <div>
+                                    <a href="">
                                         <img class="icon-movil img-circle elevation-1"  src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" alt="User Image" style="height: 30px; width: 30px;">
                                     </a>
-                                </div>
-                                
+                                </div>                                
                             <?php else: ?>
                                 <div><a href=""><img class="icon-movil" src="/img/icon_miperfil.png" alt=""></a></div>
                             <?php endif; ?>
@@ -407,6 +425,16 @@ if (! isset($_instance)) {
 }
 echo $html;
 ?>
+                            </div>
+                            <div class="icon-movil border rounded-circle bg-secondary centrar">
+                                <a href="" class="" >
+                                    <i class="fas fa-regular fa-envelope text-white my-auto"></i>
+                                </a>
+                            </div>
+                            <div class="icon-movil border rounded-circle bg-secondary centrar">
+                                <a href="" class="" >
+                                    <i class="fas fa-solid fa-phone text-white my-auto"></i>
+                                </a>
                             </div>
                         </div>                                
                         
