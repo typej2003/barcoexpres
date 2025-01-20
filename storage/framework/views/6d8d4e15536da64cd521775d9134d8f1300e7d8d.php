@@ -3,7 +3,7 @@
         
     </style>
                 <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="dropdownM mx-5">
+                    <div class="dropdownM mx-1">
                         <?php if($menu->origen =='link'): ?> 
                             <form action="searchM" method="get" id="<?php echo e($menu->texto); ?>">
                                 <?php echo csrf_field(); ?>

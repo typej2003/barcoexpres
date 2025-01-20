@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>{{config('app.name')}}</title>
-    <meta name="description" content="Compra y vende Pan de Jamón y Combos Navideños Caracas">
-    <meta name="keywords" content="vende, compra, Pan, Jamón, Pan de Jamón, Combos Navideños, Caracas, directo a tu mesa, @panexpres.vezla, Panexprés, Panexpres">
+    <meta name="description" content="Compra y vende Embarcaciones">
+    <meta name="keywords" content="vende, compra, Barco, Bote, Embarcación, Embarcaciones, Barcoexprés, Barcoexpres">
+    <link rel="shortcut icon" type="x-icon" href="/img/logo_barcoexpre.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="shortcut icon" type="x-icon" href="/img/panexpres_logo.png.png" />
-
     <!-- Bootstrap CSS -->
 	    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">

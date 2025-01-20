@@ -63,8 +63,6 @@
                                             <img src="<?php echo e($promocion->avatar_url); ?>" style="width: 50px;" class="img img-circle mr-1" alt="">
                                             <?php echo e($promocion->title); ?>
 
-                                            <?php echo e($promocion->avatar_url); ?>
-
                                         </td>
                                         <td><?php echo e($promocion->order); ?></td>
                                         <td><?php echo e($promocion->active); ?></td>
@@ -151,23 +149,23 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="form-group">
-                            <label for="product" class="">Productos </label>
-                            <select wire:model="product" class="form-control <?php $__errorArgs = ['product'];
+                            <label for="embarcacion" class="">Embarcación </label>
+                            <select wire:model="embarcacion" class="form-control <?php $__errorArgs = ['embarcacion'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="product">
-                                <?php if(count($products)> 0): ?>
+unset($__errorArgs, $__bag); ?>" id="embarcacion">
+                                <?php if(count($embarcaciones)> 0): ?>
                                 <option value="0">Seleccione una opción</option>
                                 <?php endif; ?>
-                                <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $embarcaciones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($prod->id); ?>"><?php echo e($prod->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
-                            <?php $__errorArgs = ['product'];
+                            <?php $__errorArgs = ['embarcacion'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

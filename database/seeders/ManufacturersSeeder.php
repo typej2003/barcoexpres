@@ -15,10 +15,10 @@ class ManufacturersSeeder extends Seeder
     public function run()
     {
         DB::table('manufacturers')->insert([
-            'name' => 'Panaderia Expreso',
-            'avatar' => 'logo_expreso.jpg',
+            'name' => 'Marca 1',
+            'avatar' => 'logomarca_01.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -26,10 +26,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Doralta',
-            'avatar' => 'logo_doralta.jpg',
+            'name' => 'Marca 2',
+            'avatar' => 'logomarca_02.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -37,10 +37,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Olandely',
-            'avatar' => 'logo_olandely.jpg',
+            'name' => 'Marca 3',
+            'avatar' => 'logomarca_03.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -48,10 +48,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Coffetown',
-            'avatar' => 'logo_coffetown.jpg',
+            'name' => 'Marca 4',
+            'avatar' => 'logomarca_04.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -59,10 +59,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Titanium',
-            'avatar' => 'logo_titanium.jpg',
+            'name' => 'Marca 5',
+            'avatar' => 'logomarca_05.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -70,10 +70,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Candelaria',
-            'avatar' => 'logo_candelaria.jpg',
+            'name' => 'Marca 6',
+            'avatar' => 'logomarca_06.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -81,10 +81,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Gama',
-            'avatar' => 'logo_gama.jpg',
+            'name' => 'Marca 7',
+            'avatar' => 'logomarca_07.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -92,10 +92,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Rio',
-            'avatar' => 'logo_rio.jpg',
+            'name' => 'Marca 8',
+            'avatar' => 'logomarca_08.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
@@ -103,10 +103,10 @@ class ManufacturersSeeder extends Seeder
         ]);
 
         DB::table('manufacturers')->insert([
-            'name' => 'Vollmer Bakery',
-            'avatar' => 'logo_vollmer.jpg',
+            'name' => 'Marca 9',
+            'avatar' => 'logomarca_09.jpg',
             'mercado' => 'original',
-            'area_id' => '1',
+            'area_id' => '3',
             'user_id' => '1',
             'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',

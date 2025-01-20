@@ -73,12 +73,20 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <?php if($promocionFirst): ?>
-                            <a href="/viewdetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->product_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
+                            <?php if($promocionFirst->embarcacion_id !== 0): ?>
+                            <a href="/viewdetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
+                            <?php else: ?>
+                            <a href="/"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0 slide"></a>
+                            <?php endif; ?>
                             <?php endif; ?>
                         </div>
                         <?php $__currentLoopData = $promociones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clave => $promocion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="carousel-item">
-                            <a href="/viewdetails/<?php echo e($promocion->comercio_id); ?>/<?php echo e($promocion->product_id); ?>"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
+                            <?php if($promocion->embarcacion_id !== 0): ?>                            
+                            <a href="/viewdetails/<?php echo e($promocion->comercio_id); ?>/<?php echo e($promocion->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
+                            <?php else: ?>
+                            <a href="/"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
+                            <?php endif; ?>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
@@ -98,14 +106,14 @@
             <div>
                     <div class="cuadro2Promocion">
                         <div class="subcuadro2Promocion">
-                            <a href="/viewdetails/2/1"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha1_compressed.jpg" alt=""></a>
+                            <a href="/viewdetails/2/1"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_01.jpg" alt=""></a>
                         </div>
                     </div>
                 
             
                     <div class="cuadro2Promocion">
                         <div class="subcuadro2Promocion">
-                            <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha2_compressed.jpg" alt=""></a>
+                            <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_02.jpg" alt=""></a>
                         </div>
                     </div>
             </div>

@@ -3,7 +3,7 @@
         
     </style>
                 @foreach($menus as $menu)
-                    <div class="dropdownM mx-5">
+                    <div class="dropdownM mx-1">
                         @if($menu->origen =='link') 
                             <form action="searchM" method="get" id="{{ $menu->texto }}">
                                 @csrf

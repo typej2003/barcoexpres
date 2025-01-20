@@ -8,7 +8,9 @@
         }
 
         .logo-navbar {
-            height: 54px !important;
+            width: 200px !important;
+            height: 50px !important;
+            margin: 15px !important
         }
         .logo-movil {
             height: 54px !important;
@@ -21,6 +23,7 @@
     
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+            <!-- Vista movil -->
             <div id="myNav" class="overlay">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
@@ -214,6 +217,7 @@ echo $html;
                     
                 </div>
             </div>
+            <!-- Vista escritorio -->
             <div class="header-main fixed-top ">
                 <div class="header">
                     <div class="logo">

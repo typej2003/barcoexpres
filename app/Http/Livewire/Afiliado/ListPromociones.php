@@ -19,12 +19,12 @@ class ListPromociones extends AdminComponent
 	public $state = [];
 
 	public $comercio;
-    public $product;
-    public $comercios = [], $products = [];
+    public $embarcacion;
+    public $comercios = [], $embarcaciones = [];
 
 	protected $rules = [
         'comercio' => 'required|not_in:0',
-        'product' => 'required|not_in:0',
+        'embarcacion' => 'required|not_in:0',
     ];
 
 	public $promocion;
@@ -46,8 +46,8 @@ class ListPromociones extends AdminComponent
 
 	public function updatedComercio($value)
 	{
-		$this->products = Embarcacion::where('comercio_id', $value)->get();
-		$this->product = $this->products->first()->id ?? null;
+		$this->embarcaciones = Embarcacion::where('comercio_id', $value)->get();
+		$this->embarcacion = $this->embarcaciones->first()->id ?? null;
 	}
 
     public function mount($comercioId)
@@ -57,11 +57,13 @@ class ListPromociones extends AdminComponent
 
     public function addNew()
 	{
+		$comercio_id = $this->comercio_id;
 		$this->reset();
+		$this->comercio_id = $comercio_id;
 
 		$this->comercios = Comercio::all();
 
-		$this->products = collect();
+		$this->embarcaciones = collect();
         
 		$this->showEditModal = false;
 
@@ -78,11 +80,16 @@ class ListPromociones extends AdminComponent
             'active' => 'required',
 		])->validate();
 
-        if ($this->photo) {
-			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');
+        // if ($this->photo) {
+		// 	$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');
+		// }
+		if ($this->photo) {
+            $validatedData['avatar'] = $this->photo->storeAs(null,
+			$this->photo->getClientOriginalName(), 'avatarspromociones'
+            );     
 		}
 		$validatedData['comercio_id'] = $this->comercio_id;
-		$validatedData['embarcacion_id'] = $this->product;
+		$validatedData['embarcacion_id'] = $this->embarcacion;
 
 		Promocion::create($validatedData);
 
@@ -94,7 +101,9 @@ class ListPromociones extends AdminComponent
 	public function edit(Promocion $promocion)
 	{
 		
+		$comercio_id = $this->comercio_id;
 		$this->reset();
+		$this->comercio_id = $comercio_id;
 		
 		$this->showEditModal = true;
 
@@ -104,9 +113,9 @@ class ListPromociones extends AdminComponent
 
 		$this->comercios = Comercio::all();
         $this->comercio = $this->state['comercio_id'];
-        $this->product = $this->state['embarcacion_id'];
+        $this->embarcacion = $this->state['embarcacion_id'];
 
-		$this->products = Embarcacion::where('comercio_id', $this->comercio)->get();
+		$this->embarcaciones = Embarcacion::where('comercio_id', $this->comercio)->get();
 
 		$this->dispatchBrowserEvent('show-form');
 	}
@@ -120,11 +129,17 @@ class ListPromociones extends AdminComponent
 		])->validate();
 
         if ($this->photo) {
-			$validatedData['avatar'] = $this->photo->store('/', 'avatarspromociones');            
+            // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+			if (Storage::disk('avatarspromociones')->exists($this->promocion->avatar)) {
+				Storage::disk('avatarspromociones')->delete($this->promocion->avatar);
+			}
+			$validatedData['avatar'] = $this->photo->storeAs(null,
+			$this->photo->getClientOriginalName(), 'avatarspromociones'
+            );     
 		}
 
 		$validatedData['comercio_id'] = $this->comercio;
-		$validatedData['embarcacion_id'] = $this->product;
+		$validatedData['embarcacion_id'] = $this->embarcacion;
 
 		$this->promocion->update($validatedData);
 

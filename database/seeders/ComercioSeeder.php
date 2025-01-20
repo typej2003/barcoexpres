@@ -20,7 +20,7 @@ class ComercioSeeder extends Seeder
             'user_id' => '1',
             'keyword' => 'barcoexpres',
             'name' => 'BarcoExpres',
-            'avatar' => 'panexpres_logo.png',
+            'avatar' => 'logo_barcoexpre.jpg',
             'banner' => 'panexpres_banner.png',
             'contactcellphone' => '04265173538',
             'contactphone'  => '0212-578-44-68',

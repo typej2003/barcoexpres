@@ -121,16 +121,16 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="product" class="">Productos </label>
-                            <select wire:model="product" class="form-control @error('product') is-invalid @enderror" id="product">
-                                @if(count($products)> 0)
+                            <label for="embarcacion" class="">Embarcación </label>
+                            <select wire:model="embarcacion" class="form-control @error('embarcacion') is-invalid @enderror" id="embarcacion">
+                                @if(count($embarcaciones)> 0)
                                 <option value="0">Seleccione una opción</option>
                                 @endif
-                                @foreach($products as $prod)
+                                @foreach($embarcaciones as $prod)
                                     <option value="{{ $prod->id }}">{{ $prod->name }}</option>
                                 @endforeach
                             </select>
-                            @error('product')
+                            @error('embarcacion')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             ValoracionBoatsSeeder::class,
             MenuSeeder::class,
             MetodoPagoComercioSeeder::class,
+            PromocionSeeder::class,
         ]);
     }
 }

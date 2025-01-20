@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4 overflowul">
   <!-- Brand Logo -->
   <a href="/" class="brand-link bg-white">
-    <img class="main-sidebar-img" src="/img/panexpres_logo.png" alt="">
+    <img class="main-sidebar-img" src="/img/logo_barcoexpre.jpg" alt="">
   </a>
   <!-- Sidebar -->
   <div class="sidebar">

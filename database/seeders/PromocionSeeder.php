@@ -15,10 +15,10 @@ class PromocionSeeder extends Seeder
     public function run()
     {
         DB::table('promocions')->insert([   
-            'product_id' => 2,
-            'comercio_id' => 2,
-            'title' => 'combo Expreso',
-            'avatar' => 'banner_combo_expreso.jpg',
+            'embarcacion_id' => 0,
+            'comercio_id' => 1,
+            'title' => 'banner1',
+            'avatar' => 'barcoexpres_banner_princ_01.jpg',
             'order' => 1,
             'active' => 'active',
             'created_at' => '2022-05-16 12:20:36',
@@ -26,69 +26,59 @@ class PromocionSeeder extends Seeder
         ]);
 
         DB::table('promocions')->insert([   
-            'product_id' => 12,
-            'comercio_id' => 7,
-            'title' => 'combo Candelaria',
-            'avatar' => 'banner_combo_candelaria.jpg',
-            'order' => 2,
+            'embarcacion_id' => 0,
+            'comercio_id' => 1,
+            'title' => 'banner2',
+            'avatar' => 'barcoexpres_banner_princ_02.jpg',
+            'order' => 1,
             'active' => 'active',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('promocions')->insert([   
-            'product_id' => 8,
-            'comercio_id' => 5,
-            'title' => 'combo Coffetown',
-            'avatar' => 'banner_combo_coffetown.jpg',
-            'order' => 3,
+            'embarcacion_id' => 0,
+            'comercio_id' => 1,
+            'title' => 'banner3',
+            'avatar' => 'barcoexpres_banner_princ_03.jpg',
+            'order' => 1,
             'active' => 'active',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('promocions')->insert([   
-            'product_id' => 4,
-            'comercio_id' => 3,
-            'title' => 'combo Doralta',
-            'avatar' => 'banner_combo_doralta.jpg',
-            'order' => 4,
+            'embarcacion_id' => 0,
+            'comercio_id' => 1,
+            'title' => 'banner4',
+            'avatar' => 'barcoexpres_banner_princ_04.jpg',
+            'order' => 1,
             'active' => 'active',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('promocions')->insert([   
-            'product_id' => 14,
-            'comercio_id' => 8,
-            'title' => 'combo Gama',
-            'avatar' => 'banner_combo_gama.jpg',
-            'order' => 5,
+            'embarcacion_id' => 0,
+            'comercio_id' => 1,
+            'title' => 'banner5',
+            'avatar' => 'barcoexpres_banner_princ_05.jpg',
+            'order' => 1,
+            'active' => 'active',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('promocions')->insert([   
+            'embarcacion_id' => 0,
+            'comercio_id' => 1,
+            'title' => 'banner6',
+            'avatar' => 'barcoexpres_banner_princ_06.jpg',
+            'order' => 1,
             'active' => 'active',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
         
-        DB::table('promocions')->insert([   
-            'product_id' => 6,
-            'comercio_id' => 4,
-            'title' => 'combo Olandely',
-            'avatar' => 'banner_combo_olandely.jpg',
-            'order' => 6,
-            'active' => 'active',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
-
-        DB::table('promocions')->insert([   
-            'product_id' => 10,
-            'comercio_id' => 6,
-            'title' => 'combo Titanium',
-            'avatar' => 'banner_combo_titanium.jpg',
-            'order' => 7,
-            'active' => 'active',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
     }
 }

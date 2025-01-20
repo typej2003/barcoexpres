@@ -96,9 +96,10 @@ class ListComercios extends AdminComponent
 			// $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
 			$filename = $validatedData['name'].'_'.date("YmdHis");			
 			$validatedData['avatar'] = $this->photo->storeAs(null,
-                $filename . '.png', 'avatarscomercios'
+			$this->photo->getClientOriginalName(), 'avatarscomercios'
             );            
 		}
+
 
 		if ($this->banner) {
 			$filename = $validatedData['name'].'_banner_'.date("YmdHis");			
@@ -159,7 +160,7 @@ class ListComercios extends AdminComponent
 				Storage::disk('avatarscomercios')->delete($this->comercio->banner);
 			}
 			$validatedData['avatar'] = $this->photo->storeAs(null,
-                $filename . '.png', 'avatarscomercios'
+			$this->photo->getClientOriginalName(), 'avatarscomercios'
             );            
 		}
 

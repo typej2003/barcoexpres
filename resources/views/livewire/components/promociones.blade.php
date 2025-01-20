@@ -73,12 +73,20 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             @if($promocionFirst)
-                            <a href="/viewdetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->product_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
+                            @if($promocionFirst->embarcacion_id !== 0)
+                            <a href="/viewdetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
+                            @else
+                            <a href="/"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0 slide"></a>
+                            @endif
                             @endif
                         </div>
                         @foreach($promociones as $clave => $promocion)
                         <div class="carousel-item">
-                            <a href="/viewdetails/{{ $promocion->comercio_id }}/{{ $promocion->product_id }}"><img class="img1Promocion" src="{{ $promocion->avatar_url }}" alt="{{$clave}} slide"></a>
+                            @if($promocion->embarcacion_id !== 0)                            
+                            <a href="/viewdetails/{{ $promocion->comercio_id }}/{{ $promocion->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocion->avatar_url }}" alt="{{$clave}} slide"></a>
+                            @else
+                            <a href="/"><img class="img1Promocion" src="{{ $promocion->avatar_url }}" alt="{{$clave}} slide"></a>
+                            @endif
                         </div>
                         @endforeach
                     </div>
@@ -98,14 +106,14 @@
             <div>
                     <div class="cuadro2Promocion">
                         <div class="subcuadro2Promocion">
-                            <a href="/viewdetails/2/1"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha1_compressed.jpg" alt=""></a>
+                            <a href="/viewdetails/2/1"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_01.jpg" alt=""></a>
                         </div>
                     </div>
                 
             
                     <div class="cuadro2Promocion">
                         <div class="subcuadro2Promocion">
-                            <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/panaderia_expreso_derecha2_compressed.jpg" alt=""></a>
+                            <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_02.jpg" alt=""></a>
                         </div>
                     </div>
             </div>
