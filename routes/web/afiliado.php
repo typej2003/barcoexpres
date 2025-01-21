@@ -33,6 +33,7 @@ use App\Http\Livewire\Afiliado\Product\Barcoexpres\NewBoat;
 
 use App\Models\Comercio;
 use App\Models\Product;
+use App\Models\Embarcacion;
 use App\Models\Setting;
 use App\Models\SettingComercio;
 
@@ -59,7 +60,7 @@ Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $prod
         return redirect()->route('viewdetails', ['comercioId' => $comercioId, 'productId' => $productId]);
     }
     else{        
-        $product = Product::find($productId);
+        $product = Embarcacion::find($productId);
         $comercio = Comercio::find($comercioId);
         $setting = SettingComercio::where('comercio_id', $comercioId)->first();
         
@@ -74,9 +75,6 @@ Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $prod
             'in_cellphonecontact' => $setting->in_cellphonecontact,
             'in_sliderprincipal' => $setting->in_sliderprincipal,
             'in_marcasproductos' => $setting->in_marcasproductos,
-            'manufacturer_id' => '',
-            'modelo_id' => '',
-            'motor_id' => '',
         ]);
     }
 });
