@@ -257,15 +257,15 @@
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="color-i">Perfil</span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">                                    
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="z-index: 10;">
                                     <div class="d-flex justify-content-between mb-2 ml-3">
                                         <a class="dropdown-item" href="/register" style="cursor:pointer;">
-                                            <img src="/img/icon_registrarse.png" style="width: 18px; height: 25px;"><span class="mx-3">Registrarse</span>
+                                            <img src="/img/icon_registrarse.png" style="width: 18px; height: 25px;"><span class="mx-3 color-i">Registrarse</span>
                                         </a>
                                     </div>
                                     <div class="">                                    
                                         <a class="dropdown-item" href="/login" style="cursor: pointer;">
-                                            <img src="/img/icon_entrar.png" style="width: 18px; height: 25px;"><span class="mx-3">Entrar</span>
+                                            <img src="/img/icon_entrar.png" style="width: 18px; height: 25px;"><span class="mx-3 color-i">Entrar</span>
                                         </a>
                                     </div>
                                 </div>
