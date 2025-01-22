@@ -268,7 +268,7 @@ echo $html;
                                 <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
                                     <!-- <img style="height:45px" src="/img/icon_miperfil.png" id="profileImage" alt="User Image"> -->
                                     <div class="border color-i border-3 rounded-circle p-2" style="width: 35px" >
-                                        <i class="fas fa-solid fa-user"></i>
+                                        <i class="fas fa-solid fa-user" title="Perfil"></i>
                                     </div>
                                 </a>
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -300,7 +300,7 @@ echo $html;
                                     <div class="dropdown-cart-drop my-0">
                                         <a class=" d-flex flex-column" href="/goCart">
                                             <div class="d-flex justify-content-between">
-                                                <img src="/img/icon_carrito.png" style="width: 35px; height:35px cursor:pointer;">
+                                                <img src="/img/icon_carrito.png" style="width: 35px; height:35px cursor:pointer;" title="Compras">
                                                 <span class="color-i">(<?php echo e($totalQuantityCart); ?>)</span>
                                             </div>
                                             <span class="color-i">Compras</span>
@@ -329,7 +329,7 @@ echo $html;
                             <div class="row">
                                 <div class="col-md-12 mx-2 ">
                                     <div class="centro d-flex flex-column my-1 color-i">
-                                        <i class="fas fa-regular fa-envelope mx-auto fa-lg"></i>
+                                        <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
                                         <span class="my-2 color-i">Correo</span>
                                     </div>
                                 </div>
@@ -339,7 +339,7 @@ echo $html;
                             <div class="row">
                                 <div class="col-md-12 mx-2 ">
                                     <div class="centro d-flex flex-column my-1 color-i">
-                                        <i class="fas fa-solid fa-phone mx-auto fa-lg"></i>
+                                        <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
                                         <span class="my-2 color-i">Llamar</span>
                                     </div>
                                 </div>
