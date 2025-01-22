@@ -17,6 +17,7 @@
     <!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900|Ubuntu:400,500,700" rel="stylesheet">
     
     <script src="/js/jquery-3.6.4.min.js"></script>  
     <!-- <script src="/js/slick.min.js"></script>

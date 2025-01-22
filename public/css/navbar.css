@@ -1,9 +1,15 @@
 :root {
-  --main-bg-color:  #4447eb;
-  --main-btn-color: #FC5E27;
-  --main-footer-color: #FFCC2A;
-  --main-grey-color: #b4b4b4;
+    --blue: #9ab3f5;
+    --purple: #9a1663;
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    --azul: #013274;
+    --naranja: #F15D36;
 }
+
+.color-i{
+  color: var(--azul)!important;
+  }
 
 .navbarwelcome{
     position: relative;

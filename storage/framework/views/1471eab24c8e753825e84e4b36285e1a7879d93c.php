@@ -18,6 +18,8 @@
         .logo-responsive {
             height: 54px !important;
         }
+   
+        
     </style>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
     
@@ -262,18 +264,22 @@ echo $html;
                         <?php endif; ?>
                             
                         <?php if(auth()->guard()->guest()): ?>
-                            <li class="">                                
-                                <a class="dropdown-toggle botonera" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
-                                    <img style="height:45px" src="/img/icon_miperfil.png" id="profileImage" alt="User Image">Perfil
-                                </a>                            
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    
+                            <li class="d-flex flex-column">
+                                <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
+                                    <!-- <img style="height:45px" src="/img/icon_miperfil.png" id="profileImage" alt="User Image"> -->
+                                    <div class="border color-i border-3 rounded-circle p-2" style="width: 35px" >
+                                        <i class="fas fa-solid fa-user"></i>
+                                    </div>
+                                </a>
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="color-i">Perfil</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">                                    
                                     <div class="d-flex justify-content-between mb-2 ml-3">
                                         <a class="dropdown-item" href="/register" style="cursor:pointer;">
                                             <img src="/img/icon_registrarse.png" style="width: 18px; height: 25px;"><span class="mx-3">Registrarse</span>
                                         </a>
                                     </div>
-
                                     <div class="">                                    
                                         <a class="dropdown-item" href="/login" style="cursor: pointer;">
                                             <img src="/img/icon_entrar.png" style="width: 18px; height: 25px;"><span class="mx-3">Entrar</span>
@@ -291,11 +297,13 @@ echo $html;
                         <li>
                             <div class="row">
                                 <div class="col-md-12 mx-2">
-                                    <div class="dropdown-cart-drop">
-                                        <a class="btn-cart-drop d-flex justify-content-between botonera" href="/goCart">
-                                            <img src="/img/icon_carrito.png" style="height:45px cursor:pointer;">
-                                            <span class="text-dark">(<?php echo e($totalQuantityCart); ?>)</span>
-                                            <!-- <span class="text-dark">(<?php echo e(\Cart::getTotalQuantity()); ?>)</span> -->
+                                    <div class="dropdown-cart-drop my-0">
+                                        <a class=" d-flex flex-column" href="/goCart">
+                                            <div class="d-flex justify-content-between">
+                                                <img src="/img/icon_carrito.png" style="width: 35px; height:35px cursor:pointer;">
+                                                <span class="color-i">(<?php echo e($totalQuantityCart); ?>)</span>
+                                            </div>
+                                            <span class="color-i">Compras</span>
                                         </a>
                                         <?php
 if (! isset($_instance)) {
@@ -313,14 +321,16 @@ if (! isset($_instance)) {
 echo $html;
 ?>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="row">
                                 <div class="col-md-12 mx-2 ">
-                                    <div class="centro bg-secondary text-white border rounded-circle">
-                                    <i class="fas fa-regular fa-envelope mx-auto"></i>
+                                    <div class="centro d-flex flex-column my-1 color-i">
+                                        <i class="fas fa-regular fa-envelope mx-auto fa-lg"></i>
+                                        <span class="my-2 color-i">Correo</span>
                                     </div>
                                 </div>
                             </div>                                
@@ -328,8 +338,9 @@ echo $html;
                         <li>
                             <div class="row">
                                 <div class="col-md-12 mx-2 ">
-                                    <div class="centro bg-secondary text-white border rounded-circle mx-2">
-                                    <i class="fas fa-solid fa-phone mx-auto"></i>
+                                    <div class="centro d-flex flex-column my-1 color-i">
+                                        <i class="fas fa-solid fa-phone mx-auto fa-lg"></i>
+                                        <span class="my-2 color-i">Llamar</span>
                                     </div>
                                 </div>
                             </div>                                

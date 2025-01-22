@@ -3,8 +3,20 @@
   --blue: #9ab3f5;
   --purple: #9a1663;
   --white: #ffffff;
-
   --shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  --azul: #013274;
+  --naranja: #F15D36;
+}
+
+text-titulo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--azul);
+}
+*{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* black */
 }
 
 .search-bar {
@@ -95,3 +107,19 @@
   font-weight: 500;
   color: var(--purple);
 }
+
+.btn-app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--azul);
+  color: var(--naranja);
+  cursor: pointer;
+}
+
+.color-i{
+  color: var(--azul)!important;
+  }
