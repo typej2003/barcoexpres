@@ -8,8 +8,8 @@
         }
 
         .logo-navbar {
-            width: 200px !important;
-            height: 50px !important;
+            width: 80% !important;
+            height: 80% !important;
             margin: 15px !important
         }
         .logo-movil {
@@ -180,13 +180,12 @@
                         </div>        
                     </div>
                     <script>
-                        <script>
                             function sendForm(form)
                             {
                                 let formulario = document.getElementById(form)
                                 formulario.submit();
                             }
-                        </script>
+                        
                     </script>
 
                     <!-- Social Media Buttons HTML -->
@@ -248,16 +247,15 @@
                             
                         @guest
                             <li class="d-flex flex-column">
-                                <a class="" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                                
                                     <!-- <img style="height:45px" src="/img/icon_miperfil.png" id="profileImage" alt="User Image"> -->
                                     <div class="border color-i border-3 rounded-circle p-2" style="width: 35px" >
                                         <i class="fas fa-solid fa-user" title="Perfil"></i>
                                     </div>
-                                </a>
+                                
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="color-i">Perfil</span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="z-index: 10;">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="z-index: 1000 !important; background:white !important;">
                                     <div class="d-flex justify-content-between mb-2 ml-3">
                                         <a class="dropdown-item" href="/register" style="cursor:pointer;">
                                             <img src="/img/icon_registrarse.png" style="width: 18px; height: 25px;"><span class="mx-3 color-i">Registrarse</span>
@@ -286,7 +284,7 @@
                                                 <img src="/img/icon_carrito.png" style="width: 35px; height:35px cursor:pointer;" title="Compras">
                                                 <span class="color-i">({{$totalQuantityCart}})</span>
                                             </div>
-                                            <span class="color-i">Compras</span>
+                                            <span class="color-i" style="z-index: 1;">Compras</span>
                                         </a>
                                         @livewire('carrito.cart-drop')
                                     </div>
@@ -302,7 +300,7 @@
                                         <span class="my-2 color-i">Correo</span>
                                     </div>
                                 </div>
-                            </div>                                
+                            </div>
                         </li>
                         <li>
                             <div class="row">
@@ -319,69 +317,70 @@
                 <!-- menu horizontal vista escritorio -->
                 <div class="menu" style="z-index: 6!important">
                     <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu">MENÚ</span></div> 
-                    <div class="menu-center w-full ">
-                        <div class="d-flex justify-content-around ">
-                        @livewire('components.menu-component',[
-                            'comercioId' => 1,
-                            'manufacturer_id' => $manufacturer_id,
-                            'modelo_id' => $modelo_id,
-                            'motor_id' => $motor_id,
-                        ])
-                        </div>
-                        
-                    </div>
-                    <div class="button-search w-full" style="display: none; cursor: pointer;"><img src="/img/icon_buscar.png" alt=""></div>
-                    <span class="fw-bold w-full">Divisa:</span>
-                    <div class="menu-right w-full d-flex justify-content-between">
-                        @livewire('components.currency')
-                    </div>
-                    <div class="menu-responsive">
-                        <div class="menu-responsive">
-                            <!-- Menu horizontal -->
-                            <a href="/"><img class="logo-movil" src="{{ $comercio->avatar_url }}" alt=""></a>
-                            <div class="button-search"><img class="icon-movil" src="/img/icon_buscar.png" alt=""></div>
-                            @auth
-                                <div>
-                                    <a href="">
-                                        <img class="icon-movil img-circle elevation-1"  src="{{ auth()->user()->avatar_url }}" id="profileImage" alt="User Image" style="height: 30px; width: 30px;">
-                                    </a>
-                                </div>                                
-                            @else
-                                <div><a href=""><img class="icon-movil" src="/img/icon_miperfil.png" alt=""></a></div>
-                            @endauth
-                            <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>
+                        <div class="menu-center w-full ">
+                            <div class="d-flex justify-content-around ">
+                            @livewire('components.menu-component',[
+                                'comercioId' => 1,
+                                'manufacturer_id' => $manufacturer_id,
+                                'modelo_id' => $modelo_id,
+                                'motor_id' => $motor_id,
+                            ])
+                            </div>
                             
-                            <div>
-                                <a class="d-flex justify-content-between" href="/goCart">
-                                    <img class="icon-movil" src="/img/icon_carrito.png" style="cursor:pointer;">
-                                    <span class="fs-5 my-2 text-dark">({{$totalQuantityCart}})</span>
-                                    <!-- <span class="text-dark">({{\Cart::getTotalQuantity()}})</span> -->
-                                </a>
-                                @livewire('carrito.cart-drop')
+                        </div>
+                        <div class="button-search w-full" style="display: none; cursor: pointer;"><img src="/img/icon_buscar.png" alt=""></div>
+                        <span class="fw-bold w-full">Divisa:</span>
+                        <div class="menu-right w-full d-flex justify-content-between">
+                            @livewire('components.currency')
+                        </div>
+                        <!-- menu vista movil -->
+                        <div class="menu-responsive">
+                            <div class="menu-responsive-banner">
+                                <a href="/"><img class="logo-movil" src="{{ $comercio->avatar_url }}" alt=""></a>
                             </div>
-                            <div class="icon-movil border rounded-circle bg-secondary centrar">
-                                <a href="" class="" >
-                                    <i class="fas fa-regular fa-envelope text-white my-auto"></i>
-                                </a>
-                            </div>
-                            <div class="icon-movil border rounded-circle bg-secondary centrar">
-                                <a href="" class="" >
-                                    <i class="fas fa-solid fa-phone text-white my-auto"></i>
-                                </a>
-                            </div>
-                        </div>                                
-                        
-                        <div class="div-search d-none w-100">
-                            <form action="{{ route('search') }}" method="GET" >
-                                <input wire:model.defer="state.manufacturer_id" type="hidden" class ="manufacturerS_id" name = "manufacturerS_id">
-                                <input wire:model.defer="state.modelo_id" type="hidden" class ="modeloS_id" name = "modeloS_id">
-                                <input wire:model.defer="state.motor_id" type="hidden" class ="motorS_id" name = "motorS_id">
-                                <input class="form-control search-input" name="words" type="text" placeholder="Buscar" style="height: 40px;">
-                                <button type="submit" class="form-control fa fa-search"></button>
-                            </form>
-                        </div>      
-                        
-                    </div>
+                            <div class="menu-responsive1">
+                                <!-- Menu horizontal -->
+                                <div class="button-search"><img class="icon-movil" src="/img/icon_buscar.png" alt=""></div>
+                                @auth
+                                    <div>
+                                        <a href="">
+                                            <img class="icon-movil img-circle elevation-1"  src="{{ auth()->user()->avatar_url }}" id="profileImage" alt="User Image" style="height: 30px; width: 30px;">
+                                        </a>
+                                    </div>                                
+                                @else
+                                    <div><a href=""><img class="icon-movil" src="/img/icon_miperfil.png" alt=""></a></div>
+                                @endauth
+                                <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>
+                                
+                                <div>
+                                    <a class="d-flex justify-content-between" href="/goCart">
+                                        <img class="icon-movil" src="/img/icon_carrito.png" style="cursor:pointer;">
+                                        <span class="fs-5 my-2 text-dark">({{$totalQuantityCart}})</span>
+                                        <!-- <span class="text-dark">({{\Cart::getTotalQuantity()}})</span> -->
+                                    </a>
+                                    @livewire('carrito.cart-drop')
+                                </div>
+                                        <div class="centro d-flex flex-column my-2 color-i h2">
+                                            <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                        </div>
+                                        <div class="centro d-flex flex-column my-2 color-i h2">
+                                            <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
+                                        </div>
+                                
+                                
+                            </div>                                
+                            
+                            <div class="div-search d-none w-100">
+                                <form action="{{ route('search') }}" method="GET" >
+                                    <input wire:model.defer="state.manufacturer_id" type="hidden" class ="manufacturerS_id" name = "manufacturerS_id">
+                                    <input wire:model.defer="state.modelo_id" type="hidden" class ="modeloS_id" name = "modeloS_id">
+                                    <input wire:model.defer="state.motor_id" type="hidden" class ="motorS_id" name = "motorS_id">
+                                    <input class="form-control search-input" name="words" type="text" placeholder="Buscar" style="height: 40px;">
+                                    <button type="submit" class="form-control fa fa-search"></button>
+                                </form>
+                            </div>      
+                            
+                        </div>
                 </div>
             </div>
         </div>
@@ -427,18 +426,18 @@
         }
 
         $('.button-search').on('click', function(){
-            if($('.menu').css('height') !== '100px'){
-                $('.menu').css('height', '100px');
+            if($('.menu').css('height') !== '90px'){
+                $('.menu').css('height', '90px', 'important');
+                $('.menu-responsive').css('height', '90px', 'important');
                 $('.div-search').css('display', 'block', 'important');
-                $('.div-search').removeClass('d-none')
+                $('.div-search').addClass('d-none')
                 $('.search-input').css('width', window.innerWidth, 'important');
             }else{
-                $('.menu').css('height', '45px');
-                $('.div-search').css('display', 'none', 'important');
-                $('.div-search').addClass('d-none')
+                $('.menu').css('height', '155px', 'important');
+                $('.menu-responsive').css('height', '155px', 'important');
+                $('.div-search').css('display', 'block', 'important');
+                $('.div-search').removeClass('d-none')
             }
-            
-            
             $('.menu').css('align-items', 'start');
             $('.input-search').focus();
 

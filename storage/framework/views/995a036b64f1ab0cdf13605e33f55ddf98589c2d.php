@@ -3,7 +3,9 @@
         <?php $__currentLoopData = $manufacturers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $manufacturer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <form action="/searchM" method="get">
                 <?php echo csrf_field(); ?>
-                <button class="border border-0" type="submit"><img src="<?php echo e($manufacturer->avatar_url); ?>" style="width: 100%;" alt=""></button>
+                <button class="border border-0" type="submit">
+                    <img src="<?php echo e($manufacturer->avatar_url); ?>" style="width: 200px; height:200px;" alt="">
+                </button>
                 <input type="hidden" name="words" value="<?php echo e($manufacturer->name); ?>">
             </form>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -69,49 +69,5 @@ class ManufacturersSeeder extends Seeder
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
-        DB::table('manufacturers')->insert([
-            'name' => 'Marca 6',
-            'avatar' => 'logomarca_06.jpg',
-            'mercado' => 'original',
-            'area_id' => '3',
-            'user_id' => '1',
-            'comercio_id' => '1',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
-
-        DB::table('manufacturers')->insert([
-            'name' => 'Marca 7',
-            'avatar' => 'logomarca_07.jpg',
-            'mercado' => 'original',
-            'area_id' => '3',
-            'user_id' => '1',
-            'comercio_id' => '1',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
-
-        DB::table('manufacturers')->insert([
-            'name' => 'Marca 8',
-            'avatar' => 'logomarca_08.jpg',
-            'mercado' => 'original',
-            'area_id' => '3',
-            'user_id' => '1',
-            'comercio_id' => '1',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
-
-        DB::table('manufacturers')->insert([
-            'name' => 'Marca 9',
-            'avatar' => 'logomarca_09.jpg',
-            'mercado' => 'original',
-            'area_id' => '3',
-            'user_id' => '1',
-            'comercio_id' => '1',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
-
     }
 }

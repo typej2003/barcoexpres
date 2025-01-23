@@ -55,8 +55,8 @@
                                                 <a href="/routedetails/<?php echo e($product->comercio_id); ?>/<?php echo e($product->id); ?>" ><img class="mx-auto" src="<?php echo e($product->image1_url); ?>" alt=""></a>
                                             </div>
                                         </div>
-                                        <div class="row text-left">
-                                            <div class="negrita d-flex align-item-start"><?php echo e($product->name); ?></div>
+                                        <div class="row text-left texto">
+                                            <div class="negrita d-flex align-item-start titulo"><?php echo e($product->name); ?></div>
                                                 <?php if($product->on_offer): ?>
                                                     <div class="text-decoration-line-through d-flex align-item-start">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
                                                     <div class="d-flex align-item-start">Promoción: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice_offer()); ?></div>

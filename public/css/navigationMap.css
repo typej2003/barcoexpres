@@ -1,3 +1,21 @@
+.navigationMap{  width: auto;  height: auto; color: #fff; }
+
+.logoNM { 
+    display: flex; 
+    justify-content: center;
+    margin: auto; 
+    text-align: center; 
+    align-items: center; 
+    margin-top: 20px; 
+}
+.logo-responsiveNM {
+    width: 70% !important;
+    margin-left: 24px !important;
+}
+.logo-qr {
+    width: 25%;
+}
+
 .navigationMap{
     background-color: #013274;
     width: 100%;
@@ -13,4 +31,62 @@
     align-items: center;
     padding: 20px;
     margin-top: 20px;
+}
+
+.col-left {
+    width: 40% !important;
+    height: 200px;
+    display: flex;
+    margin: auto;
+    text-align: center;
+    align-items: center;   
+}
+.col-center {
+    width: 30% !important;
+    height: 200px;
+    display: flex;
+    margin: auto;
+    text-align: left;
+    align-items: left;
+}
+.col-right {
+    width: 30% !important;
+    height: 200px;
+    display: flex;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.mapanavegacion {
+    height: 150px;
+}
+.redessociales {
+    height: 50px;
+}
+
+.qr-movil {
+    display: none;
+}
+
+@media only screen and (max-width: 1070px) {
+    .col-left {
+        width: 100% !important;
+        height: 55px;
+    }
+    .col-center {
+        width: 100% !important;
+        height: 200px;
+        margin-left: 5px;
+    }
+    .col-right {
+        display: none;
+    }
+
+    .qr-movil {
+        display: block;
+        position: absolute;
+        top: 20%;
+        right: 10px;
+    }
 }

@@ -2,7 +2,7 @@
     width: 100% !important;
     margin: 1%;
     padding: .5rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);*/
     border-radius: 0.5rem;
     background-color: rgb(255, 255, 255);
 }
@@ -22,7 +22,7 @@
 }
 
 .two {
-    color: rgb(255, 106, 0);
+    color: rgb(255, 255, 3);
 }
 
 .three {
@@ -30,11 +30,11 @@
 }
 
 .four {
-    color: rgb(255, 255, 0);
+    color: #e2b356;
 }
 
 .five {
-    color: rgb(24, 159, 14);
+    color: #FC5E27;
 }
 
 .output {

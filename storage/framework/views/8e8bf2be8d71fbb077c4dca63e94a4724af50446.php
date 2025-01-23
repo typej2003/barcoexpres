@@ -37,7 +37,8 @@
                 <?php if($in_cellphonecontact > 0): ?>            
                     <div class="row" id="whatsapp" style="position: fixed; bottom: 20px; right:20px; z-index: 20;">
                         <a href="https://api.whatsapp.com/send?phone=+58<?php echo e($comercio->contactcellphone); ?>&text=<?php echo e($comercio->msgcontact); ?>" target="_blank">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="whatsapp" class="svg-inline--fa fa-whatsapp fa-w-14 text-success" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
+                            <!-- <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="whatsapp" class="svg-inline--fa fa-whatsapp fa-w-14 text-success" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg> -->
+                             <img style="width: 65px;" src="/img/iconowhatsapp_azul.png" alt="">
                         </a>
                     </div>            
                 <?php endif; ?>
@@ -49,11 +50,11 @@ if (! isset($_instance)) {
                         'modelo_id' => $modelo_id,
                         'motor_id' => $motor_id,
                         ])->html();
-} elseif ($_instance->childHasBeenRendered('OlUOlt3')) {
-    $componentId = $_instance->getRenderedChildComponentId('OlUOlt3');
-    $componentTag = $_instance->getRenderedChildComponentTagName('OlUOlt3');
+} elseif ($_instance->childHasBeenRendered('ov7PLoE')) {
+    $componentId = $_instance->getRenderedChildComponentId('ov7PLoE');
+    $componentTag = $_instance->getRenderedChildComponentTagName('ov7PLoE');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('OlUOlt3');
+    $_instance->preserveRenderedChild('ov7PLoE');
 } else {
     $response = \Livewire\Livewire::mount('layouts.navbar-nuevo', [
                         'comercioId' => 1,
@@ -62,7 +63,7 @@ if (! isset($_instance)) {
                         'motor_id' => $motor_id,
                         ]);
     $html = $response->html();
-    $_instance->logRenderedChild('OlUOlt3', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('ov7PLoE', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -71,15 +72,15 @@ echo $html;
                         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.promociones')->html();
-} elseif ($_instance->childHasBeenRendered('VVmUlwF')) {
-    $componentId = $_instance->getRenderedChildComponentId('VVmUlwF');
-    $componentTag = $_instance->getRenderedChildComponentTagName('VVmUlwF');
+} elseif ($_instance->childHasBeenRendered('u1kHSYS')) {
+    $componentId = $_instance->getRenderedChildComponentId('u1kHSYS');
+    $componentTag = $_instance->getRenderedChildComponentTagName('u1kHSYS');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('VVmUlwF');
+    $_instance->preserveRenderedChild('u1kHSYS');
 } else {
     $response = \Livewire\Livewire::mount('components.promociones');
     $html = $response->html();
-    $_instance->logRenderedChild('VVmUlwF', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('u1kHSYS', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -90,15 +91,15 @@ echo $html;
                     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.marcas-productos')->html();
-} elseif ($_instance->childHasBeenRendered('1G7Wtn5')) {
-    $componentId = $_instance->getRenderedChildComponentId('1G7Wtn5');
-    $componentTag = $_instance->getRenderedChildComponentTagName('1G7Wtn5');
+} elseif ($_instance->childHasBeenRendered('fQ54Nfh')) {
+    $componentId = $_instance->getRenderedChildComponentId('fQ54Nfh');
+    $componentTag = $_instance->getRenderedChildComponentTagName('fQ54Nfh');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('1G7Wtn5');
+    $_instance->preserveRenderedChild('fQ54Nfh');
 } else {
     $response = \Livewire\Livewire::mount('components.marcas-productos');
     $html = $response->html();
-    $_instance->logRenderedChild('1G7Wtn5', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('fQ54Nfh', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -111,15 +112,15 @@ echo $html;
                         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.show-products', ['comercioId' => $comercio_id, 'currencyValue' => $currencyValue])->html();
-} elseif ($_instance->childHasBeenRendered('nNu9ZqW')) {
-    $componentId = $_instance->getRenderedChildComponentId('nNu9ZqW');
-    $componentTag = $_instance->getRenderedChildComponentTagName('nNu9ZqW');
+} elseif ($_instance->childHasBeenRendered('RpBZV66')) {
+    $componentId = $_instance->getRenderedChildComponentId('RpBZV66');
+    $componentTag = $_instance->getRenderedChildComponentTagName('RpBZV66');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('nNu9ZqW');
+    $_instance->preserveRenderedChild('RpBZV66');
 } else {
     $response = \Livewire\Livewire::mount('components.show-products', ['comercioId' => $comercio_id, 'currencyValue' => $currencyValue]);
     $html = $response->html();
-    $_instance->logRenderedChild('nNu9ZqW', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('RpBZV66', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -135,11 +136,11 @@ if (! isset($_instance)) {
                             'modelo_id' => $modelo_id,
                             'motor_id' => $motor_id,
                             ])->html();
-} elseif ($_instance->childHasBeenRendered('iMUkZKp')) {
-    $componentId = $_instance->getRenderedChildComponentId('iMUkZKp');
-    $componentTag = $_instance->getRenderedChildComponentTagName('iMUkZKp');
+} elseif ($_instance->childHasBeenRendered('VR9HTqN')) {
+    $componentId = $_instance->getRenderedChildComponentId('VR9HTqN');
+    $componentTag = $_instance->getRenderedChildComponentTagName('VR9HTqN');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('iMUkZKp');
+    $_instance->preserveRenderedChild('VR9HTqN');
 } else {
     $response = \Livewire\Livewire::mount('components.results-products', [
                             'comercioId' => $comercio_id, 
@@ -149,7 +150,7 @@ if (! isset($_instance)) {
                             'motor_id' => $motor_id,
                             ]);
     $html = $response->html();
-    $_instance->logRenderedChild('iMUkZKp', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('VR9HTqN', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -166,17 +167,17 @@ if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('layouts.footer', [
                 'comercioId' => 1,
                 ])->html();
-} elseif ($_instance->childHasBeenRendered('0WYL22B')) {
-    $componentId = $_instance->getRenderedChildComponentId('0WYL22B');
-    $componentTag = $_instance->getRenderedChildComponentTagName('0WYL22B');
+} elseif ($_instance->childHasBeenRendered('KAmzoR6')) {
+    $componentId = $_instance->getRenderedChildComponentId('KAmzoR6');
+    $componentTag = $_instance->getRenderedChildComponentTagName('KAmzoR6');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('0WYL22B');
+    $_instance->preserveRenderedChild('KAmzoR6');
 } else {
     $response = \Livewire\Livewire::mount('layouts.footer', [
                 'comercioId' => 1,
                 ]);
     $html = $response->html();
-    $_instance->logRenderedChild('0WYL22B', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('KAmzoR6', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

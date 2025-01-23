@@ -122,4 +122,5 @@ text-titulo {
 
 .color-i{
   color: var(--azul)!important;
+  font-size: 1.2rem !important;
   }

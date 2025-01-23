@@ -54,8 +54,8 @@
                                                 <a href="/routedetails/{{ $product->comercio_id }}/{{ $product->id }}" ><img class="mx-auto" src="{{ $product->image1_url }}" alt=""></a>
                                             </div>
                                         </div>
-                                        <div class="row text-left">
-                                            <div class="negrita d-flex align-item-start">{{$product->name}}</div>
+                                        <div class="row text-left texto">
+                                            <div class="negrita d-flex align-item-start titulo">{{$product->name}}</div>
                                                 @if($product->on_offer)
                                                     <div class="text-decoration-line-through d-flex align-item-start">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
                                                     <div class="d-flex align-item-start">Promoción: {{$currencyValue}}. {{ $product->getPrice_offer() }}</div>

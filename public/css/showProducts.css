@@ -5,12 +5,14 @@
     --main-bg-color:  #4447eb;
     --main-btn-color: #FC5E27;
     --main-footer-color: #FFCC2A;
+    --menu-background-hover: #013274;
+    --azul: #013274;
 }
 
 .card.showProductCard {
     background-color: #ffffff !important;
     width: 18rem !important;
-    height: 23rem !important;
+    height: 24rem !important;
     border-radius: 15px;
     /* box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4); */
     box-shadow: 0 3px 3px val(--main-btn-color);
@@ -18,8 +20,7 @@
   }
   
   .showProductCard:hover {
-    box-shadow: 0 3px 3px var(--main-bg-color);
-    box-shadow: 0 3px 3px #FC5E27;
+    box-shadow: 0 3px 3px var(--menu-background-hover);
   }
   
   .showProductCard img{
@@ -27,6 +28,14 @@
     height: 150px!important;
     text-align: center!important;
     align-items: center;
+  }
+
+  .card-footer {
+    background-color: var(--azul); 
+    color: white;
+    /* top, right, bottom, and left */
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
   }
 
 

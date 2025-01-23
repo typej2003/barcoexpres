@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-bottom footer-navigation">
 	@livewire('components.navigation-map', ['comercio_id' => $comercio_id])
 	<div class="footer footer-color">  
-		<div class="row">
+		<div class="row mx-2">
 				<div class="col-12 col-md-3 my-1">
 					<span><img class="img-fluid footer-img" style="width: 60%" src="/img/LOGO_DDR.png" alt=""></span>
 				</div>

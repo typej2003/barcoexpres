@@ -137,7 +137,7 @@
   color:white;
   font-style: oblique;
   font-size: x-large;
-  font-weight: 900;
+  font-weight: 500;
   background-color: var(--main-btn-color);
   
 }
@@ -297,6 +297,7 @@
 .dropdown-menu {
   top: 2px!important;
   margin-right: 10px!important;
+  background-color: white !important;
 }
 .dropdown-toggle {
   margin-right: 5px!important;

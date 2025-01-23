@@ -63,10 +63,14 @@
                 margin: auto;
             }
 
+            .promociones {
+                margin-top: 55px !important;
+            }
+
         }
     </style>
     <div class=""></div>
-    <div class="row">
+    <div class="row promociones">
         <div class="col-md-7 col-sm-7">
             <div class="cuadro1Promocion" style="">
                 <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
