@@ -16,67 +16,73 @@ class MenuSeeder extends Seeder
     public function run()
     {
         DB::table('menus')->insert([
+            'area_id' => '3',
+            'comercio_id' => '1',
             'texto' => 'Recreo',
             'ruta' => 'Recreo',
             'origen' => 'link', // view or categories
             'menu' => 1,
             'posicion' => 1,
-            'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('menus')->insert([
+            'area_id' => '3',
+            'comercio_id' => '1',
             'texto' => 'Arrastre',
             'ruta' => 'Arrastre',
             'origen' => 'link', // view or categories
             'menu' => 1,
             'posicion' => 2,
-            'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('menus')->insert([
+            'area_id' => '3',
+            'comercio_id' => '1',
             'texto' => 'Cerco',
             'ruta' => 'Cerco',
             'origen' => 'link', // view or categories
             'menu' => 1,
             'posicion' => 3,
-            'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('menus')->insert([
+            'area_id' => '3',
+            'comercio_id' => '1',
             'texto' => 'Palangre',
             'ruta' => 'Palangre',
             'origen' => 'link', // view or categories
             'menu' => 1,
             'posicion' => 4,
-            'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('menus')->insert([
+            'area_id' => '3',
+            'comercio_id' => '1',
             'texto' => 'Artes menores',
             'ruta' => 'Artes menores',
             'origen' => 'link', // view or categories
             'menu' => 1,
             'posicion' => 5,
-            'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
 
         DB::table('menus')->insert([
+            'area_id' => '3',
+            'comercio_id' => '1',
             'texto' => 'Motores',
             'ruta' => 'Motores',
             'origen' => 'link', // view or categories
             'menu' => 1,
             'posicion' => 6,
-            'comercio_id' => '1',
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);

@@ -13,12 +13,13 @@ class Category extends Model
     protected $fillable = [
         'name',
         'description',
-        'avatar',
+        'img',
+        'parent',
+        'category_id',
+        'ruta',
         'user_id',
         'area_id',
         'comercio_id',
-        'itemMenu',
-        'posicionMenu',
     ];
 
     protected $appends = [
@@ -34,9 +35,15 @@ class Category extends Model
         return asset('noimage.png');
     }
 
-    public function subcategories()
+    public function subcategories2()
     {
         return $this->hasMany(Subcategory::class);
+    }
+
+    public function subcategories()
+    {
+        return Category::where('category_id', $this->id)->get();
+        // Actualizar
     }
 
     public function subcategoriesMenu()

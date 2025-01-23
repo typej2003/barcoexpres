@@ -248,6 +248,15 @@
                 </li>
 
                 <li class="nav-item">
+                  <a href="{{ route('listCategories', 1) }}" class="nav-link {{ request()->is('listCategories') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-comments"></i>
+                    <p>
+                      Categorias
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
                   <a href="{{ route('listMenus', 1) }}" class="nav-link {{ request()->is('listMenus') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-comments"></i>
                     <p>

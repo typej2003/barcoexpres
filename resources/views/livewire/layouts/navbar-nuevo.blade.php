@@ -30,19 +30,50 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
                     <div class="overlay-header">
-                        <img class="logo-responsive" src="{{ $comercio->avatar_url }}" alt="">
-                        <div class="currency-responsive">
+                        <div class="currency-responsive w-full">
                             @livewire('components.currency')
                         </div>
                     </div>
+                    <div class="nav-overlay">
+                        <div class="accordion-container">
+                            @foreach($categories as $category)
+                                    @if(count($category->subcategories()) == 0))
+                                        <div class="set">
+                                            <a class="Text-Uppercase" style="cursor:pointer;" href="{{ route('cat', [
+                                                'categ' => $category->name,
+                                                ]) }}" style="font-weight: bold; ">
+                                                {{$category->name}}
+                                            </a>
+                                        </div>
+                                    @else
+                                        <div class="set" style="font-weight: bold; ">
+                                            <a class="Text-Uppercase" href="#">
+                                                <!-- <i class="fa fa-plus mr-3"></i> -->
+                                                {{$category->name}}                                                
+                                            </a>
+                                            @foreach($category->subcategories() as $subcategory)
+                                                <div class="content">
+                                                    <div class="d-flex justify-content-between mx-5">
+                                                        <a class="" href="{{ route('cat', [
+                                                                                    'categ' => $subcategory->name,
+                                                                                    ]) }}">
+                                                            {{ $subcategory->name}}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            @endforeach                                            
+                                        </div>
+                                    @endif                                
+                            @endforeach
+                        </div>        
+                    </div>
 
                     <div class="nav-overlay">
-
                         <div class="accordion-container">
                             @guest
                                 <div class="set">
-                                    <a href="#" style="font-weight: bold; font-size: 1.5rem;">
-                                    Cuenta
+                                    <a href="#" class="titulo">
+                                    MI PERFIL
                                     </a>
                                     <div class="content">
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
@@ -56,6 +87,15 @@
                                             </a>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="set">
+                                    <a href="" class="titulo">COMPRAS</a>
+                                </div>
+                                <div class="set">
+                                    <a href="" class="titulo">CORREO</a>
+                                </div>
+                                <div class="set">
+                                    <a href="" class="titulo">LLAMAR</a>
                                 </div>
                             @endguest
                             @auth
@@ -99,49 +139,7 @@
 
                     <hr>
 
-                    <div class="nav-overlay">
-                        <div class="accordion-container">
-                            <h4>Categorías</h4>
-                            @foreach($categories as $category)
-                                    @if($category->subcategories->count() == 0)
-                                        <div class="set">
-                                            <a class="mx-4" style="cursor:pointer;" href="{{ route('cat', [
-                                                'categ' => $category->name,
-                                                'manufacturer_id' => $state['manufacturer_id'],
-                                                'modelo_id' => $state['modelo_id'],
-                                                'motor_id' => $state['motor_id'],
-                                                ]) }}" style="font-weight: bold; ">
-                                                {{$category->name}}
-                                            </a>
-                                        </div>
-                                    @else
-                                        <div class="set" style="font-weight: bold; ">
-                                            <a href="#">
-                                                <i class="fa fa-plus mr-3"></i>
-                                                {{$category->name}}                                                
-                                            </a>
-                                    
-                                            @foreach($category->subcategories as $subcategory)
-                                                <div class="content">
-                                                    <div class="d-flex justify-content-between mx-5">
-                                                        <a class="" href="{{ route('cat', [
-                                                                                    'categ' => $subcategory->name,
-                                                                                    'manufacturer_id' => $state['manufacturer_id'],
-                                                                                    'modelo_id' => $state['modelo_id'],
-                                                                                    'motor_id' => $state['motor_id'],
-                                                                                    ]) }}">
-                                                            {{ $subcategory->name}}
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                            
-                                        </div>
-                                    @endif                                
-                                
-                            @endforeach
-                        </div>        
-                    </div>
+                    
                     <div class="nav-overlay">
                         <div class="accordion-container">
                             <div class="set" style="font-weight: bold; ">
@@ -321,9 +319,6 @@
                             <div class="d-flex justify-content-around ">
                             @livewire('components.menu-component',[
                                 'comercioId' => 1,
-                                'manufacturer_id' => $manufacturer_id,
-                                'modelo_id' => $modelo_id,
-                                'motor_id' => $motor_id,
                             ])
                             </div>
                             
@@ -360,14 +355,12 @@
                                     </a>
                                     @livewire('carrito.cart-drop')
                                 </div>
-                                        <div class="centro d-flex flex-column my-2 color-i h2">
-                                            <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
-                                        </div>
-                                        <div class="centro d-flex flex-column my-2 color-i h2">
-                                            <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
-                                        </div>
-                                
-                                
+                                <div class="centro d-flex flex-column my-2 color-i h2">
+                                    <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                </div>
+                                <div class="centro d-flex flex-column my-2 color-i h2">
+                                    <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
+                                </div>
                             </div>                                
                             
                             <div class="div-search d-none w-100">
@@ -443,11 +436,6 @@
 
         })
         
-        // $(".input-search").blur(function(){
-        //     $('.menu').css('height', '45px');
-        //     $('.div-search').css('display', 'none');
-        //     $('.menu').css('align-items', 'center');
-        // });
     </script>
 
     <script>
@@ -509,40 +497,7 @@
                 }
             });
         };
-
     </script>
     
 </div>
 
-
-<!-- @foreach($categories as $category)
-    @if($category->subcategories->count() == 0)
-        <a class="dropdown-item" style="cursor:pointer;" href="{{ route('cat', [
-            'categ' => $category->name,
-            'manufacturer_id' => $state['manufacturer_id'],
-            'modelo_id' => $state['modelo_id'],
-            'motor_id' => $state['motor_id'],
-            ]) }}">
-            {{$category->name}}
-        </a>
-    @else
-        <div class="dropdown">
-            <a class="dropdown-item dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{$category->name}}
-            </a>
-            
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    @foreach($category->subcategories as $subcategory)
-                        <a class="dropdown-item" href="{{ route('cat', [
-                                                    'categ' => $subcategory->name,
-                                                    'manufacturer_id' => $state['manufacturer_id'],
-                                                    'modelo_id' => $state['modelo_id'],
-                                                    'motor_id' => $state['motor_id'],
-                                                    ]) }}">
-                            {{ $subcategory->name}}
-                        </a>
-                    @endforeach
-                </div>
-        </div>
-    @endif
-@endforeach -->

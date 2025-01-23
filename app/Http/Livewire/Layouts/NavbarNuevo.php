@@ -52,7 +52,7 @@ class NavbarNuevo extends Component
         $this->state['motor_id'] = $motor_id;
 
         $this->categories = Category::where('comercio_id', $this->comercio_id)
-                                    ->where('itemMenu', 1)
+                                    ->where('parent', 1)
                                     ->get();
         
         $this->comercio = Comercio::find($this->comercio_id);

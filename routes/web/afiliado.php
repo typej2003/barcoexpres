@@ -120,3 +120,5 @@ Route::get('/listDeliveryArea/{comercioId}', ListDeliveryArea::class)->name('lis
 Route::get('/listUsersComercio/{comercioId}', ListUsersComercio::class)->name('listUsersComercio')->middleware('auth');
 
 Route::get('/listPromociones/{comercioId}', ListPromociones::class)->name('listPromociones')->middleware('auth');
+
+Route::get('/listCategories/{comercioId}', ListCategories::class)->name('listCategories')->middleware('auth');

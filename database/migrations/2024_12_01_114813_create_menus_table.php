@@ -15,12 +15,17 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('area_id');
+            $table->bigInteger('comercio_id');
             $table->string('texto');
             $table->string('ruta');
             $table->string('origen');
+            $table->bigInteger('category_id')->default(0);
             $table->string('menu');
             $table->bigInteger('posicion');
-            $table->bigInteger('comercio_id');
+            $table->string('itemMenu')->default('0');
+            $table->string('itemSubmenu')->default('0');
+            $table->integer('posicionMenu')->default('0');
             $table->timestamps();
         });
     }
