@@ -68,8 +68,6 @@ a {text-decoration: none; }
 
 .botonera:hover {  background-color: white; color: #D7C8B6; box-shadow: 5px 5px 15px gray; }
 
-
-
 .footer{ margin-top: auto; padding-top: 15px; width: 100% !important; height: 85px !important; text-decoration: solid !important; font-weight: bold !important;/*display: none;*/ }
 
 .footer-color{ background-color: var(--menu-background); color: white; }
@@ -124,7 +122,7 @@ a {text-decoration: none; }
 
 @media only screen and (max-width: 1070px) {  
   .menu-left {color: var(--menu-background); font-size: 1.5rem; }
-  .overlay {max-width: 100% !important;}
+  .overlay {margin-top: 50px !important; max-width: 100% !important;}
   .overlay-content {max-width: 100% !important; overflow: auto;}
   .overlay .overlay-header {display: flex; justify-content: start;  align-items: center; }
   .overlay-header img { width: 45% !important;}
