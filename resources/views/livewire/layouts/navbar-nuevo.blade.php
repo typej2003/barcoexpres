@@ -139,44 +139,6 @@
 
                     <hr>
 
-                    
-                    <div class="nav-overlay">
-                        <div class="accordion-container">
-                            <div class="set" style="font-weight: bold; ">
-                                <a href="#">
-                                    <i class="fa fa-plus mr-3"></i>
-                                    Menu
-                                </a>
-
-                                <div class="content">
-                                    <div class="d-flex justify-content-between mx-5">
-                                        <form action="searchM" method="get" id="Pan de Jamón">
-                                            @csrf
-                                            <input type="hidden" name="words" value="Pan de Jamón">
-                                            <input type="hidden" name="manufacturer_id" value="0">
-                                            <input type="hidden" name="modelo_id" value="0">
-                                            <input type="hidden" name="motor_id" value="0">
-                                            <a class="mx-4" onclick="sendForm('Pan de Jamón')" style="cursor:pointer;">Pan de Jamón</a>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class="content">
-                                    <div class="d-flex justify-content-between mx-5">
-                                        <form action="searchM" method="get" id="Ofertas">
-                                            @csrf
-                                            <input type="hidden" name="words" value="Ofertas">
-                                            <input type="hidden" name="manufacturer_id" value="0">
-                                            <input type="hidden" name="modelo_id" value="0">
-                                            <input type="hidden" name="motor_id" value="0">
-                                            <a class="mx-4" onclick="sendForm('Ofertas')" style="cursor:pointer;">Ofertas</a>
-                                        </form>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>        
-                    </div>
                     <script>
                             function sendForm(form)
                             {
