@@ -13,8 +13,10 @@ body, html, a, p, card, div{
   font-family: 'Montserrat', sans-serif;
   font-weight: 100; margin:0; padding:0; /*background-color: yellowgreen;*/
 }
-
-.titulo { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: bold; color: var(--azul) !important; }
+.bg-azul {
+  background-color: var(--azul) !important;
+}
+.titulo { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: bold; color: var(--azul) !important; padding: 5px;}
 .texto { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; color: var(--azul) !important; }
 a {text-decoration: none; }
 
@@ -32,16 +34,29 @@ a {text-decoration: none; }
   align-items: center !important;
 }
 
-.header{ border-top:1px solid white;background:rgb(255, 255, 255); color:#333; height: 70px !important; width:100%; font-family: 'Lobster', cursive; text-align:center; display: flex; justify-content: space-between; }
-.header-main{ margin-left: 5px; margin-right: 5px;}
+.header-main
+{ 
+  margin-left: 0px; 
+  margin-right: 0px; 
+  width: 95vw !important;
+}
+
+.header
+{ 
+  background: white; 
+  width: 90vw !important;
+  height: 70px !important; 
+  display: flex; 
+  justify-content: space-around; 
+}
 
 /* logo */
 .logo { width: 20% !important; list-style-type: none; text-align: center; height: 70px !important; display: flex !important; align-items: center;}
 
 /* input search */
-.search { position: relative; color: #aaa; font-size: 16px; margin-top: 0px; width: 50% !important; height: 70px !important; }
+.search { color: #aaa; font-size: 16px; margin-top: 0px; width: 50% !important; height: 70px !important; }
 
-.search form {height: 70px !important;}
+.search form {position: relative; height: 70px !important;}
 
 .search input { height: 40px; background: #fcfcfc; border: 1px solid #aaa; border-radius: 5px; box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset; text-indent: 32px; display: flex; align-self: center !important; }
 
@@ -51,12 +66,12 @@ a {text-decoration: none; }
 
 .search .fa-search {left: auto; right: 10px;}
 
-/* Menu horizontal */
-.menu-horizontal { list-style-type: none; width: 30% !important; height: 70px !important; }
+.menu{ height:45px; width:100vw; background-color: var(--menu-background); border: 1px solid #000; color: white; text-align:center; display: flex; align-items: center; box-shadow: 5px 5px 15px gray; z-index: 9999;}
 
-.menu-horizontal-responsive {  list-style-type: none; text-align: center; margin-top: 0px !important; }
-  
-.menu-horizontal li { float: left; text-align: center; padding: 5px; margin-right: 10px; }
+/* Menu horizontal */
+.menu-horizontal { list-style-type: none; height: 70px !important; }
+
+.menu-horizontal li { text-align: center; padding: 5px; margin-right: 10px; }
 
 .botonera { display: flex !important; align-items: center !important; height: 50px !important; padding: 5px !important; border-radius: 15px !important; }
 
@@ -75,8 +90,6 @@ a {text-decoration: none; }
 .footer-img{ width: 40%!important; }
 
 .footer-img2{ width: 80%!important; }
-
-.menu{ height:45px; width:100vw; background-color: var(--menu-background); border: 1px solid #000; color: white; text-align:center; display: flex; align-items: center; box-shadow: 5px 5px 15px gray; z-index: 9999;}
 
 .wrapper{ height:auto; width:100%; padding-top:20px; margin-top: 100px;}
 .fixed{position:fixed; top:0}
@@ -135,7 +148,7 @@ a {text-decoration: none; }
   .w-full{display: none!important; }
   
   body, html{ margin:0; padding:0; /*background-color: burlywood;*/}
-  .header{display: none;}
+  .header{display: none; width: 100vw !important;}
   .wrapper{ padding-top:0px; margin-top: 45px; }
 
   .search-responsive img {
@@ -289,12 +302,12 @@ svg {
 
 .btn-app{
   padding: 0%;
-background-color: #28221B;
-color: #FFCC2A!important;
+  background-color: var(--naranja);
+  color: white !important;
   min-width: 130px!important;
-width: 140px!important;
-height: 45px;
-font-size: .8rem!important;
+  width: 140px!important;
+  height: 45px;
+  font-size: .8rem!important;
   font-weight: bold;
   border-radius: 15px;
 }
@@ -660,6 +673,10 @@ background-color: #3d362d!important;
 .content a {
   color: white !important;
   font-weight: 600;
+}
+
+.content a:hover {
+  color: var(--azul) !important;
 }
 
 /** Menu desplegable acordeon **/

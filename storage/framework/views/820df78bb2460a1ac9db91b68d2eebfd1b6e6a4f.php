@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ setting('site_title') }} | {{ setting('site_name') }}</title>
+  <title><?php echo e(setting('site_title')); ?> | <?php echo e(setting('site_name')); ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="<?php echo e(asset('backend/plugins/fontawesome-free/css/all.min.css')); ?>">
   <!-- icheck bootstrap -->
   <!-- Theme style -->
   
@@ -43,13 +43,20 @@
                 </div>
             </div>
     
-            <form action="{{ route('autenticar') }}" method="POST">
-                @csrf
+            <form action="<?php echo e(route('autenticar')); ?>" method="POST">
+                <?php echo csrf_field(); ?>
                 <div class="form-group">
                     <div class="row mx-auto">
                         <div class="col-xs-6 col-md-4 col-sm-4 col-4">
                             <label for="identificationNac">Tipo </label>
-                            <select class="form-control @error('identificationNac') is-invalid @enderror" name="identificationNac" id="identificationNac" placeholder="Tipo">
+                            <select class="form-control <?php $__errorArgs = ['identificationNac'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="identificationNac" id="identificationNac" placeholder="Tipo">
                                 <option value="J">J-</option>
                                 <option value="E">E-</option>
                                 <option value="G">G-</option>
@@ -59,11 +66,25 @@
                         </div>
                         <div class="col-xs-6 col-md-8 col=sm-8 col-8">
                             <label for="identificationNumber">Documento</label>
-                            <input type="text" class="form-control @error('identificationNumber') is-invalid @enderror" name="identificationNumber" id="identificationNumber" placeholder="Documento">
+                            <input type="text" class="form-control <?php $__errorArgs = ['identificationNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="identificationNumber" id="identificationNumber" placeholder="Documento">
                         </div>
-                        @error('identificationNumber')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <?php $__errorArgs = ['identificationNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <span class="text-danger"><?php echo e($message); ?></span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
                     
                 </div>
@@ -75,9 +96,16 @@
                             <input type="email" name="email" class="form-control inputForm" placeholder="Correo Electrónico" id="emailW">
                         </div>
                     </div>
-                    @error('email')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <span class="text-danger"><?php echo e($message); ?></span>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 </div>
         
                 <div class="form-group my-2">
@@ -105,10 +133,11 @@
   <!-- /.card -->
 
 <!-- jQuery -->
-<script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
+<script src="<?php echo e(asset('backend/plugins/jquery/jquery.min.js')); ?>"></script>
 <!-- Bootstrap 4 -->
-<script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="<?php echo e(asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('backend/dist/js/adminlte.min.js') }}"></script>
+<script src="<?php echo e(asset('backend/dist/js/adminlte.min.js')); ?>"></script>
 </body>
 </html>
+<?php /**PATH /home/typej/Documentos/github/barcoexpres-1/resources/views/auth/login.blade.php ENDPATH**/ ?>

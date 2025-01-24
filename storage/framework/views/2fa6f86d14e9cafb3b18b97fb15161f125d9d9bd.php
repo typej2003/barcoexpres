@@ -18,7 +18,20 @@
         .logo-responsive {
             height: 54px !important;
         }
-   
+        
+        .logo {
+            width: 20% !important;
+        }
+        .search {
+            width: 50% !important;
+        }
+        .menu-horizontal {
+            width: 30% !important;
+        }
+
+        .input-search {
+            width: 100% !important;
+        }
         
     </style>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
@@ -93,12 +106,12 @@ echo $html;
                                     </a>
                                     <div class="content">
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="/register" style="cursor:pointer;">
+                                            <a class="" href="/register" style="cursor:pointer;">
                                                 <img src="/img/icon_registrarse.png" style="width: 18px; height: 25px;"><span class="mx-3">Registrarse</span>
                                             </a>
                                         </div>
                                         <div class="">                                    
-                                            <a class="dropdown-item mx-3" href="/login" style="cursor: pointer;">
+                                            <a class="mx-3" href="/login" style="cursor: pointer;">
                                                 <img src="/img/icon_entrar.png" style="width: 18px; height: 25px;"><span class="mx-3">Entrar</span>
                                             </a>
                                         </div>
@@ -124,29 +137,38 @@ echo $html;
                                     </a>
                                     <div class="content">
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="profileLink">Perfil</a>
+                                            <a class="" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="profileLink">Perfil</a>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.dashboard')); ?>" x-ref="profileLink">Escritorio</a>
+                                            <a class="" href="<?php echo e(route('admin.dashboard')); ?>" x-ref="profileLink">Escritorio</a>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="<?php echo e(route('listPedidosCliente')); ?>" x-ref="profileLink">Mis Pedidos</a>
+                                            <a class="" href="<?php echo e(route('listPedidosCliente')); ?>" x-ref="profileLink">Mis Pedidos</a>
                                         </div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
+                                            <a class="" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
                                         </div>
                                         <?php if(auth()->user()->role == 'admin'): ?>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
+                                            <a class="" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
                                         </div>
                                         <?php endif; ?>
                                         <div class="dropdown-divider"></div>
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
                                             <form method="post" action="<?php echo e(route('logout')); ?>">
-                                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
+                                                <a class="" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
                                             </form>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="set">
+                                    <a href="" class="titulo">COMPRAS</a>
+                                </div>
+                                <div class="set">
+                                    <a href="" class="titulo">CORREO</a>
+                                </div>
+                                <div class="set">
+                                    <a href="" class="titulo">LLAMAR</a>
                                 </div>
                             </div>
                             <?php endif; ?>
@@ -165,15 +187,6 @@ echo $html;
                         
                     </script>
 
-                    <!-- Social Media Buttons HTML -->
-                    <div class="wrapperRedes d-flex justify-content-start navigationMap">
-                        <a href="<?php echo e($comercio->instagram); ?>" class="icon instagram">
-                            <div class="tooltip">Instagram</div>
-                            <span><i class="fab fa-instagram"></i></span>
-                        </a>
-                    </div>
-                    <!-- End Social Media Buttons HTML -->
-
                     <div style="height: 20%;"></div>
                     
                 </div>
@@ -187,83 +200,79 @@ echo $html;
                     <!-- The form -->
                     <div class="search">
                         <form class="d-flex justify-content-center" action="<?php echo e(route('search')); ?>" method="GET" wire:ignore>
-                            <input wire:model.defer="state.manufacturer_id" type="hidden" class ="manufacturerS_id" name = "manufacturerS_id">
-                            <input wire:model.defer="state.modelo_id" type="hidden" class ="modeloS_id" name = "modeloS_id">
-                            <input wire:model.defer="state.motor_id" type="hidden" class ="motorS_id" name = "motorS_id">
-                            <input class="form-control" name="words" type="text" placeholder="Buscar">
+                            <input class="form-control input-search" name="words" type="text" placeholder="Buscar">
                             <button type="submit" class="fa fa-search"></button>
                         </form>
                     </div>
                     <!-- Menu horizontal -->
-                    <ul class="menu-horizontal d-flex justify-content-end" style="z-index: 10!important;">
-                        <?php if(auth()->guard()->check()): ?>
-                            <li class="nav-item p-3 py-md-1">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
-                                            <span class="ml-1" x-ref="username">Hola, <?php echo e(auth()->user()->name); ?></span>
-                                        </a>
-                                        <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.dashboard')); ?>" x-ref="profileLink">Escritorio</a>
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="profileLink">Perfil</a>
-                                            <a class="dropdown-item" href="<?php echo e(route('listPedidosCliente')); ?>" x-ref="profileLink">Mis Pedidos</a>
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
-                                            <?php if(auth()->user()->role =='admin'): ?>
-                                            <a class="dropdown-item" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
-                                            <?php endif; ?>
-                                            <div class="dropdown-divider"></div>
-                                            <form method="post" action="<?php echo e(route('logout')); ?>">
-                                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        <?php endif; ?>
-                            
-                        <?php if(auth()->guard()->guest()): ?>
-                            <li class="d-flex flex-column">
-                                    <!-- <img style="height:45px" src="/img/icon_miperfil.png" id="profileImage" alt="User Image"> -->
+                    <ul class="menu-horizontal d-flex justify-content-between" style="z-index: 10!important;">
+                            <?php if(auth()->guard()->check()): ?>
+                                <li class="nav-item">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="<?php echo e(auth()->user()->avatar_url); ?>" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
+                                                <span class="ml-1" x-ref="username">Hola, <?php echo e(auth()->user()->name); ?></span>
+                                            </a>
+                                            <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="<?php echo e(route('admin.dashboard')); ?>" x-ref="profileLink">Escritorio</a>
+                                                <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="profileLink">Perfil</a>
+                                                <a class="dropdown-item" href="<?php echo e(route('listPedidosCliente')); ?>" x-ref="profileLink">Mis Pedidos</a>
+                                                <a class="dropdown-item" href="<?php echo e(route('admin.profile.edit')); ?>" x-ref="changePasswordLink">Cambiar Contraseña</a>
+                                                <?php if(auth()->user()->role =='admin'): ?>
+                                                <a class="dropdown-item" href="<?php echo e(route('admin.settings')); ?>">Configuración</a>
+                                                <?php endif; ?>
+                                                <div class="dropdown-divider"></div>
+                                                <form method="post" action="<?php echo e(route('logout')); ?>">
+                                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); this.closest('form').submit();">Salir</a>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+                                
+                            <?php if(auth()->guard()->guest()): ?>
+                                <li class="d-flex flex-column">
+                                        <!-- <img style="height:45px" src="/img/icon_miperfil.png" id="profileImage" alt="User Image"> -->
                                     <div class="border color-i border-3 rounded-circle p-2" style="width: 35px" >
                                         <i class="fas fa-solid fa-user" title="Perfil"></i>
                                     </div>
-                                
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="color-i">Perfil</span>
+                                    
+                                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="color-i">Perfil</span>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="z-index: 1000 !important; background:white !important;">
+                                        <div class="d-flex justify-content-between mb-2 ml-3">
+                                            <a class="dropdown-item" href="/register" style="cursor:pointer;">
+                                                <img src="/img/icon_registrarse.png" style="width: 18px; height: 25px;"><span class="mx-3 color-i">Registrarse</span>
+                                            </a>
+                                        </div>
+                                        <div class="">                                    
+                                            <a class="dropdown-item" href="/login" style="cursor: pointer;">
+                                                <img src="/img/icon_entrar.png" style="width: 18px; height: 25px;"><span class="mx-3 color-i">Entrar</span>
+                                            </a>
+                                        </div>
+                                    </div>                                    
+                                </li> 
+                            <?php endif; ?>
+                            <li class="d-none">
+                                <a class="botonera" href="">
+                                    <img style="height:45px" src="/img/icon_heart.png" alt="">
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="z-index: 1000 !important; background:white !important;">
-                                    <div class="d-flex justify-content-between mb-2 ml-3">
-                                        <a class="dropdown-item" href="/register" style="cursor:pointer;">
-                                            <img src="/img/icon_registrarse.png" style="width: 18px; height: 25px;"><span class="mx-3 color-i">Registrarse</span>
-                                        </a>
-                                    </div>
-                                    <div class="">                                    
-                                        <a class="dropdown-item" href="/login" style="cursor: pointer;">
-                                            <img src="/img/icon_entrar.png" style="width: 18px; height: 25px;"><span class="mx-3 color-i">Entrar</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                            </li> 
-                        <?php endif; ?>
-                        <li class="d-none">
-                            <a class="botonera" href="">
-                                <img style="height:45px" src="/img/icon_heart.png" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-12 mx-2">
-                                    <div class="dropdown-cart-drop my-0">
-                                        <a class=" d-flex flex-column" href="/goCart">
-                                            <div class="d-flex justify-content-between">
-                                                <img src="/img/icon_carrito.png" style="width: 35px; height:35px cursor:pointer;" title="Compras">
-                                                <span class="color-i">(<?php echo e($totalQuantityCart); ?>)</span>
-                                            </div>
-                                            <span class="color-i" style="z-index: 1;">Compras</span>
-                                        </a>
-                                        <?php
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12 mx-2">
+                                        <div class="dropdown-cart-drop my-0">
+                                            <a class=" d-flex flex-column" href="/goCart">
+                                                <div class="d-flex justify-content-between">
+                                                    <img src="/img/icon_carrito.png" style="width: 35px; height:35px cursor:pointer;" title="Compras">
+                                                    <span class="color-i">(<?php echo e($totalQuantityCart); ?>)</span>
+                                                </div>
+                                                <span class="color-i" style="z-index: 1;">Compras</span>
+                                            </a>
+                                            <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('carrito.cart-drop')->html();
 } elseif ($_instance->childHasBeenRendered('l3189905557-1')) {
@@ -278,31 +287,32 @@ if (! isset($_instance)) {
 }
 echo $html;
 ?>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-12 mx-2 ">
-                                    <div class="centro d-flex flex-column my-1 color-i">
-                                        <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
-                                        <span class="my-2 color-i">Correo</span>
+                                        </div>
+                                        
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-md-12 mx-2 ">
-                                    <div class="centro d-flex flex-column my-1 color-i">
-                                        <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
-                                        <span class="my-2 color-i">Llamar</span>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12 mx-2 ">
+                                        <div class="centro d-flex flex-column my-1 color-i">
+                                            <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                            <span class="my-2 color-i">Correo</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>                                
-                        </li>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12 mx-2 ">
+                                        <div class="centro d-flex flex-column my-1 color-i">
+                                            <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
+                                            <span class="my-2 color-i">Llamar</span>
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </li>
+                        
                     </ul>                    
                 </div>
                 <!-- menu horizontal vista escritorio -->

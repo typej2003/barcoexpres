@@ -43,9 +43,6 @@
                 @endif
                 @livewire('layouts.navbar-nuevo', [
                         'comercioId' => 1,
-                        'manufacturer_id' => $manufacturer_id,
-                        'modelo_id' => $modelo_id,
-                        'motor_id' => $motor_id,
                         ])
                 @if($words == '' || $words == null)   
                     @if($in_sliderprincipal > 0)
@@ -57,7 +54,7 @@
                     @livewire('components.marcas-productos')
                 @endif
                 <div class="my-2"></div>    
-                <section class="container-fluid">
+                <section class="container">
                     <div class="my-2"></div>                    
                     @if($words == '')    
                         <div class="my-2"></div>
@@ -68,14 +65,9 @@
                         @livewire('components.results-products', [
                             'comercioId' => $comercio_id, 
                             'parametro' => $words,
-                            'manufacturer_id' => $manufacturer_id,
-                            'modelo_id' => $modelo_id,
-                            'motor_id' => $motor_id,
                             ])
                     @endif
                 </section>
-
-                
             </div>
         </div>
     </div>

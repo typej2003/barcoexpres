@@ -28,7 +28,6 @@ text-titulo {
 }
 
 .dropdown {
-  position: relative;
   width: 280px;
   border-radius: 50px;
   background-color: var(--purple);
