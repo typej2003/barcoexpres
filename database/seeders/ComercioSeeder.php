@@ -21,7 +21,7 @@ class ComercioSeeder extends Seeder
             'keyword' => 'barcoexpres',
             'name' => 'BarcoExpres',
             'avatar' => 'logo_barcoexpre.jpg',
-            'banner' => 'panexpres_banner.png',
+            'banner' => 'banner_barcoexpres.png',
             'contactcellphone' => '04265173538',
             'contactphone'  => '0212-578-44-68',
             'msgcontact'  => 'Hola, te asesoramos por  whatsapp gestiona tu compra por este canal.',

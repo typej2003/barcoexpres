@@ -88,8 +88,8 @@ class ListComercios extends AdminComponent
 		$validatedData = Validator::make($this->state, [
 			'area_id'=> 'required|not_in:0',
 			'name' => 'required',
-			'cellphonecontact' => 'nullable',
-			'horario' => 'required',
+			'contactcellphone' => 'nullable',
+			'dominio' => 'required',
 		])->validate();
 
 		if ($this->photo) {
@@ -104,7 +104,7 @@ class ListComercios extends AdminComponent
 		if ($this->banner) {
 			$filename = $validatedData['name'].'_banner_'.date("YmdHis");			
 			$validatedData['banner'] = $this->photo->storeAs(null,
-                $filename . '.png', 'bannerscomercios'
+			$this->banner->getClientOriginalName(), 'bannerscomercios'
             );            
 		}
 
@@ -147,8 +147,8 @@ class ListComercios extends AdminComponent
 		$validatedData = Validator::make($this->state, [
 			'name' => 'required',			
 			'area_id' => 'required',
-			'cellphonecontact' => 'nullable',
-			'horario' => 'required',
+			'contactcellphone' => 'nullable',
+			'dominio' => 'required',
 		])->validate();
 
 		$validatedData['keyword'] = $this->state['keyword'];
@@ -171,7 +171,7 @@ class ListComercios extends AdminComponent
 				Storage::disk('bannerscomercios')->delete($this->comercio->banner);
 			}
 			$validatedData['banner'] = $this->banner->storeAs(null,
-                $filename . '.png', 'bannerscomercios'
+			$this->photo->getClientOriginalName(), 'bannerscomercios'
             );            
 		}
 

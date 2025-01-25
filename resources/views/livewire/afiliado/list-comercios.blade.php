@@ -270,9 +270,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="cellphonecontact">Numero de Contacto WhatsApp</label>
-                            <input type="text" wire:model.defer="state.cellphonecontact" class="form-control @error('cellphonecontact') is-invalid @enderror" id="cellphonecontact" aria-describedby="cellphonecontactHelp" placeholder="Nro de WhatsApp">
-                            @error('cellphonecontact')
+                            <label for="contactcellphone">Numero de Contacto WhatsApp</label>
+                            <input type="text" wire:model.defer="state.contactcellphone" class="form-control @error('cellphonecontact') is-invalid @enderror" id="contactcellphone" aria-describedby="contactcellphoneHelp" placeholder="Nro de WhatsApp">
+                            @error('contactcellphone')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
