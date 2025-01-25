@@ -110,14 +110,15 @@
             <div>
                     <div class="cuadro2Promocion">
                         <div class="subcuadro2Promocion">
-                            <a href="/viewdetails/2/1"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_01.jpg" alt=""></a>
+                            <a href="search?words=<?php echo e('Embarcacion'); ?>"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_01.jpg" alt=""></a>
                         </div>
                     </div>
                 
             
                     <div class="cuadro2Promocion">
                         <div class="subcuadro2Promocion">
-                            <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_02.jpg" alt=""></a>
+                            <!-- <a href="viewdetails/2/2"><img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_02.jpg" alt=""></a> -->
+                            <img class="img2Promocion" src="/img/promociones/barcoexpres_banner_princ_lado_derecho_02.jpg" alt="">
                         </div>
                     </div>
             </div>

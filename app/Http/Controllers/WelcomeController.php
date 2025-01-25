@@ -60,6 +60,7 @@ class WelcomeController extends Controller
 
     public function index(Request $request)
     {
+        //dd($request);
         $peticion = explode('/', \Request::getRequestUri());
         if($peticion[0] == '')
         {
@@ -85,10 +86,7 @@ class WelcomeController extends Controller
                 }
             }
 
-            $manufacturer_id = $request->post('manufacturer_id');
-            $modelo_id = $request->post('modelo_id');
-            $motor_id = $request->post('motor_id');
-
+            
             $comercio_id = $request->post('comercio_id');
             if(empty($comercio_id)){
                 $comercio_id = 1;
@@ -119,9 +117,6 @@ class WelcomeController extends Controller
                 }
             }
             
-            $manufacturer_id = $request->get('manufacturer_id');
-            $modelo_id = $request->get('modelo_id');
-            $motor_id = $request->get('motor_id');
             $comercio_id = $request->get('comercio_id');
 
             if($manufacturer_id == null)
@@ -196,9 +191,6 @@ class WelcomeController extends Controller
 
         return view('welcome', [
             'words' => $words,
-            'manufacturer_id' => $manufacturer_id,
-            'modelo_id' => $modelo_id,
-            'motor_id' => $motor_id,
             'comercio_id' => $comercio_id,
             'comercio' => $this->comercio,
             'in_cellphonecontact' => $setting->in_cellphonecontact,

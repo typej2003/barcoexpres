@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{config('app.name')}}</title>
+    <title><?php echo e(config('app.name')); ?></title>
     <meta name="description" content="Compra y vende Embarcaciones">
     <meta name="keywords" content="vende, compra, Barco, Bote, Embarcación, Embarcaciones, Barcoexprés, Barcoexpres">
-    <link rel="shortcut icon" type="x-icon" href="/img/barcoexpres_favicon_circulo.png" />
+    <link rel="shortcut icon" type="x-icon" href="/img/logo_barcoexpre.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- Bootstrap CSS -->
@@ -18,26 +18,42 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/showProducts.css">    
     
-    @stack('styles')
-    <livewire:styles />
+    <?php echo $__env->yieldPushContent('styles'); ?>
+    <?php echo \Livewire\Livewire::styles(); ?>
+
 
 </head>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <!-- <script src="/js/jquery-3.6.4.min.js"></script> -->
     
-    <body class="hold-transition sidebar-mini {{ setting('sidebar_collapse') ? 'sidebar-collapse' : '' }}">
+    <body class="hold-transition sidebar-mini <?php echo e(setting('sidebar_collapse') ? 'sidebar-collapse' : ''); ?>">
     <div class="wrapper">
-    @auth
-        @livewire('layouts.navbar-in')
+    <?php if(auth()->guard()->check()): ?>
+        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('layouts.navbar-in')->html();
+} elseif ($_instance->childHasBeenRendered('2nlOMA7')) {
+    $componentId = $_instance->getRenderedChildComponentId('2nlOMA7');
+    $componentTag = $_instance->getRenderedChildComponentTagName('2nlOMA7');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('2nlOMA7');
+} else {
+    $response = \Livewire\Livewire::mount('layouts.navbar-in');
+    $html = $response->html();
+    $_instance->logRenderedChild('2nlOMA7', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
          <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('layouts.partials.aside')
+        <?php echo $__env->make('layouts.partials.aside', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            {{ $slot }}
+            <?php echo e($slot); ?>
+
         </div>
         <!-- /.content-wrapper -->
 
@@ -53,12 +69,26 @@
 
         <!-- Main Footer -->
         
-        @livewire('layouts.footer')
+        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('layouts.footer')->html();
+} elseif ($_instance->childHasBeenRendered('TivNNCx')) {
+    $componentId = $_instance->getRenderedChildComponentId('TivNNCx');
+    $componentTag = $_instance->getRenderedChildComponentTagName('TivNNCx');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('TivNNCx');
+} else {
+    $response = \Livewire\Livewire::mount('layouts.footer');
+    $html = $response->html();
+    $_instance->logRenderedChild('TivNNCx', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
     </div>
     </body>
 
     <!-- ./wrapper -->
-    @endauth
+    <?php endif; ?>
     
 
 </html>
@@ -69,12 +99,13 @@
 <!-- <script src="/js/bootstrap.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/jquery-3.6.4.min.js"></script> -->
-@stack('js')
-@stack('before-livewire-scripts')
-<livewire:scripts />
-@stack('after-livewire-scripts')
+<?php echo $__env->yieldPushContent('js'); ?>
+<?php echo $__env->yieldPushContent('before-livewire-scripts'); ?>
+<?php echo \Livewire\Livewire::scripts(); ?>
 
-@stack('alpine-plugins')
+<?php echo $__env->yieldPushContent('after-livewire-scripts'); ?>
+
+<?php echo $__env->yieldPushContent('alpine-plugins'); ?>
 <!-- Alpine Core -->
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -82,3 +113,4 @@
 
 
 
+<?php /**PATH /home/typej/Documentos/github/barcoexpres-1/resources/views/layouts/app.blade.php ENDPATH**/ ?>

@@ -6,7 +6,7 @@
     <title>{{config('app.name')}}</title>
     <meta name="description" content="Compra y vende Embarcaciones">
     <meta name="keywords" content="vende, compra, Barco, Bote, Embarcación, Embarcaciones, Barcoexprés, Barcoexpres">
-    <link rel="shortcut icon" type="x-icon" href="/img/logo_barcoexpre.jpg" />
+    <link rel="shortcut icon" type="x-icon" href="/img/barcoexpres_favicon_circulo.png" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     

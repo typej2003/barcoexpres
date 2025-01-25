@@ -17,7 +17,7 @@ return [
 
     'site_title' => 'BarcoExpres',
 
-    'currencyGlobal' => env('APP_CURRENCY', 'Bs'),
+    'currencyGlobal' => env('APP_CURRENCY', '$'),
 
     /*
     |--------------------------------------------------------------------------

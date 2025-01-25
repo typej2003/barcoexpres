@@ -73,6 +73,7 @@ class CreateEmbarcacionsTable extends Migration
             $table->string('nroomi')->nullable();
             $table->string('nrommsi')->nullable();
             $table->string('armador')->nullable();
+            $table->string('operador')->nullable();
             $table->string('puntal')->nullable();
             $table->string('arqueobruto')->nullable();
             $table->string('arqueoneto')->nullable();
