@@ -132,6 +132,7 @@
                                 <input name="name" type="hidden" value="<?php echo e($product->name); ?>">
                                 <input name="price1" type="hidden" value="<?php echo e($product->price1); ?>">
                                 <div class="col-md-6">
+                                    <?php if($product->in_cart > 0): ?>
                                     <div class="input-group input-number-group" style="margin-left: 0px !important; padding:0 !important;">
                                         <div class="input-group-button">
                                             <span class="input-number-decrement">-</span>
@@ -139,12 +140,21 @@
                                         <input name="quantity" class="input-number" type="number" value="1" min="0" max="1000">
                                         <div class="input-group-button">
                                             <span class="input-number-increment">+</span>
-                                        </div>
+                                        </div>                                        
                                     </div>
+                                    <?php else: ?>
+                                    <div class="h-50" style="height: 45px !important;"></div>
+                                    <?php endif; ?>
                                 </div>
+                                <?php if($product->in_cart > 0): ?>
                                 <div class="col-md-6 d-flex justify-content-start">
-                                    <button class="btn btn-sale"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
+                                    <button class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
                                 </div>
+                                <?php else: ?>
+                                <div class="col-md-6 d-flex justify-content-start">
+                                    <a href="#" class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</a>
+                                </div>
+                                <?php endif; ?>
                                 <div class="col-md-3 d-none">
                                     <button class="btn h-75  border border-secondary"><i class="fa fa-solid fa-heart"></i></button>                        
                                 </div>

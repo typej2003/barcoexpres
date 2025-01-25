@@ -65,7 +65,11 @@
                                                 <div style="display: flex; flex-direction: row;">
                                                     <div class="">
                                                     <!-- <button type="submit" class="btn btn-sale text-center">Comprar ahora</button> -->
-                                                    <a wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</a>
+                                                    @if($product->incart > 0)
+                                                        <a wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</a>
+                                                    @else
+                                                        <a href="#" class="btn btn-sale text-center">Comprar ahora</a>
+                                                    @endif
                                                     </div>
                                                     <br>                                                     
                                                     <div class="cardStar" product="{{$product->id}}" >

@@ -105,10 +105,10 @@
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
                                 <div class="set">
-                                    <a href="" class="titulo">CORREO</a>
+                                    <a class="titulo" href="mailto:{{$comercio->email}}">CORREO</a>
                                 </div>
                                 <div class="set">
-                                    <a href="" class="titulo">LLAMAR</a>
+                                    <a class="titulo" href="tel:0058{{$comercio->contactcellphone}}">LLAMAR</a>
                                 </div>
                             @endguest
                             @auth
@@ -148,10 +148,10 @@
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
                                 <div class="set">
-                                    <a href="" class="titulo">CORREO</a>
+                                    <a href="mailto:{{$comercio->email}}" class="titulo">CORREO</a>
                                 </div>
                                 <div class="set">
-                                    <a href="" class="titulo">LLAMAR</a>
+                                    <a href="tel:0058{{$comercio->contactcellphone}}" class="titulo">LLAMAR</a>
                                 </div>
                             </div>
                             @endauth
@@ -264,9 +264,13 @@
                             <li>
                                 <div class="row">
                                     <div class="col-md-12 mx-2 ">
-                                        <div class="centro d-flex flex-column my-1 color-i">
-                                            <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
-                                            <span class="my-2 color-i">Correo</span>
+                                        <div class="centro d-flex flex-column color-i">
+                                            <a class="my-2 color-i" href="mailto:{{$comercio->email}}">
+                                                <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                            </a>
+                                            <a class="color-i" href="mailto:{{$comercio->email}}">
+                                                <span class="">Correo</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -274,9 +278,13 @@
                             <li>
                                 <div class="row">
                                     <div class="col-md-12 mx-2 ">
-                                        <div class="centro d-flex flex-column my-1 color-i">
-                                            <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
-                                            <span class="my-2 color-i">Llamar</span>
+                                        <div class="centro d-flex flex-column color-i">
+                                            <a class="my-2 color-i" href="tel:0058{{$comercio->contactcellphone}}">
+                                                <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                            </a>
+                                            <a class="color-i" href="tel:0058{{$comercio->contactcellphone}}">
+                                                <span class="">Llamar</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>                                
@@ -328,10 +336,15 @@
                                     @livewire('carrito.cart-drop')
                                 </div>
                                 <div class="centro d-flex flex-column my-2 color-i h2">
-                                    <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                    <a class="color-i titulo" href="mailto:{{$comercio->email}}">
+                                        <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                    </a>
+                                    
                                 </div>
                                 <div class="centro d-flex flex-column my-2 color-i h2">
-                                    <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
+                                    <a class="color-i titulo" href="tel:0058{{$comercio->contactcellphone}}">
+                                        <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
+                                    </a>
                                 </div>
                             </div>                                
                             

@@ -61,6 +61,7 @@ class NewBoat extends AdminComponent
             
 		    $this->state = $this->embarcacion->toArray();
             
+            $this->state['in_cart'] = $this->checkear($this->state['in_cart']);
             $this->state['in_pedido'] = $this->checkear($this->state['in_pedido']);
             $this->state['in_pickup'] = $this->checkear($this->state['in_pickup']);
             $this->state['in_delivery'] = $this->checkear($this->state['in_delivery']);
@@ -120,6 +121,7 @@ class NewBoat extends AdminComponent
             'stock' => 'nullable',
             'fe_fabricacion' => 'nullable',
             'madein' => 'nullable',
+            'in_cart' => 'nullable',
             'in_pedido' => 'nullable',
             'in_pickup'  => 'nullable',
             'in_envio_nacional' => 'nullable',
@@ -228,6 +230,7 @@ class NewBoat extends AdminComponent
             'stock' => 'nullable',
             'fe_fabricacion' => 'nullable',
             'madein' => 'nullable',
+            'in_cart' => 'nullable',
             'in_pedido' => 'nullable',
             'in_pickup'  => 'nullable',
             'in_envio_nacional' => 'nullable',

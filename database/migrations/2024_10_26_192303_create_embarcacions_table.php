@@ -63,6 +63,7 @@ class CreateEmbarcacionsTable extends Migration
             $table->string('in_delivery')->nullable()->default('1'); // Si o No
             $table->string('in_envio_nacional')->nullable()->default('0'); // Si o No
             $table->string('madein')->nullable();
+            $table->string('in_cart')->nullable()->default('0');
             $table->string('in_pedido')->nullable();
             $table->string('in_offer')->nullable()->default('0');
             $table->integer('ca_valoracion')->nullable();

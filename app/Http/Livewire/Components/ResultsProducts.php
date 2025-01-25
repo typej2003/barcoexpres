@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Components;
 
 use App\Http\Livewire\Admin\AdminComponent;
 
-use App\Models\Product;
+use App\Models\Embarcacion;
 
 class ResultsProducts extends AdminComponent
 {
@@ -123,7 +123,7 @@ class ResultsProducts extends AdminComponent
 
     public function render()
     {
-        $products = Product::query();
+        $products = Embarcacion::query();
 
         if($this->comercio_id !== 1)
         {
@@ -133,9 +133,8 @@ class ResultsProducts extends AdminComponent
         $products = $products
             ->where(function($q){
                 $q->where('name', 'like', '%'. $this->parametro . '%')
-                ->orWhere('description', 'like', '%'. $this->parametro . '%')
-                ->orWhere('details1', 'like', '%'. $this->parametro . '%')
-                ->orWhere('in_offer', '1');
+                ->orWhere('additional_information', 'like', '%'. $this->parametro . '%')
+                ->orWhere('details1', 'like', '%'. $this->parametro . '%');
             });
         $products = $products
             ->orWhereHas('categories', function($q){

@@ -437,6 +437,16 @@
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">                                            
+                                                <input type="checkbox" wire:model.defer="state.in_cart" autofocus class="my-2 @error('in_cart') is-invalid @enderror" id="in_cart"> <span class="font-costo my-2">En Carrito</span>
+                                                @error('in_cart')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">                                            
                                                 <input type="checkbox" wire:model.defer="state.in_pedido" autofocus class="my-2 @error('in_pedido') is-invalid @enderror" id="in_pedido"> <span class="font-costo my-2">En pedido</span>
                                                 @error('in_pedido')
                                                 <div class="invalid-feedback">
