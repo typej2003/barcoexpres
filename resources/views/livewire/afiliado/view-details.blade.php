@@ -59,7 +59,7 @@
                         @if(auth()->user())
                             margin-top: 60px;
                         @endif
-                        " src="/img/banner_repuestoexpres.png" alt="">
+                        " src="/img/banner_barcoexpres.jpg" alt="">
                     @endif
                 </div>
             </div>

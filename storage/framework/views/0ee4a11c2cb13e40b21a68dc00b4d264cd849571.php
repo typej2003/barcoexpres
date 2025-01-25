@@ -60,7 +60,7 @@
                         <?php if(auth()->user()): ?>
                             margin-top: 60px;
                         <?php endif; ?>
-                        " src="/img/banner_repuestoexpres.png" alt="">
+                        " src="/img/banner_barcoexpres.jpg" alt="">
                     <?php endif; ?>
                 </div>
             </div>
