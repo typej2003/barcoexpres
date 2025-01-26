@@ -45,14 +45,14 @@
                                                     <br>                                                     
                                                     <div class="cardStar" product="<?php echo e($product->id); ?>" >
                                                         <?php for($i = 1; $i <=5; $i++): ?>
-                                                            <?php if($product->valoracionProduct->ca_valoracion >= $i): ?>
-                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionProduct->ca_valoracion); ?>, '<?php echo e($product->valoracionProduct->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star <?php echo e($product->valoracionProduct->class); ?>">★</span>
+                                                            <?php if($product->valoracionBoat->ca_valoracion >= $i): ?>
+                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionBoat->ca_valoracion); ?>, '<?php echo e($product->valoracionBoat->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star <?php echo e($product->valoracionBoat->class); ?>">★</span>
                                                             <?php else: ?>
-                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionProduct->ca_valoracion); ?>, '<?php echo e($product->valoracionProduct->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star">★</span>
+                                                                <span wire:click.prevent="valorar(<?php echo e($product->id); ?>, <?php echo e($product->valoracionBoat->ca_valoracion); ?>, '<?php echo e($product->valoracionBoat->class); ?>')" product="<?php echo e($product->id); ?>" star = "<?php echo e($i); ?>" class="star">★</span>
                                                             <?php endif; ?>
                                                         <?php endfor; ?>
                                                         <h5 class="output" output="show<?php echo e($product->id); ?>">
-                                                            Puntuación: <?php echo e($product->valoracionProduct->ca_valoracion); ?>/5
+                                                            Puntuación: <?php echo e($product->valoracionBoat->ca_valoracion); ?>/5
                                                         </h5>
                                                     </div>
                                                 </div>

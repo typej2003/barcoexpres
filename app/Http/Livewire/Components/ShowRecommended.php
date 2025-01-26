@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\CartController;
 
-use App\Models\Product;
 use App\Models\Comercio;
+use App\Models\Embarcacion;
 use App\Models\Setting;
 use App\Models\SettingUser;
 use App\Models\ValoracionProduct;
@@ -26,6 +26,8 @@ class ShowRecommended extends AdminComponent
     public $parametro = null;
 
     public $renderizar = false;
+
+    public $is_boat = false;
 
     protected $listeners = [
         'infoRecibida' => 'actualizarInfo', 
@@ -85,8 +87,9 @@ class ShowRecommended extends AdminComponent
 
     }
 
-    public function mount($comercioId = 1, $parametro)
+    public function mount($comercioId = 1, $parametro, $is_boat = false)
     {
+        $this->is_boat = $is_boat; 
         $this->comercio_id = $comercioId;
         $this->parametro = $parametro;
 
@@ -210,14 +213,18 @@ class ShowRecommended extends AdminComponent
     {
         $exceptIds = [];
 
-        $cartCollection = \Cart::getContent();
-        
-        foreach($cartCollection as $elemento)
-        {
-            array_push($exceptIds, $elemento->id);     
+        if($this->is_boat){
+            $exceptIds[] = $this->is_boat;
+        }else{
+            $cartCollection = \Cart::getContent();
+            
+            foreach($cartCollection as $elemento)
+            {
+                array_push($exceptIds, $elemento->id);     
+            }
         }
 
-        $products = Product::query();
+        $products = Embarcacion::query();
         $products = $products
             ->where('comercio_id', $this->comercio_id);
                 // ->where(function($q){
@@ -226,7 +233,7 @@ class ShowRecommended extends AdminComponent
                 // })
         $products = $products
                 ->whereNotIn('id', $exceptIds) 
-                    ->with('valoracionProduct')
+                    ->with('valoracionBoat')
                             ->paginate();
         
         if($this->parametro == null){

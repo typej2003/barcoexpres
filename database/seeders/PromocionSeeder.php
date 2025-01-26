@@ -15,7 +15,7 @@ class PromocionSeeder extends Seeder
     public function run()
     {
         DB::table('promocions')->insert([   
-            'embarcacion_id' => 0,
+            'embarcacion_id' => 1,
             'comercio_id' => 1,
             'title' => 'banner1',
             'avatar' => 'amazona_banner.jpg',
@@ -26,7 +26,7 @@ class PromocionSeeder extends Seeder
         ]);
 
         DB::table('promocions')->insert([   
-            'embarcacion_id' => 0,
+            'embarcacion_id' => 2,
             'comercio_id' => 1,
             'title' => 'banner2',
             'avatar' => 'roma_banner.jpg',
@@ -37,7 +37,7 @@ class PromocionSeeder extends Seeder
         ]);
 
         DB::table('promocions')->insert([   
-            'embarcacion_id' => 0,
+            'embarcacion_id' => 3,
             'comercio_id' => 1,
             'title' => 'banner3',
             'avatar' => 'dream_banner.jpg',

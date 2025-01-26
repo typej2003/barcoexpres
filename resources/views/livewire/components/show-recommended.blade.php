@@ -45,14 +45,14 @@
                                                     <br>                                                     
                                                     <div class="cardStar" product="{{$product->id}}" >
                                                         @for ($i = 1; $i <=5; $i++)
-                                                            @if($product->valoracionProduct->ca_valoracion >= $i)
-                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionProduct->ca_valoracion }}, '{{ $product->valoracionProduct->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star {{ $product->valoracionProduct->class }}">★</span>
+                                                            @if($product->valoracionBoat->ca_valoracion >= $i)
+                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionBoat->ca_valoracion }}, '{{ $product->valoracionBoat->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star {{ $product->valoracionBoat->class }}">★</span>
                                                             @else
-                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionProduct->ca_valoracion }}, '{{ $product->valoracionProduct->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star">★</span>
+                                                                <span wire:click.prevent="valorar({{ $product->id }}, {{ $product->valoracionBoat->ca_valoracion }}, '{{ $product->valoracionBoat->class }}')" product="{{ $product->id }}" star = "{{ $i }}" class="star">★</span>
                                                             @endif
                                                         @endfor
                                                         <h5 class="output" output="show{{ $product->id }}">
-                                                            Puntuación: {{ $product->valoracionProduct->ca_valoracion }}/5
+                                                            Puntuación: {{ $product->valoracionBoat->ca_valoracion }}/5
                                                         </h5>
                                                     </div>
                                                 </div>

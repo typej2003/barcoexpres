@@ -227,9 +227,7 @@
                     @livewire('components.show-recommended', [
                             'comercioId' => 1, 
                             'parametro' => $words='',
-                            'manufacturer_id' => $manufacturer_id='',
-                            'modelo_id' => $modelo_id='',
-                            'motor_id' => $motor_id='',
+                            'is_boat' => $is_boat,
                             ] )
                 </div>
             </div>

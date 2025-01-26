@@ -23,5 +23,25 @@ class ValoracionBoatsSeeder extends Seeder
             'created_at' => '2022-05-16 12:20:36',
             'updated_at' => '2022-05-16 12:20:36'
         ]);
+
+        DB::table('valoracion_boats')->insert([
+            'user_id' => '1',
+            'embarcacion_id' => '2',
+            'ca_valoracion' => '5',
+            'class'  => 'five',
+            'comment'  => 'Excelente Producto',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('valoracion_boats')->insert([
+            'user_id' => '1',
+            'embarcacion_id' => '3',
+            'ca_valoracion' => '5',
+            'class'  => 'five',
+            'comment'  => 'Excelente Producto',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
     }
 }

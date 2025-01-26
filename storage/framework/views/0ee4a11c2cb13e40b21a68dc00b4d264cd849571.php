@@ -233,9 +233,7 @@ if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.show-recommended', [
                             'comercioId' => 1, 
                             'parametro' => $words='',
-                            'manufacturer_id' => $manufacturer_id='',
-                            'modelo_id' => $modelo_id='',
-                            'motor_id' => $motor_id='',
+                            'is_boat' => $is_boat,
                             ])->html();
 } elseif ($_instance->childHasBeenRendered('l1223732332-0')) {
     $componentId = $_instance->getRenderedChildComponentId('l1223732332-0');
@@ -246,9 +244,7 @@ if (! isset($_instance)) {
     $response = \Livewire\Livewire::mount('components.show-recommended', [
                             'comercioId' => 1, 
                             'parametro' => $words='',
-                            'manufacturer_id' => $manufacturer_id='',
-                            'modelo_id' => $modelo_id='',
-                            'motor_id' => $motor_id='',
+                            'is_boat' => $is_boat,
                             ]);
     $html = $response->html();
     $_instance->logRenderedChild('l1223732332-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
