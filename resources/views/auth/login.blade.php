@@ -28,7 +28,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12 titulo c-a text-center">
-                    <a href="/"><img class="logo-login-register mx-auto " src="/img/logo_barcoexpre.jpg" alt=""></a>
+                    <a href="/"><img class="logo-login-register mx-auto " src="/img/logo_barcoexpres.jpg" alt=""></a>
                 </div>
             </div>
             <div class="row">

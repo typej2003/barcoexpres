@@ -78,7 +78,7 @@
                         <div class="carousel-item active">
                             @if($promocionFirst)
                             @if($promocionFirst->embarcacion_id !== 0)
-                            <a href="/viewdetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
+                            <a href="/routedetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
                             @else
                             <a href="/"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0 slide"></a>
                             @endif
@@ -87,7 +87,7 @@
                         @foreach($promociones as $clave => $promocion)
                         <div class="carousel-item">
                             @if($promocion->embarcacion_id !== 0)                            
-                            <a href="/viewdetails/{{ $promocion->comercio_id }}/{{ $promocion->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocion->avatar_url }}" alt="{{$clave}} slide"></a>
+                            <a href="/routedetails/{{ $promocion->comercio_id }}/{{ $promocion->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocion->avatar_url }}" alt="{{$clave}} slide"></a>
                             @else
                             <a href="/"><img class="img1Promocion" src="{{ $promocion->avatar_url }}" alt="{{$clave}} slide"></a>
                             @endif

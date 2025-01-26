@@ -78,7 +78,7 @@
                         <div class="carousel-item active">
                             <?php if($promocionFirst): ?>
                             <?php if($promocionFirst->embarcacion_id !== 0): ?>
-                            <a href="/viewdetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
+                            <a href="/routedetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
                             <?php else: ?>
                             <a href="/"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0 slide"></a>
                             <?php endif; ?>
@@ -87,7 +87,7 @@
                         <?php $__currentLoopData = $promociones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clave => $promocion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="carousel-item">
                             <?php if($promocion->embarcacion_id !== 0): ?>                            
-                            <a href="/viewdetails/<?php echo e($promocion->comercio_id); ?>/<?php echo e($promocion->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
+                            <a href="/routedetails/<?php echo e($promocion->comercio_id); ?>/<?php echo e($promocion->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
                             <?php else: ?>
                             <a href="/"><img class="img1Promocion" src="<?php echo e($promocion->avatar_url); ?>" alt="<?php echo e($clave); ?> slide"></a>
                             <?php endif; ?>

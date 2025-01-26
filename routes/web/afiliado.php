@@ -68,6 +68,13 @@ Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $prod
         {
             $setting = SettingComercio::where('comercio_id', 1)->first();
         }        
+
+        $is_boat = false;
+
+        if($product->in_cart == 0)
+        {
+            $is_boat = $productId;
+        }
         
         return view('externalviews.view-details', [
             'comercio' => $comercio, 
@@ -75,6 +82,7 @@ Route::get('/routedetails/{comercioId}/{productId}', function($comercioId, $prod
             'in_cellphonecontact' => $setting->in_cellphonecontact,
             'in_sliderprincipal' => $setting->in_sliderprincipal,
             'in_marcasproductos' => $setting->in_marcasproductos,
+            'is_boat' => $is_boat,
         ]);
     }
 });

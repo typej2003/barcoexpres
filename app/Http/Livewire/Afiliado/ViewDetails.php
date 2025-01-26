@@ -46,7 +46,7 @@ class ViewDetails extends AdminComponent
         {
             $setting = SettingComercio::where('comercio_id', 1)->first();
         }        
-
+        
         return view('livewire.afiliado.view-details', [
             'product' => $embarcacion,
             'comercio' => $comercio,
