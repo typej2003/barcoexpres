@@ -32,10 +32,19 @@
                                             <div class="col-md-12">
                                             <div class="negrita"><?php echo e($product->name); ?></div>
                                                 <?php if($product->on_offer): ?>
-                                                    <div class="text-decoration-line-through">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
-                                                    <div class="">Promoción: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice_offer()); ?></div>
+                                                    <?php if($product->in_cart): ?>
+                                                        <div class="text-left my-2" style="color: blue;">Envío Gratis</div>
+                                                        <div class="text-decoration-line-through my-2">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
+                                                        <div class="">Promoción: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice_offer()); ?></div>
+                                                    <?php else: ?>
+                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    <?php endif; ?>
                                                 <?php else: ?>
-                                                    <div class="">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
+                                                    <?php if($product->in_cart): ?>
+                                                        <div class="d-flex text-left my-2">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
+                                                    <?php else: ?>
+                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    <?php endif; ?>
                                                 <?php endif; ?>
                                                 <div style="display: flex; flex-direction: row;">
                                                     <div class="">
@@ -43,7 +52,14 @@
                                                     <?php if($product->incart > 0): ?>
                                                         <a wire:click.prevent="sendCard(<?php echo e($product->id); ?>, 1)" class="btn btn-sale text-center">Comprar ahora</a>
                                                     <?php else: ?>
-                                                        <a href="#" class="btn btn-sale text-center">Comprar ahora</a>
+                                                        <div class="d-flex align-item-start">
+                                                            <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
+                                                                <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                                            </a>
+                                                            <a class="my-2 color-i" href="tel:0058<?php echo e($product->comercio->contactcellphone); ?>">
+                                                                <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                                            </a>
+                                                        </div>
                                                     <?php endif; ?>
                                                     </div>
                                                     <br>                                                     

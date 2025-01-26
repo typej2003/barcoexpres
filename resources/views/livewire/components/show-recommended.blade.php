@@ -32,10 +32,19 @@
                                             <div class="col-md-12">
                                             <div class="negrita">{{$product->name}}</div>
                                                 @if($product->on_offer)
-                                                    <div class="text-decoration-line-through">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
-                                                    <div class="">Promoción: {{$currencyValue}}. {{ $product->getPrice_offer() }}</div>
+                                                    @if($product->in_cart)
+                                                        <div class="text-left my-2" style="color: blue;">Envío Gratis</div>
+                                                        <div class="text-decoration-line-through my-2">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
+                                                        <div class="">Promoción: {{$currencyValue}}. {{ $product->getPrice_offer() }}</div>
+                                                    @else
+                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    @endif
                                                 @else
-                                                    <div class="">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
+                                                    @if($product->in_cart)
+                                                        <div class="d-flex text-left my-2">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
+                                                    @else
+                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    @endif
                                                 @endif
                                                 <div style="display: flex; flex-direction: row;">
                                                     <div class="">
@@ -43,7 +52,14 @@
                                                     @if($product->incart > 0)
                                                         <a wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</a>
                                                     @else
-                                                        <a href="#" class="btn btn-sale text-center">Comprar ahora</a>
+                                                        <div class="d-flex align-item-start">
+                                                            <a class="my-2 mx-3 color-i" href="mailto:{{$product->comercio->email}}">
+                                                                <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                                            </a>
+                                                            <a class="my-2 color-i" href="tel:0058{{$product->comercio->contactcellphone}}">
+                                                                <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                                            </a>
+                                                        </div>
                                                     @endif
                                                     </div>
                                                     <br>                                                     
