@@ -120,9 +120,13 @@
                                 <div>Ver mas productos de<span class="mx-1"><a href=""><?php echo e($product->comercio->name); ?></a></span></div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row my-3">
                             <div class="col-md-12">
-                                <span><?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></span>
+                                <?php if($product->is_cart > 0): ?>
+                                <span>Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></span>
+                                <?php else: ?>
+                                <span>Precio: a convenir</span>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="row">
@@ -151,8 +155,13 @@
                                     <button class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
                                 </div>
                                 <?php else: ?>
-                                <div class="col-md-6 d-flex justify-content-start">
-                                    <a href="#" class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</a>
+                                <div class="col-md-6 d-flex justify-content-start">                                
+                                    <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
+                                        <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i> Correo
+                                    </a>
+                                    <a class="my-2 color-i" href="tel:0058<?php echo e($product->comercio->contactcellphone); ?>">
+                                        <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i> Llamar                                    
+                                    </a>
                                 </div>
                                 <?php endif; ?>
                                 <div class="col-md-3 d-none">
