@@ -19,12 +19,9 @@ echo $html;
 				<div class="col-12 col-md-3 my-1">
 					<span><img class="img-fluid footer-img" style="width: 60%" src="/img/LOGO_DDR.png" alt=""></span>
 				</div>
-				<div class="col-12 col-md-3 my-1 text-white">
+				<div class="col-12 col-md-9 my-1 text-white">
 					<span>COPYRIGHT &copy; <?php echo e(date('Y')); ?> DDR SISTEMAS C.A. RIF: J-31512955-8</span>
 					<span>V1.0.0 PV2</span>
-				</div>
-				<div class="col-12 col-md-6 my-1">
-					<span><img class="img-fluid footer-img2" src="/img/LOGO_BANCO.png" alt=""></span>
 				</div>
 		</div>
 	</div>
