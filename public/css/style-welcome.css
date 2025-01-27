@@ -9,9 +9,9 @@
         --azul: #013274;
       }
 
-body, html, a, p, card, div{
+body, html, a, p, card, div, li, span{
   font-family: 'Montserrat', sans-serif;
-  font-weight: 100; margin:0; padding:0; /*background-color: yellowgreen;*/
+  font-weight: 600 !important; margin:0; padding:0; /*background-color: yellowgreen;*/
 }
 .bg-azul {
   background-color: var(--azul) !important;
@@ -21,7 +21,7 @@ body, html, a, p, card, div{
 a {text-decoration: none; }
 
 .text-bold {
-  font-weight: bold;
+  font-weight:900 !important;
 }
 
 .Text-Uppercase {

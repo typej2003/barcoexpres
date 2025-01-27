@@ -325,7 +325,7 @@ echo $html;
                 </div>
                 <!-- menu horizontal vista escritorio -->
                 <div class="menu" style="z-index: 6!important">
-                    <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu">MENÚ</span></div> 
+                    <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu text-bold">MENÚ</span></div> 
                         <div class="menu-center w-full ">
                             <div class="d-flex justify-content-around ">
                             <?php
