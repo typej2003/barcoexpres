@@ -40,11 +40,12 @@
                                                         <div class="d-flex text-left my-2">Precio: a convenir</div>
                                                     <?php endif; ?>
                                                 <?php else: ?>
-                                                    <?php if($product->in_cart): ?>
+                                                    <?php if($product->in_cart): ?>                                                    
                                                         <div class="d-flex text-left my-2">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
                                                     <?php else: ?>
                                                         <div class="d-flex text-left my-2">Precio: a convenir</div>
                                                     <?php endif; ?>
+                                                    
                                                 <?php endif; ?>
                                                 <div style="display: flex; flex-direction: row;">
                                                     <div class="">

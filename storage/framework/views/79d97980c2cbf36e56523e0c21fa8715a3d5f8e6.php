@@ -1,4 +1,11 @@
 <!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top "> -->
+<?php if($in_cellphonecontact > 0): ?>            
+    <div class="row" id="whatsapp" style="position: fixed; bottom: 20px; right:20px; z-index: 20;">
+        <a href="https://api.whatsapp.com/send?phone=+58<?php echo e($comercio->contactcellphone); ?>&text=<?php echo e($comercio->msgcontact); ?>" target="_blank">
+            <img style="width: 65px;" src="/img/iconowhatsapp_azul.png" alt="">
+        </a>
+    </div>
+<?php endif; ?>
 <nav class="main-header navbar navbar-expand navbar-white navbar-orange">
     <!-- Left navbar links -->
     <ul class="navbar-nav">

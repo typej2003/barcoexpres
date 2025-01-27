@@ -29,19 +29,20 @@
     
     <body class="hold-transition sidebar-mini <?php echo e(setting('sidebar_collapse') ? 'sidebar-collapse' : ''); ?>">
     <div class="wrapper">
+        
     <?php if(auth()->guard()->check()): ?>
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('layouts.navbar-in')->html();
-} elseif ($_instance->childHasBeenRendered('9Y1MTA4')) {
-    $componentId = $_instance->getRenderedChildComponentId('9Y1MTA4');
-    $componentTag = $_instance->getRenderedChildComponentTagName('9Y1MTA4');
+} elseif ($_instance->childHasBeenRendered('jcBaivr')) {
+    $componentId = $_instance->getRenderedChildComponentId('jcBaivr');
+    $componentTag = $_instance->getRenderedChildComponentTagName('jcBaivr');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('9Y1MTA4');
+    $_instance->preserveRenderedChild('jcBaivr');
 } else {
     $response = \Livewire\Livewire::mount('layouts.navbar-in');
     $html = $response->html();
-    $_instance->logRenderedChild('9Y1MTA4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('jcBaivr', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -72,15 +73,15 @@ echo $html;
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('layouts.footer')->html();
-} elseif ($_instance->childHasBeenRendered('TLCIm4u')) {
-    $componentId = $_instance->getRenderedChildComponentId('TLCIm4u');
-    $componentTag = $_instance->getRenderedChildComponentTagName('TLCIm4u');
+} elseif ($_instance->childHasBeenRendered('60Bg7g4')) {
+    $componentId = $_instance->getRenderedChildComponentId('60Bg7g4');
+    $componentTag = $_instance->getRenderedChildComponentTagName('60Bg7g4');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('TLCIm4u');
+    $_instance->preserveRenderedChild('60Bg7g4');
 } else {
     $response = \Livewire\Livewire::mount('layouts.footer');
     $html = $response->html();
-    $_instance->logRenderedChild('TLCIm4u', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('60Bg7g4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

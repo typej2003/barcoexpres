@@ -28,6 +28,7 @@
     
     <body class="hold-transition sidebar-mini {{ setting('sidebar_collapse') ? 'sidebar-collapse' : '' }}">
     <div class="wrapper">
+        
     @auth
         @livewire('layouts.navbar-in')
          <!-- /.navbar -->

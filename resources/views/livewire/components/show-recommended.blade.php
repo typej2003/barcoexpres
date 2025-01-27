@@ -40,12 +40,12 @@
                                                         <div class="d-flex text-left my-2">Precio: a convenir</div>
                                                     @endif
                                                 @else
-                                                    @if($product->in_cart)
-                                                    
+                                                    @if($product->in_cart)                                                    
                                                         <div class="d-flex text-left my-2">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
                                                     @else
                                                         <div class="d-flex text-left my-2">Precio: a convenir</div>
                                                     @endif
+                                                    
                                                 @endif
                                                 <div style="display: flex; flex-direction: row;">
                                                     <div class="">
