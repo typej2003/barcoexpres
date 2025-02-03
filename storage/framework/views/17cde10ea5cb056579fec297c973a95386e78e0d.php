@@ -123,7 +123,7 @@
                                                 <i class="fa fa-edit mr-2"></i>
                                             </a>
 
-                                            <a href="" wire:click.prevent="confirmProductRemoval(<?php echo e($boat->id); ?>)">
+                                            <a href="" wire:click.prevent="confirmBoatRemoval(<?php echo e($boat->id); ?>)">
                                                 <i class="fa fa-trash text-danger"></i>
                                             </a>
                                         </td>
@@ -302,16 +302,16 @@ unset($__errorArgs, $__bag); ?>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Eliminar Producto</h5>
+                    <h5>Eliminar Embarcación</h5>
                 </div>
 
                 <div class="modal-body">
-                    <h4>Esta seguro de querer eliminar este producto?</h4>
+                    <h4>Esta seguro de querer eliminar esta embarcación?</h4>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancelar</button>
-                    <button type="button" wire:click.prevent="deleteProduct" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Eliminar Producto</button>
+                    <button type="button" wire:click.prevent="deleteBoat" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Eliminar Producto</button>
                 </div>
             </div>
         </div>

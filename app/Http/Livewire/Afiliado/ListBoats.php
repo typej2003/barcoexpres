@@ -30,7 +30,7 @@ class ListBoats extends AdminComponent
 
 	public $showEditModal = false;
 
-	public $productIdBeingRemoved = null;
+	public $embarcacionIdBeingRemoved = null;
 
 	public $categoryIdBeingRemoved = null;
 
@@ -212,20 +212,20 @@ class ListBoats extends AdminComponent
 		$this->dispatchBrowserEvent('hide-form', ['message' => 'Producto actualizado satisfactoriamente!']);
 	}
 
-	public function confirmProductRemoval($product_id)
+	public function confirmBoatRemoval($embarcacion_id)
 	{
-		$this->productIdBeingRemoved = $product_id;
+		$this->embarcacionIdBeingRemoved = $embarcacion_id;
 
 		$this->dispatchBrowserEvent('show-delete-modal');
 	}
 
-	public function deleteProduct()
+	public function deleteBoat()
 	{
-		$product = Product::findOrFail($this->productIdBeingRemoved);
+		$boat = Embarcacion::findOrFail($this->embarcacionIdBeingRemoved);
 
-		$product->delete();
+		$boat->delete();
 
-		$this->dispatchBrowserEvent('hide-delete-modal', ['message' => 'Producto eliminado satisfactoriamente!']);
+		$this->dispatchBrowserEvent('hide-delete-modal', ['message' => 'Embarcacion eliminada satisfactoriamente!']);
 	}
 
 	// Category

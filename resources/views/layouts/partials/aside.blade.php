@@ -329,20 +329,12 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                  Producto
+                  Embarcación
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview nav-link-sub">
-                <li class="nav-item">
-                  <a href="{{ route('listProducts', 1) }}" class="nav-link {{ request()->is('listProducts') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-comments"></i>
-                    <p>
-                      Productos
-                    </p>
-                  </a>
-                </li>
-
+                
                 <li class="nav-item">
                   <a href="{{ route('listBoats', 1) }}" class="nav-link {{ request()->is('listBoats') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-comments"></i>
