@@ -18,7 +18,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            @if($user)
+            <?php if($user): ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card w-50">
@@ -27,7 +27,7 @@
                                 <span>Propietario: </span>
                             </div>
                             <div class="col-lg-6">
-                                <span>{{$user->name}}</span>
+                                <span><?php echo e($user->name); ?></span>
                             </div>
                         </div>
                         <div class="row">
@@ -35,18 +35,29 @@
                                 <span>Operación No Confirmada: </span>
                             </div>
                             <div class="col-lg-6">
-                                <span>{{$user->OperacionNoConfirmada()}}</span>
+                                <span><?php echo e($user->OperacionNoConfirmada()); ?></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endif
+            <?php endif; ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-between mb-2">
                         <button wire:click.prevent="addNew" class="btn btn-primary"><i class="fa fa-plus-circle mr-1"></i> Comercio</button>
-                        <x-search-input wire:model="searchTerm" />
+                        <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.search-input','data' => ['wire:model' => 'searchTerm']]); ?>
+<?php $component->withName('search-input'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['wire:model' => 'searchTerm']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                     </div>
                     <div class="card">
                         <div class="card-body">
@@ -57,8 +68,8 @@
                                         <th scope="col">
                                             Nombre
                                             <span wire:click="sortBy('name')" class="float-right text-sm" style="cursor: pointer;">
-                                                <i class="fa fa-arrow-up {{ $sortColumnName === 'name' && $sortDirection === 'asc' ? '' : 'text-muted' }}"></i>
-                                                <i class="fa fa-arrow-down {{ $sortColumnName === 'name' && $sortDirection === 'desc' ? '' : 'text-muted' }}"></i>
+                                                <i class="fa fa-arrow-up <?php echo e($sortColumnName === 'name' && $sortDirection === 'asc' ? '' : 'text-muted'); ?>"></i>
+                                                <i class="fa fa-arrow-down <?php echo e($sortColumnName === 'name' && $sortDirection === 'desc' ? '' : 'text-muted'); ?>"></i>
                                             </span>
                                         </th>
                                         <th scope="col">No Confirmada</th>
@@ -69,70 +80,72 @@
                                     </tr>
                                 </thead>
                                 <tbody wire:loading.class="text-muted">
-                                    @forelse ($comercios as $index => $comercio)
+                                    <?php $__empty_1 = true; $__currentLoopData = $comercios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $comercio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
-                                        <th scope="row">{{ $comercios->firstItem() + $index }}</th>
+                                        <th scope="row"><?php echo e($comercios->firstItem() + $index); ?></th>
                                         <td>
-                                            <img src="{{ $comercio->avatar_url }}" style="width: 50px;" class="img img-circle mr-1" alt="">
-                                            {{ $comercio->name }}
+                                            <img src="<?php echo e($comercio->avatar_url); ?>" style="width: 50px;" class="img img-circle mr-1" alt="">
+                                            <?php echo e($comercio->name); ?>
+
                                         </td>
-                                        <td>{{ $comercio->OperacionNoConfirmada() }}</td>
+                                        <td><?php echo e($comercio->OperacionNoConfirmada()); ?></td>
                                         <td></td>
                                         <td>
                                             
                                         </td>
-                                        <td>{{ $comercio->created_at->toFormattedDate() ?? 'N/A' }}</td>
+                                        <td><?php echo e($comercio->created_at->toFormattedDate() ?? 'N/A'); ?></td>
                                         <td class="fs-2">
-                                            <a href="/listTransacciones/{{$comercio->id }}">
+                                            <a href="/listTransacciones/<?php echo e($comercio->id); ?>">
                                                 <i class="fa fa-solid fa-file-invoice-dollar mx-2"></i>
                                             </a>
 
-                                            <a href="/listCategories/{{$comercio->id }}">
+                                            <a href="/listCategories/<?php echo e($comercio->id); ?>">
                                                 <i class="fa fa-solid fa-list mx-2"></i>
                                             </a>
 
-                                            <a href="/listProducts/{{$comercio->id }}">
+                                            <a href="/listProducts/<?php echo e($comercio->id); ?>">
                                                 <img width="35px" src="/img/icon-motor.png" alt="">
                                             </a>
 
-                                            <a href="/listProducts/{{$comercio->id }}">
+                                            <a href="/listProducts/<?php echo e($comercio->id); ?>">
                                                 <i class="fa fa-solid fa-motorcycle mx-2"></i>
                                             </a>
 
-                                            <a href="/listMetodosPagosC/{{$comercio->id }}">
+                                            <a href="/listMetodosPagosC/<?php echo e($comercio->id); ?>">
                                                 <i class="fa fa-regular fa-credit-card mx-2"></i>
                                             </a>
 
-                                            <a href="/listMetodosPagosC/{{$comercio->id }}">
+                                            <a href="/listMetodosPagosC/<?php echo e($comercio->id); ?>">
                                                 <i class="fa fa-solid fa-layer-group"></i>
                                             </a>
 
-                                            <a href="/listCentrodistribucion/{{$comercio->id }}">
+                                            <a href="/listCentrodistribucion/<?php echo e($comercio->id); ?>">
                                                 <i class="fa fa-solid fa-dolly mr-2 mx-2"></i>
                                             </a>
 
-                                            <a href="" wire:click.prevent="edit({{ $comercio }})">
+                                            <a href="" wire:click.prevent="edit(<?php echo e($comercio); ?>)">
                                                 <i class="fa fa-edit mr-2 mx-2"></i>
                                             </a>
 
-                                            <a href="" wire:click.prevent="confirmComercioRemoval({{ $comercio->id }})">
+                                            <a href="" wire:click.prevent="confirmComercioRemoval(<?php echo e($comercio->id); ?>)">
                                                 <i class="fa fa-trash text-danger"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    @empty
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                     <tr class="text-center">
                                         <td colspan="7">
                                             <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/v2/assets/empty.svg" alt="No results found">
                                             <p class="mt-2">No se encontro resultados</p>
                                         </td>
                                     </tr>
-                                    @endforelse
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            {{ $comercios->links() }}
+                            <?php echo e($comercios->links()); ?>
+
                         </div>
                     </div>
                 </div>
@@ -145,15 +158,15 @@
     <!-- Modal -->
     <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog" role="document">
-            <form autocomplete="off" wire:submit.prevent="{{ $showEditModal ? 'updateComercio' : 'createComercio' }}">
+            <form autocomplete="off" wire:submit.prevent="<?php echo e($showEditModal ? 'updateComercio' : 'createComercio'); ?>">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                            @if($showEditModal)
+                            <?php if($showEditModal): ?>
                             <span>Editar Comercios</span>
-                            @else
+                            <?php else: ?>
                             <span>Nuevo Comercio</span>
-                            @endif
+                            <?php endif; ?>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -163,37 +176,82 @@
 
                         <div class="form-group">
                             <label for="area_id">Área Económica</label>
-                            <select wire:model.defer="state.area_id" class="form-control @error('area_id') is-invalid @enderror" id="area_id" disabled>
+                            <select wire:model.defer="state.area_id" class="form-control <?php $__errorArgs = ['area_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="area_id" disabled>
                                 <option value="0">Seleccione una opción</option>
-                                @foreach($areas as $area)
-                                    <option value="{{ $area->id }}">{{ $area->name }}</option>
-                                @endforeach
+                                <?php $__currentLoopData = $areas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $area): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($area->id); ?>"><?php echo e($area->name); ?></option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
-                            @error('area_id')
+                            <?php $__errorArgs = ['area_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                <?php echo e($message); ?>
+
                             </div>
-                            @enderror
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
                         
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text" wire:model.defer="state.name" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="nameHelp" placeholder="Introduzca el Nombre">
-                            @error('name')
+                            <input type="text" wire:model.defer="state.name" class="form-control <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="name" aria-describedby="nameHelp" placeholder="Introduzca el Nombre">
+                            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                <?php echo e($message); ?>
+
                             </div>
-                            @enderror
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group">
                             <label for="keyword">Indicador Único</label>
-                            <input type="text" wire:model.defer="state.keyword" class="form-control @error('keyword') is-invalid @enderror" id="keyword" aria-describedby="keywordHelp" placeholder="Identificador Único" Readonly>
-                            @error('keyword')
+                            <input type="text" wire:model.defer="state.keyword" class="form-control <?php $__errorArgs = ['keyword'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="keyword" aria-describedby="keywordHelp" placeholder="Identificador Único" Readonly>
+                            <?php $__errorArgs = ['keyword'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                <?php echo e($message); ?>
+
                             </div>
-                            @enderror
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             <script>
                                 let name = document.querySelector('#name')
                                 name.addEventListener('blur', function(){
@@ -227,19 +285,20 @@
                                     </div>
                                 </div>
                                 <label class="custom-file-label" for="customFile">
-                                    @if ($photo)
-                                        {{ $photo->getClientOriginalName() }}
-                                    @else
+                                    <?php if($photo): ?>
+                                        <?php echo e($photo->getClientOriginalName()); ?>
+
+                                    <?php else: ?>
                                         Seleccione el logo
-                                    @endif
+                                    <?php endif; ?>
                                 </label>
                             </div>
 
-                            @if ($photo)
-                                <img src="{{ $photo->temporaryUrl() }}" class="img d-block mt-2 w-100 rounded">
-                            @else
-                                <img src="{{ $state['avatar_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded">
-                            @endif
+                            <?php if($photo): ?>
+                                <img src="<?php echo e($photo->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded">
+                            <?php else: ?>
+                                <img src="<?php echo e($state['avatar_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded">
+                            <?php endif; ?>
                         </div>
 
                         <div class="form-group">
@@ -254,39 +313,70 @@
                                     </div>
                                 </div>
                                 <label class="custom-file-label" for="customFile">
-                                    @if ($banner)
-                                        {{ $banner->getClientOriginalName() }}
-                                    @else
+                                    <?php if($banner): ?>
+                                        <?php echo e($banner->getClientOriginalName()); ?>
+
+                                    <?php else: ?>
                                         Seleccione el Banner
-                                    @endif
+                                    <?php endif; ?>
                                 </label>
                             </div>
 
-                            @if ($banner)
-                                <img src="{{ $banner->temporaryUrl() }}" class="img d-block mt-2 w-100 rounded">
-                            @else
-                                <img src="{{ $state['banner_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded">
-                            @endif
+                            <?php if($banner): ?>
+                                <img src="<?php echo e($banner->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded">
+                            <?php else: ?>
+                                <img src="<?php echo e($state['banner_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded">
+                            <?php endif; ?>
                         </div>
 
                         <div class="form-group">
                             <label for="contactcellphone">Numero de Contacto WhatsApp</label>
-                            <input type="text" wire:model.defer="state.contactcellphone" class="form-control @error('cellphonecontact') is-invalid @enderror" id="contactcellphone" aria-describedby="contactcellphoneHelp" placeholder="Nro de WhatsApp">
-                            @error('contactcellphone')
+                            <input type="text" wire:model.defer="state.contactcellphone" class="form-control <?php $__errorArgs = ['cellphonecontact'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="contactcellphone" aria-describedby="contactcellphoneHelp" placeholder="Nro de WhatsApp">
+                            <?php $__errorArgs = ['contactcellphone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                <?php echo e($message); ?>
+
                             </div>
-                            @enderror
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group">
                             <label for="dominio">Dominio</label>
-                            <input type="text" wire:model.defer="state.dominio" class="form-control @error('dominio') is-invalid @enderror" id="dominio" aria-describedby="dominioHelp" placeholder="Dominio">
-                            @error('dominio')
+                            <input type="text" wire:model.defer="state.dominio" class="form-control <?php $__errorArgs = ['dominio'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="dominio" aria-describedby="dominioHelp" placeholder="Dominio">
+                            <?php $__errorArgs = ['dominio'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <div class="invalid-feedback">
-                                {{ $message }}
+                                <?php echo e($message); ?>
+
                             </div>
-                            @enderror
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                     </div>
@@ -294,11 +384,11 @@
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancelar</button>
                         <button type="submit" class="btn btn-primary"><i class="fa fa-save mr-1"></i>
-                            @if($showEditModal)
+                            <?php if($showEditModal): ?>
                             <span>Guardar Cambios</span>
-                            @else
+                            <?php else: ?>
                             <span>Guardar</span>
-                            @endif
+                            <?php endif; ?>
                         </button>
                     </div>
                 </div>
@@ -352,3 +442,4 @@
     </script>
     <script src="/js/star.js"></script>
 </div>
+<?php /**PATH /home/typej/Documentos/github/barcoexpres-1/resources/views/livewire/afiliado/list-comercios.blade.php ENDPATH**/ ?>
