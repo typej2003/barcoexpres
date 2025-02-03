@@ -114,16 +114,16 @@ class ListBoats extends AdminComponent
 		$this->showEditModal = false;
 
 		$editModal = 'false';
-		$product_id = 0;
+		$embarcacion_id = 0;
 		
 		if ($this->screenResolution < 1024) {
-			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'productId' => $product_id, 'editModal' => $editModal] );
+			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'embarcacionId' => $embarcacion_id, 'editModal' => $editModal] );
 			//$this->dispatchBrowserEvent('show-form');	
 		}elseif ($this->screenResolution < 1280) {
-			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'productId' => $product_id,  'editModal' => $editModal] );
+			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'embarcacionId' => $embarcacion_id,  'editModal' => $editModal] );
 			//$this->dispatchBrowserEvent('show-form');
 		}else {
-			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'productId' => $product_id,  'editModal' => $editModal] );
+			return redirect()->route('newBoat', ['comercioId' => $this->comercio_id, 'embarcacionId' => $embarcacion_id,  'editModal' => $editModal] );
 		}
 		
 	}

@@ -1,5 +1,5 @@
 <div class="container">
-    <style>
+<style>
         .overlay-content {
             min-height: 80vh !important;
         }
@@ -21,13 +21,33 @@
         
         .logo {
             width: 20% !important;
+            
         }
+        .logo { 
+            width: 20% !important; 
+            list-style-type: none; text-align: center; height: 70px !important; 
+            display: flex !important; align-items: center;}
         .search {
             width: 50% !important;
+            display: block;
         }
-        .menu-horizontal {
+        .search { 
+            color: #aaa; 
+            font-size: 16px; 
+            margin-top: 0px; 
+            width: 50% !important; 
+            height: 70px !important; }
+
+        .menu-horizontal { 
+            list-style-type: none; 
+            height: 70px !important; 
+            display: flex;
+            justify-content: end;
             width: 30% !important;
+            z-index: 10!important;
         }
+
+        .menu-horizontal li { padding: 5px;margin-right: 20px;}
 
         .input-search {
             width: 100% !important;
