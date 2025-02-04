@@ -179,25 +179,53 @@
                                 <div class="accordion-item">
                                     <h4 class="accordion-header" id="headingOne">
                                         <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Información del producto
+                                            Información de la embarcación
                                         </a>
                                     </h4>
                                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            {{$product->description}}
+                                            <br>
+                                            <span>Matrícula: {{$product->matricula}}</span>
+                                            <br>
+                                            <span>Distintivo de llamada: {{$product->distintivollamada}}</span>
+                                            <br>
+                                            <span>Nro omi: {{$product->nroomi}}</span>
+                                            <br>
+                                            <span>Nro mmsi: {{$product->nrommsi}}</span>
+                                            <br>
+                                            <span>Armador: {{$product->armador}}</span>
+                                            <br>
+                                            <span>Puerto de registro: {{$product->puertoregistro}}</span>
+                                            <br>
+                                            <span>Arte de pesca: {{$product->artepesca}}</span>
+                                            <br>
+                                            <span>Año: {{$product->fe_fabricacion}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="accordion-item">
                                     <h4 class="accordion-header" id="headingTwo">
                                         <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Especificaciones del producto
+                                            Especificaciones de la embarcación
                                         </a>
                                     </h4>
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <br>
-                                            Sin Información
+                                            <span>Eslora: {{$product->eslora}}</span>
+                                            <br>
+                                            <span>Manga: {{$product->manga}}</span>
+                                            <br>
+                                            <span>Puntal: {{$product->puntal}}</span>
+                                            <br>
+                                            <span>Arqueo bruto: {{$product->arqueobruto}}</span>
+                                            <br>
+                                            <span>Arqueo neto: {{$product->arqueoneto}}</span>
+                                            <br>
+                                            <span>Capacidad de combustible: {{$product->capacidadcombustible}}</span>
+                                            <br>
+                                            <span>Capacidad de almacenamiento: {{$product->capacidadalmacenamiento}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>

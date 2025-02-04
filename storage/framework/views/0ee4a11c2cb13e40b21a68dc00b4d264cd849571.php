@@ -181,26 +181,53 @@
                                 <div class="accordion-item">
                                     <h4 class="accordion-header" id="headingOne">
                                         <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Información del producto
+                                            Información de la embarcación
                                         </a>
                                     </h4>
                                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            <?php echo e($product->description); ?>
-
+                                            <br>
+                                            <span>Matrícula: <?php echo e($product->matricula); ?></span>
+                                            <br>
+                                            <span>Distintivo de llamada: <?php echo e($product->distintivollamada); ?></span>
+                                            <br>
+                                            <span>Nro omi: <?php echo e($product->nroomi); ?></span>
+                                            <br>
+                                            <span>Nro mmsi: <?php echo e($product->nrommsi); ?></span>
+                                            <br>
+                                            <span>Armador: <?php echo e($product->armador); ?></span>
+                                            <br>
+                                            <span>Puerto de registro: <?php echo e($product->puertoregistro); ?></span>
+                                            <br>
+                                            <span>Arte de pesca: <?php echo e($product->artepesca); ?></span>
+                                            <br>
+                                            <span>Año: <?php echo e($product->fe_fabricacion); ?></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="accordion-item">
                                     <h4 class="accordion-header" id="headingTwo">
                                         <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Especificaciones del producto
+                                            Especificaciones de la embarcación
                                         </a>
                                     </h4>
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <br>
-                                            Sin Información
+                                            <span>Eslora: <?php echo e($product->eslora); ?></span>
+                                            <br>
+                                            <span>Manga: <?php echo e($product->manga); ?></span>
+                                            <br>
+                                            <span>Puntal: <?php echo e($product->puntal); ?></span>
+                                            <br>
+                                            <span>Arqueo bruto: <?php echo e($product->arqueobruto); ?></span>
+                                            <br>
+                                            <span>Arqueo neto: <?php echo e($product->arqueoneto); ?></span>
+                                            <br>
+                                            <span>Capacidad de combustible: <?php echo e($product->capacidadcombustible); ?></span>
+                                            <br>
+                                            <span>Capacidad de almacenamiento: <?php echo e($product->capacidadalmacenamiento); ?></span>
+                                            
                                         </div>
                                     </div>
                                 </div>

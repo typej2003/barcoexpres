@@ -17,28 +17,6 @@ class PromocionSeeder extends Seeder
         DB::table('promocions')->insert([   
             'embarcacion_id' => 1,
             'comercio_id' => 1,
-            'title' => 'banner1',
-            'avatar' => 'amazona_banner.jpg',
-            'order' => 1,
-            'active' => 'active',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
-
-        DB::table('promocions')->insert([   
-            'embarcacion_id' => 2,
-            'comercio_id' => 1,
-            'title' => 'banner2',
-            'avatar' => 'roma_banner.jpg',
-            'order' => 1,
-            'active' => 'active',
-            'created_at' => '2022-05-16 12:20:36',
-            'updated_at' => '2022-05-16 12:20:36'
-        ]);
-
-        DB::table('promocions')->insert([   
-            'embarcacion_id' => 3,
-            'comercio_id' => 1,
             'title' => 'banner3',
             'avatar' => 'dream_banner.jpg',
             'order' => 1,
