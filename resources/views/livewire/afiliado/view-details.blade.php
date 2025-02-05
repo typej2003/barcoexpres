@@ -150,7 +150,7 @@
                                             <a class="my-2 mx-3 color-i" href="mailto:{{$product->comercio->email}}">
                                                 <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
                                             </a>
-                                            <a class="my-2 color-i" href="tel:0058{{$product->comercio->contactcellphone}}">
+                                            <a class="my-2 color-i" href="tel:+58{{substr($product->comercio->contactcellphone, 1)}}">
                                                 <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
                                             </a>
                                         </div>                                                        
@@ -161,7 +161,7 @@
                                     <a class="my-2 mx-3 color-i" href="mailto:{{$product->comercio->email}}">
                                         <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i> Correo
                                     </a>
-                                    <a class="my-2 color-i" href="tel:0058{{$product->comercio->contactcellphone}}">
+                                    <a class="my-2 color-i" href="tel:+58{{substr($product->comercio->contactcellphone, 1)}}">
                                         <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i> Llamar                                    
                                     </a>
                                 </div>

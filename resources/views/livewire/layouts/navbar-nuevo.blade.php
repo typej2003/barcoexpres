@@ -128,7 +128,7 @@
                                     <a class="titulo" href="mailto:{{$comercio->email}}">CORREO</a>
                                 </div>
                                 <div class="set">
-                                    <a class="titulo" href="tel:0058{{$comercio->contactcellphone}}">LLAMAR</a>
+                                    <a class="titulo" href="tel:+58{{substr($comercio->contactcellphone, 1)}}">LLAMAR</a>
                                 </div>
                             @endguest
                             @auth
@@ -171,7 +171,7 @@
                                     <a href="mailto:{{$comercio->email}}" class="titulo">CORREO</a>
                                 </div>
                                 <div class="set">
-                                    <a href="tel:0058{{$comercio->contactcellphone}}" class="titulo">LLAMAR</a>
+                                    <a href="tel:+58{{substr($comercio->contactcellphone, 1)}}" class="titulo">LLAMAR</a>
                                 </div>
                             </div>
                             @endauth
@@ -299,10 +299,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="centro d-flex flex-column color-i">
-                                            <a class="my-2 color-i" href="tel:0058{{$comercio->contactcellphone}}">
+                                            <a class="my-2 color-i" href="tel:+58{{substr($comercio->contactcellphone, 1)}}">
                                                 <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
                                             </a>
-                                            <a class="color-i" href="tel:0058{{$comercio->contactcellphone}}">
+                                            <a class="color-i" href="tel:+58{{substr($comercio->contactcellphone, 1)}}">
                                                 <span class="">Llamar</span>
                                             </a>
                                         </div>
@@ -362,7 +362,7 @@
                                     
                                 </div>
                                 <div class="centro d-flex flex-column my-2 color-i h2">
-                                    <a class="color-i titulo" href="tel:0058{{$comercio->contactcellphone}}">
+                                    <a class="color-i titulo" href="tel:+58{{substr($comercio->contactcellphone, 1)}}">
                                         <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
                                     </a>
                                 </div>

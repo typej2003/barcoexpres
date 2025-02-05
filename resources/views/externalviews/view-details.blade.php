@@ -59,7 +59,7 @@
         <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
             @if($in_cellphonecontact > 0)            
                 <div class="row" id="whatsapp" style="position: fixed; bottom: 20px; right:20px; z-index: 20;">
-                    <a href="https://api.whatsapp.com/send?phone=+58{{$comercio->contactcellphone}}&text={{ $comercio->msgcontact}}" target="_blank">
+                <a href="https://api.whatsapp.com/send?phone=+58{{substr($comercio->contactcellphone, 1)}}&text={{ $comercio->msgcontact}}" target="_blank">
                         <img style="width: 65px;" src="/img/iconowhatsapp_azul.png" alt="">
                     </a>
                 </div>
