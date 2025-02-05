@@ -56,7 +56,7 @@
                     @endif
                 </div>
             </div>
-            <div class="card mx-auto my-3 shadow" style="width: 80%" >
+            <div class="card mx-auto my-3 shadow p-1" style="width: 80%" >
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         
@@ -70,32 +70,32 @@
                 </div><!-- /.row -->
                 <div class="row mb-2">
                     <div class="col-md-4">
-                        <div class="row mx-1">
+                        <div class="row mx-1 d-flex row-cols-4">
                             @if($product->image_path1 !== null)
-                            <div class="col-md-3">
+                            <div >
                                 <button class="btn btn-light border border-1" wire:click.prevent="cambiarSrc('{{ $product->image1_url }}')">1</button>
                             </div>
                             @endif
                             @if($product->image_path2 !== null)
-                            <div class="col-md-3">
+                            <div >
                                 <button class="btn btn-light border border-1" wire:click.prevent="cambiarSrc('{{ $product->image2_url }}')">2</button>
                             </div>
                             @endif
                             @if($product->image_path3 !== null)
-                            <div class="col-md-3">
+                            <div >
                                 <button class="btn btn-light" wire:click.prevent="cambiarSrc('{{ $product->image3_url }}')">3</button>
                             </div>
                             @endif
                             @if($product->image_path4 !== null)
-                            <div class="col-md-3">
+                            <div >
                                 <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image4_url }}')">4</button>
                             </div>
                             @endif
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="d-flex" style="width:100%; height: 80%;">
-                                    <img class="img-responsive mx-2" src="{{ $product->image1_url }}" alt="">
+                                <div class="d-flex" style="width:100%; height: 100%;">
+                                    <img class="img-responsive mx-2" style="width:95%;" src="{{ $product->image1_url }}" alt="">
                                 </div>                        
                             </div>
                         </div>
