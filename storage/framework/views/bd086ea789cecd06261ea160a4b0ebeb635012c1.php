@@ -150,7 +150,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="form-group">
-                                                <label for="code">Código del Producto<span class="text-danger"> *</span></label>
+                                                <label for="code">Código de la embarcación<span class="text-danger"> *</span></label>
                                                 <input type="text" wire:model.defer="state.code"  id="code" class="font-costo form-control <?php $__errorArgs = ['code'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -174,7 +174,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="form-group">
-                                                <label for="name">Nombre del Producto<span class="text-danger"> *</span></label>
+                                                <label for="name">Nombre de la embarcación<span class="text-danger"> *</span></label>
                                                 <input type="text" wire:model.defer="state.name"  id="name" class="font-costo form-control <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -244,7 +244,7 @@ unset($__errorArgs, $__bag); ?>
                                             <div style="overflow-y: auto; max-height: 600px;">
                                             
                                             <div class="form-group">
-                                                <label for="customFile">Imagen 1 del Producto</label>
+                                                <label for="customFile">Imagen 1</label>
                                                 <div class="custom-file">
                                                     <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                         <input wire:model="photo1" type="file" class="custom-file-input" id="customFile">
@@ -271,7 +271,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="form-group">
-                                                <label for="customFile">Imagen 2 del Producto</label>
+                                                <label for="customFile">Imagen 2</label>
                                                 <div class="custom-file">
                                                     <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                         <input wire:model="photo2" type="file" class="custom-file-input" id="customFile">
@@ -298,7 +298,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="form-group">
-                                                <label for="customFile">Imagen 3 del Producto</label>
+                                                <label for="customFile">Imagen 3</label>
                                                 <div class="custom-file">
                                                     <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                         <input wire:model="photo3" type="file" class="custom-file-input" id="customFile">
@@ -325,7 +325,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="form-group">
-                                                <label for="customFile">Imagen 4 del Producto</label>
+                                                <label for="customFile">Imagen 4</label>
                                                 <div class="custom-file">
                                                     <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                         <input wire:model="photo4" type="file" class="custom-file-input" id="customFile">

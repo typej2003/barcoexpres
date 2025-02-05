@@ -113,7 +113,7 @@
                         </div>
                         <div class="row my-3">
                             <div class="col-md-12">
-                                @if($product->is_cart > 0)
+                                @if($product->in_cart > 0)
                                 <span>Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</span>
                                 @else
                                 <span>Precio: a convenir</span>

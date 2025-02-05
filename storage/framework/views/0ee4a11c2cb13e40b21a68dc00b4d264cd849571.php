@@ -115,7 +115,9 @@
                         </div>
                         <div class="row my-3">
                             <div class="col-md-12">
-                                <?php if($product->is_cart > 0): ?>
+                                <?php echo e($product->is_cart); ?>
+
+                                <?php if($product->in_cart > 0): ?>
                                 <span>Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></span>
                                 <?php else: ?>
                                 <span>Precio: a convenir</span>

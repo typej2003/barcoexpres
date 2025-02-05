@@ -282,6 +282,25 @@ class NewBoat extends AdminComponent
             );     
 		}
 
+        if ($this->photo2) {
+			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
+            $validatedData['image_path2'] = $this->photo2->storeAs(null,
+                $filename . '-1.png', 'avatarsboats'
+            ); 
+		}
+        if ($this->photo3) {
+			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
+            $validatedData['image_path3'] = $this->photo3->storeAs(null,
+                $filename . '-1.png', 'avatarsboats'
+            ); 
+		}
+        if ($this->photo4) {
+			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
+            $validatedData['image_path4'] = $this->photo4->storeAs(null,
+                $filename . '-1.png', 'avatarsboats'
+            ); 
+		}
+
         $this->embarcacion->update($validatedData);
 
 		$this->dispatchBrowserEvent('hide-form', ['message' => 'Embarcación actualizada satisfactoriamente!']);
