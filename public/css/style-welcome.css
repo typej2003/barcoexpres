@@ -316,7 +316,7 @@ color: #ffe07b;
 box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
 /* Lowering the shadow */ 
 padding: 0%;
-color: #FFCC2A!important;
+color: white !important;
 font-size: 1rem!important;
 background-color: #3d362d!important;
 }
@@ -333,7 +333,7 @@ margin: 2px!important;
 }
 .btn-sale:hover {
 background-color: #332c24 !important;
-color: #FFCC2A !important;
+color: white !important;
 }
 .btn-sale:active { 
 transform: scale(0.98); 
