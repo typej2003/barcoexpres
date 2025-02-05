@@ -50,7 +50,7 @@
         .menu-horizontal li { padding: 5px;margin-right: 20px;}
 
         .input-search {
-            width: 100% !important;
+            width: 95% !important;
         }
         
     </style>
@@ -121,7 +121,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
                                 <div class="set">
@@ -136,7 +136,7 @@
                                 <div class="set">
                                     <a href="#" style="font-weight: bold; font-size: 1.5rem;">
                                         <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
-                                        Hola, {{ auth()->user()->name }}
+                                        {{ auth()->user()->name }}
                                     </a>
                                     <div class="content">
                                         <div class="d-flex justify-content-between mb-2 ml-3 mx-3">
@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
                                 <div class="set">
@@ -215,7 +215,7 @@
                                         <li class="nav-item dropdown">
                                             <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <img src="{{ auth()->user()->avatar_url }}" id="profileImage" class="img-circle elevation-1" alt="User Image" style="height: 30px; width: 30px;">
-                                                <span class="ml-1" x-ref="username">Hola, {{ auth()->user()->name }}</span>
+                                                <span class="" x-ref="username">{{ auth()->user()->name }}</span>
                                             </a>
                                             <div class="dropdown-menu p-4" aria-labelledby="navbarDropdown">
                                                 <a class="dropdown-item" href="{{ route('admin.dashboard') }}" x-ref="profileLink">Escritorio</a>
@@ -264,7 +264,7 @@
                                     <img style="height:45px" src="/img/icon_heart.png" alt="">
                                 </a>
                             </li>
-                            <li>
+                            <li class="d-none">
                                 <div class="row">
                                     <div class="col-md-12 mx-2">
                                         <div class="dropdown-cart-drop my-0">
@@ -297,7 +297,7 @@
                             </li>
                             <li>
                                 <div class="row">
-                                    <div class="col-md-12 mx-2 ">
+                                    <div class="col-md-12">
                                         <div class="centro d-flex flex-column color-i">
                                             <a class="my-2 color-i" href="tel:0058{{$comercio->contactcellphone}}">
                                                 <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
@@ -347,7 +347,7 @@
                                 @endauth
                                 <div class="d-none"><a href=""><img class="icon" src="/img/icon_heart.png" alt=""></a></div>
                                 
-                                <div>
+                                <div class="d-none">
                                     <a class="d-flex justify-content-between" href="/goCart">
                                         <img class="icon-movil" src="/img/icon_carrito.png" style="cursor:pointer;">
                                         <span class="fs-5 my-2 text-dark">({{$totalQuantityCart}})</span>
