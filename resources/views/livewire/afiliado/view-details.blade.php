@@ -239,8 +239,7 @@
                                         <div class="accordion-body">
                                             <p>Dirección: {{$product->comercio->address}}</p>
                                             <p>
-                                                <a href="https://api.whatsapp.com/send?phone=+58{{$comercio->contactcellphone}}&text={{ $comercio->msgcontact}}" target="_blank">{{$product->comercio->cellphonecontact}}</a> 
-                                                {{$product->comercio->phonecontact}}
+                                                <a href="https://api.whatsapp.com/send?phone=+58{{$product->comercio->contactcellphone}}&text={{ $product->comercio->msgcontact}}" target="_blank">{{$product->comercio->contactcellphone}}</a> 
                                             </p>
                                         </div>
                                     </div>

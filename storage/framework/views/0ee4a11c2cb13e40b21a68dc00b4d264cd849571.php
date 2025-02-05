@@ -241,9 +241,7 @@
                                         <div class="accordion-body">
                                             <p>Dirección: <?php echo e($product->comercio->address); ?></p>
                                             <p>
-                                                <a href="https://api.whatsapp.com/send?phone=+58<?php echo e($comercio->contactcellphone); ?>&text=<?php echo e($comercio->msgcontact); ?>" target="_blank"><?php echo e($product->comercio->cellphonecontact); ?></a> 
-                                                <?php echo e($product->comercio->phonecontact); ?>
-
+                                                <a href="https://api.whatsapp.com/send?phone=+58<?php echo e($product->comercio->contactcellphone); ?>&text=<?php echo e($product->comercio->msgcontact); ?>" target="_blank"><?php echo e($product->comercio->contactcellphone); ?></a> 
                                             </p>
                                         </div>
                                     </div>
