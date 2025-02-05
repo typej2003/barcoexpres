@@ -267,7 +267,7 @@ class NewBoat extends AdminComponent
             'puertoregistro' => 'nullable',
             'artepesca' => 'nullable',
 		])->validate();
-
+        //
         
         $filename = $validatedData['code'].'-'.$this->comercio_id;
         $validatedData['currencyValue'] = request()->cookie('currency');
