@@ -50,9 +50,10 @@
                             <span class="h4 mx-4">Resultado de: {{$parametro}} </span>  
                         </div>
                     </div>
+                    
                     @if($parametro)
                         @forelse ($products as $index => $product)
-                        <div class="card p-3 border border-1 cuadro m-3 h-auto">
+                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="min-height: 50vh !important;">
                             <div class="row mx-2 border border-1 p-3">
                                 <div class="col-md-3 col-12 centrar">
                                     <img class = "imgProduct" src="{{ $product->image1_url }}" alt="">
@@ -65,8 +66,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
-                                    <div class="centrar">Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</div>
                                     <div class="centrar">
+                                        @if($product->in_convenir > 0)
+                                        <span>Precio: a convenir</span>
+                                        @else
+                                        <span>Precio: {{ $currencyValue }} {{ $product->getPrice1() }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="centrar d-none" style="display:none !important;">
                                         <div class="col-md-12 col-12 d-flex justify-content-between">
                                             <div class="input-group input-number-group">
                                                 <div class="input-group-button">
@@ -80,7 +87,19 @@
                                         </div>
                                     </div>
                                     <div class="centrar">
-                                        <button wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</button>
+                                        @if($product->incart > 0)
+                                            <a wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</a>
+                                        @else
+                                            <div class="d-flex align-item-start">
+                                                <a class="my-2 mx-3 color-i" href="mailto:{{$product->comercio->email}}">
+                                                    <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                                </a>
+                                                <a class="my-2 color-i" href="tel:0058{{$product->comercio->contactcellphone}}">
+                                                    <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                                </a>
+                                            </div>                                                        
+                                        @endif
+                                        
                                     </div>
                                     <div class="centrar">
                                         <img class ="logo-responsive" src="{{ $product->comercio->avatar_url }}" alt="">
@@ -90,7 +109,7 @@
                             </div>
                         </div>
                         @empty
-                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="height: 50vh !important;">
+                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="min-height: 50vh !important;">
                             <span> No tiene resultado</span>
                         </div>
                         @endforelse

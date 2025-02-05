@@ -32,18 +32,18 @@
                                             <div class="col-md-12">
                                             <div class="negrita"><?php echo e($product->name); ?></div>
                                                 <?php if($product->on_offer): ?>
-                                                    <?php if($product->in_cart): ?>
+                                                    <?php if($product->in_convenir): ?>
+                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    <?php else: ?>
                                                         <div class="text-left my-2" style="color: blue;">Envío Gratis</div>
                                                         <div class="text-decoration-line-through my-2">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
                                                         <div class="">Promoción: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice_offer()); ?></div>
-                                                    <?php else: ?>
-                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
                                                     <?php endif; ?>
                                                 <?php else: ?>
-                                                    <?php if($product->in_cart): ?>                                                    
-                                                        <div class="d-flex text-left my-2">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
-                                                    <?php else: ?>
+                                                    <?php if($product->in_convenir > 0): ?>                                                  
                                                         <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    <?php else: ?>
+                                                        <div class="d-flex text-left my-2">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
                                                     <?php endif; ?>
                                                     
                                                 <?php endif; ?>

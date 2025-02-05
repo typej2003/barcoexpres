@@ -115,12 +115,10 @@
                         </div>
                         <div class="row my-3">
                             <div class="col-md-12">
-                                <?php echo e($product->is_cart); ?>
-
-                                <?php if($product->in_cart > 0): ?>
-                                <span>Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></span>
-                                <?php else: ?>
+                                <?php if($product->in_convenir > 0): ?>
                                 <span>Precio: a convenir</span>
+                                <?php else: ?>
+                                <span>Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></span>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -132,7 +130,7 @@
                                 <input name="price1" type="hidden" value="<?php echo e($product->price1); ?>">
                                 <div class="col-md-6">
                                     <?php if($product->in_cart > 0): ?>
-                                    <div class="input-group input-number-group" style="margin-left: 0px !important; padding:0 !important;">
+                                    <div class="input-group input-number-group d-none" style="margin-left: 0px !important; padding:0 !important;">
                                         <div class="input-group-button">
                                             <span class="input-number-decrement">-</span>
                                         </div>
@@ -147,7 +145,18 @@
                                 </div>
                                 <?php if($product->in_cart > 0): ?>
                                 <div class="col-md-6 d-flex justify-content-start">
-                                    <button class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
+                                    <?php if($product->incart > 0): ?>
+                                        <button class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
+                                    <?php else: ?>
+                                        <div class="d-flex align-item-start">
+                                            <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
+                                                <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                            </a>
+                                            <a class="my-2 color-i" href="tel:0058<?php echo e($product->comercio->contactcellphone); ?>">
+                                                <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                            </a>
+                                        </div>                                                        
+                                    <?php endif; ?>
                                 </div>
                                 <?php else: ?>
                                 <div class="col-md-6 d-flex justify-content-start">                                

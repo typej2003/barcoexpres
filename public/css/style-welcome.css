@@ -296,7 +296,7 @@ color: white;
 
 .btn-app{
 padding: 0%;
-background-color: var(--naranja);
+background-color: var(--azul);
 color: white !important;
 min-width: 130px!important;
 width: 140px!important;
@@ -322,7 +322,7 @@ background-color: #3d362d!important;
 }
 
 .btn-sale{
-background-color: var(--menu-background) !important;
+background-color: var(--azul) !important;
 color: white !important;
 min-width: 125px!important;
 width: 125px !important;
@@ -345,8 +345,8 @@ background-color: #3d362d!important;
 }
 
 .btn-view{
-background-color: #722c2c !important;
-color: #FFCC2A !important;
+background-color:var(--azul);
+color: white !important;
 min-width: 130px!important;
 width: 140px!important;
 height: 45px !important;

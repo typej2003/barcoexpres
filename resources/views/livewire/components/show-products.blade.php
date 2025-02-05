@@ -59,16 +59,17 @@
                                                 {{$product->name}}
                                             </div>
                                                 @if($product->on_offer)
-                                                    @if($product->in_cart > 0)
+                                                    @if($product->in_convenir > 0)
+                                                    <div class="text-decoration-line-through d-flex align-item-start">Precio: a convenir</div>
+                                                    @else
                                                     <div class="text-decoration-line-through d-flex align-item-start">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
                                                     <div class="d-flex align-item-start">Promoción: {{$currencyValue}}. {{ $product->getPrice_offer() }}</div>
-                                                    @else
                                                     @endif
                                                 @else
-                                                    @if($product->in_cart > 0)
-                                                        <div class="d-flex align-item-start">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
+                                                    @if($product->in_convenir > 0)
+                                                    <div class="d-flex align-item-start">Precio: a convenir</div>
                                                     @else
-                                                        <div class="d-flex align-item-start">Precio: a convenir</div>
+                                                    <div class="d-flex align-item-start">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
                                                     @endif
                                                 @endif
                                                 <div style="display: flex; flex-direction: row;">

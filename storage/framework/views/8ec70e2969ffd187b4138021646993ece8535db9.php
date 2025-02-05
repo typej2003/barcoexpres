@@ -52,7 +52,7 @@
                     </div>
                     <?php if($parametro): ?>
                         <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                        <div class="card p-3 border border-1 cuadro m-3 h-auto">
+                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="min-height: 50vh !important;">
                             <div class="row mx-2 border border-1 p-3">
                                 <div class="col-md-3 col-12 centrar">
                                     <img class = "imgProduct" src="<?php echo e($product->image1_url); ?>" alt="">
@@ -65,8 +65,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
-                                    <div class="centrar">Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></div>
                                     <div class="centrar">
+                                        <?php if($product->in_convenir > 0): ?>
+                                        <span>Precio: a convenir</span>
+                                        <?php else: ?>
+                                        <span>Precio: <?php echo e($currencyValue); ?> <?php echo e($product->getPrice1()); ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="centrar d-none" style="display:none !important;">
                                         <div class="col-md-12 col-12 d-flex justify-content-between">
                                             <div class="input-group input-number-group">
                                                 <div class="input-group-button">
@@ -80,7 +86,19 @@
                                         </div>
                                     </div>
                                     <div class="centrar">
-                                        <button wire:click.prevent="sendCard(<?php echo e($product->id); ?>, 1)" class="btn btn-sale text-center">Comprar ahora</button>
+                                        <?php if($product->incart > 0): ?>
+                                            <a wire:click.prevent="sendCard(<?php echo e($product->id); ?>, 1)" class="btn btn-sale text-center">Comprar ahora</a>
+                                        <?php else: ?>
+                                            <div class="d-flex align-item-start">
+                                                <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
+                                                    <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                                </a>
+                                                <a class="my-2 color-i" href="tel:0058<?php echo e($product->comercio->contactcellphone); ?>">
+                                                    <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                                </a>
+                                            </div>                                                        
+                                        <?php endif; ?>
+                                        
                                     </div>
                                     <div class="centrar">
                                         <img class ="logo-responsive" src="<?php echo e($product->comercio->avatar_url); ?>" alt="">
@@ -90,7 +108,7 @@
                             </div>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="height: 50vh !important;">
+                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="min-height: 50vh !important;">
                             <span> No tiene resultado</span>
                         </div>
                         <?php endif; ?>

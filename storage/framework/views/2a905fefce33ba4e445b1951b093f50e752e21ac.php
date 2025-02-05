@@ -61,16 +61,17 @@
 
                                             </div>
                                                 <?php if($product->on_offer): ?>
-                                                    <?php if($product->in_cart > 0): ?>
+                                                    <?php if($product->in_convenir > 0): ?>
+                                                    <div class="text-decoration-line-through d-flex align-item-start">Precio: a convenir</div>
+                                                    <?php else: ?>
                                                     <div class="text-decoration-line-through d-flex align-item-start">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
                                                     <div class="d-flex align-item-start">Promoción: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice_offer()); ?></div>
-                                                    <?php else: ?>
                                                     <?php endif; ?>
                                                 <?php else: ?>
-                                                    <?php if($product->in_cart > 0): ?>
-                                                        <div class="d-flex align-item-start">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
+                                                    <?php if($product->in_convenir > 0): ?>
+                                                    <div class="d-flex align-item-start">Precio: a convenir</div>
                                                     <?php else: ?>
-                                                        <div class="d-flex align-item-start">Precio: a convenir</div>
+                                                    <div class="d-flex align-item-start">Precio: <?php echo e($currencyValue); ?>. <?php echo e($product->getPrice1()); ?></div>
                                                     <?php endif; ?>
                                                 <?php endif; ?>
                                                 <div style="display: flex; flex-direction: row;">

@@ -32,18 +32,18 @@
                                             <div class="col-md-12">
                                             <div class="negrita">{{$product->name}}</div>
                                                 @if($product->on_offer)
-                                                    @if($product->in_cart)
+                                                    @if($product->in_convenir)
+                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    @else
                                                         <div class="text-left my-2" style="color: blue;">Envío Gratis</div>
                                                         <div class="text-decoration-line-through my-2">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
                                                         <div class="">Promoción: {{$currencyValue}}. {{ $product->getPrice_offer() }}</div>
-                                                    @else
-                                                        <div class="d-flex text-left my-2">Precio: a convenir</div>
                                                     @endif
                                                 @else
-                                                    @if($product->in_cart)                                                    
-                                                        <div class="d-flex text-left my-2">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
-                                                    @else
+                                                    @if($product->in_convenir > 0)                                                  
                                                         <div class="d-flex text-left my-2">Precio: a convenir</div>
+                                                    @else
+                                                        <div class="d-flex text-left my-2">Precio: {{$currencyValue}}. {{ $product->getPrice1() }}</div>
                                                     @endif
                                                     
                                                 @endif
