@@ -4,6 +4,7 @@
                 width:100%; height: 250px;
             }
             .text-azul { font-family: 'Montserrat' !important; font-size: 1.3rem; font-weight: bold; color: var(--azul) !important; padding: 5px;}
+            
             .Text-Uppercase {
             text-transform: uppercase;
             }

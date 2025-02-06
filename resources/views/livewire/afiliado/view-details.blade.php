@@ -252,7 +252,7 @@
                                             Información de tienda
                                         </a>
                                     </h4>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div id="collapseThree" class="accordion-collapse collapse d-none" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <p>Dirección: {{$product->comercio->address}}</p>
                                             <p>
