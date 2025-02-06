@@ -3,6 +3,11 @@
             .img-responsive {
                 width:100%; height: 250px;
             }
+            .text-azul { font-family: 'Montserrat' !important; font-size: 1.3rem; font-weight: bold; color: var(--azul) !important; padding: 5px;}
+            
+            .Text-Uppercase {
+            text-transform: uppercase;
+            }
             @media only screen and (max-width: 1070px) {
                 .img-responsive {
                     
@@ -20,9 +25,10 @@
                 <link rel="shortcut icon" type="x-icon" href="/img/logo_barcoexpre.jpg" />
                 
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-                <link rel="stylesheet" href="/css/navigationMap.css">
-                <!-- <link rel="stylesheet" href="/css/style.css"> -->
                 <link rel="stylesheet" href="/css/bootstrap.min.css">
+                <link rel="stylesheet" href="/css/navigationMap.css">
+                
+                
                 <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 
@@ -103,11 +109,11 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-12">
-                                {{ $product->name}}
+                                <span class="Text-Uppercase text-azul negrita">{{ $product->name}}</span>
                             </div>
                         </div>
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-md-12">
+                        <div class="row d-flex justify-content-between d-none">
+                            <div class="col-md-12 ">
                                 <div>Ver mas productos de<span class="mx-1"><a href="">{{ $product->comercio->name}}</a></span></div>
                             </div>
                         </div>

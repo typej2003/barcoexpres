@@ -17,6 +17,7 @@ font-weight: 600 !important; margin:0; padding:0; /*background-color: yellowgree
 background-color: var(--azul) !important;
 }
 .titulo { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: bold; color: var(--azul) !important; padding: 5px;}
+
 .texto { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; color: var(--azul) !important; }
 a {text-decoration: none; }
 
