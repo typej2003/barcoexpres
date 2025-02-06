@@ -46,7 +46,7 @@
             <form action="<?php echo e(route('autenticar')); ?>" method="POST">
                 <?php echo csrf_field(); ?>
                 <div class="form-group">
-                    <div class="row mx-auto">
+                    <div class="row mx-auto d-none">
                         <div class="col-xs-6 col-md-4 col-sm-4 col-4">
                             <label for="identificationNac">Tipo </label>
                             <select class="form-control <?php $__errorArgs = ['identificationNac'];
@@ -112,7 +112,7 @@ unset($__errorArgs, $__bag); ?>
                     <div class="row mx-auto">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <label for="password">Contraseña</label>
-                            <input type="password" name="password" id="password-fieldW" class="form-control inputForm" placeholder="Contraseña" value="12345678"/>
+                            <input type="password" name="password" id="password-fieldW" class="form-control inputForm" placeholder="Contraseña" value=""/>
                         </div>
                     </div>                
                 </div>          

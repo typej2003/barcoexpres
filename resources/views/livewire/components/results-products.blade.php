@@ -6,7 +6,7 @@
             box-shadow: 5px 5px 15px gray;
             margin-bottom: 10px;
             padding: 15px;
-            height: 450px !important;
+            
         }
 
         .imgProduct {
@@ -54,8 +54,8 @@
                     
                     @if($parametro)
                         @forelse ($products as $index => $product)
-                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="min-height: 50vh !important;">
-                            <div class="row mx-2 border border-1 p-3">
+                        <div class="card p-3 border border-1 cuadro m-3 h-auto" style="min-height: 35vh !important;">
+                            <div class="row mx-2 border border-1 p-3" style="min-height: 30vh !important;">
                                 <div class="col-md-3 col-12 centrar">
                                     <img class = "imgProduct" src="{{ $product->image1_url }}" alt="">
                                 </div>

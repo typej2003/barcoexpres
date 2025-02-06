@@ -1659,8 +1659,8 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <a href="/listProducts/<?php echo e($comercio->id); ?>" type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancelar</a>
+                        <div class="card-footer d-flex justify-content-center">
+                            <a href="/listProducts/<?php echo e($comercio->id); ?>" type="button" class="btn btn-secondary d-none" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancelar</a>
                             <button type="submit" class="btn btn-app">
                                 <i class="fa fa-save mr-1"></i>
                                 <?php if($controlActivity): ?>
