@@ -69,6 +69,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Comercio</th>
+                                        <th scope="col">Código</th>
                                         <th scope="col">
                                             Nombre
                                             <span wire:click="sortBy('name')" class="float-right text-sm" style="cursor: pointer;">
@@ -86,6 +87,8 @@
                                     @forelse ($boats as $index => $boat)
                                     <tr>
                                         <th scope="row">{{ $boats->firstItem() + $index }}</th>
+                                        <td>{{ $boat->comercio->code }}</td>
+                                        
                                         <td>{{ $boat->comercio->name }}</td>
                                         <td>
                                             <img src="{{ $boat->image1_url }}" style="width: 50px;" class="img img-circle mr-1" alt="">
