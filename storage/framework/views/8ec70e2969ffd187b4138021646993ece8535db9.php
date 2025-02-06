@@ -6,6 +6,7 @@
             box-shadow: 5px 5px 15px gray;
             margin-bottom: 10px;
             padding: 15px;
+            height: 450px !important;
         }
 
         .imgProduct {

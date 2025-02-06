@@ -63,7 +63,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
                     <div class="overlay-header">
-                        <div class="currency-responsive w-full">
+                        <div class="currency-responsive w-full d-none">
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.currency')->html();
@@ -371,8 +371,8 @@ echo $html;
                             
                         </div>
                         <div class="button-search w-full" style="display: none; cursor: pointer;"><img src="/img/icon_buscar.png" alt=""></div>
-                        <span class="fw-bold w-full">Divisa:</span>
-                        <div class="menu-right w-full d-flex justify-content-between">
+                        <span class="fw-bold w-full d-none">Divisa:</span>
+                        <div class="menu-right w-full d-flex justify-content-between d-none">
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.currency')->html();
