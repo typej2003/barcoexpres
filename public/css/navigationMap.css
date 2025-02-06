@@ -22,6 +22,7 @@
     height: auto;
     color: #fff;
     bottom: 0;
+    height: 300px !important;
 }
 
 .logoNM {
@@ -88,5 +89,9 @@
         position: absolute;
         top: 20%;
         right: 10px;
+    }
+
+    .navigationMap {
+        height: 350px !important;
     }
 }

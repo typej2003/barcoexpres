@@ -50,6 +50,7 @@
                             <span class="h4 mx-4">Resultado de: <?php echo e($parametro); ?> </span>  
                         </div>
                     </div>
+                    
                     <?php if($parametro): ?>
                         <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <div class="card p-3 border border-1 cuadro m-3 h-auto" style="min-height: 50vh !important;">
@@ -93,7 +94,7 @@
                                                 <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
                                                     <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
                                                 </a>
-                                                <a class="my-2 color-i" href="tel:0058<?php echo e($product->comercio->contactcellphone); ?>">
+                                                <a class="my-2 color-i" href="tel:+58<?php echo e(substr($product->comercio->contactcellphone, 1)); ?>">
                                                     <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
                                                 </a>
                                             </div>                                                        
