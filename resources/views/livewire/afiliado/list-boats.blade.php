@@ -88,9 +88,8 @@
                                     <tr>
                                         <th scope="row">{{ $boats->firstItem() + $index }}</th>
                                         
-                                        <td>{{ $boat->comercio->code }}</td>
-
                                         <td>{{ $boat->comercio->name }}</td>
+                                        <td>{{ $boat->code }}</td>
                                         <td>
                                             <img src="{{ $boat->image1_url }}" style="width: 50px;" class="img img-circle mr-1" alt="">
                                             {{ $boat->name }}
