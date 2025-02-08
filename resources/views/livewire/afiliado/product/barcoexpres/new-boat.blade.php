@@ -106,7 +106,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="code">Código de la embarcación<span class="text-danger"> *</span></label>
-                                                <input type="text" wire:model.defer="state.code"  id="code" class="font-costo form-control @error('code') is-invalid @enderror" autofocus >
+                                                <input type="text" wire:model.defer="state.code" wire:keyup ='validarCode'  id="code" class="font-costo form-control @error('code') is-invalid @enderror" autofocus @if($disabled == 'disabled') style="border: 1px solid red; background-color:red; color: white;" @endif>
                                                 @error('code')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -877,7 +877,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-center">
                             <a href="/listProducts/{{$comercio->id}}" type="button" class="btn btn-secondary d-none" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancelar</a>
-                            <button type="submit" class="btn btn-app">
+                            <button type="submit" class="btn btn-app" @if($disabled == 'disabled') disabled @endif>
                                 <i class="fa fa-save mr-1"></i>
                                 @if($controlActivity)
                                 <span>Guardar Cambios</span>

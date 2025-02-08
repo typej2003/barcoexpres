@@ -34,6 +34,8 @@ class NewBoat extends AdminComponent
     public $photo3;
     public $photo4;
 
+    public  $disabled = '';
+
     public function mount($comercioId, $embarcacionId, $editModal )
     {
         
@@ -42,6 +44,7 @@ class NewBoat extends AdminComponent
         $this->editModal = $editModal;
 
         // dd($this->showEditModal);
+        $this->state['code'] = '';
 
         if($editModal == 'false'){
             $this->controlActivity = false;
@@ -101,6 +104,17 @@ class NewBoat extends AdminComponent
         		
 		$this->dispatchBrowserEvent('sendSubcategories', ['subcategories' => $subcategories, 'subcategory' => $subcategory, 'msg' => $msg]);
 	}
+
+    public function validarCode()
+    {
+        $code = Embarcacion::where('code', $this->state['code'])->where('comercio_id', $this->comercio_id)->first();
+
+        if($code){
+            $this->disabled = 'disabled';
+        }else{
+            $this->disabled = '';
+        }
+    }
 
     public function createProduct()
 	{

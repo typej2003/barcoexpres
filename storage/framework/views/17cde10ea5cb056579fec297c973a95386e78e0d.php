@@ -80,6 +80,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Comercio</th>
+                                        <th scope="col">Código</th>
                                         <th scope="col">
                                             Nombre
                                             <span wire:click="sortBy('name')" class="float-right text-sm" style="cursor: pointer;">
@@ -97,7 +98,9 @@
                                     <?php $__empty_1 = true; $__currentLoopData = $boats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $boat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
                                         <th scope="row"><?php echo e($boats->firstItem() + $index); ?></th>
+                                        
                                         <td><?php echo e($boat->comercio->name); ?></td>
+                                        <td><?php echo e($boat->code); ?></td>
                                         <td>
                                             <img src="<?php echo e($boat->image1_url); ?>" style="width: 50px;" class="img img-circle mr-1" alt="">
                                             <?php echo e($boat->name); ?>

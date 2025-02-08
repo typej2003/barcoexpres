@@ -45,8 +45,11 @@
                 </div>
 
             </div>
-            <div class="redessociales d-flex flex-column text-start my-2">
-                <div><img style="width: 25%;" src="/img/icono_redes_blanco.png" alt=""></div>
+            <div class="redessociales d-flex flex-row text-start my-3">
+                <div><a href="{{$comercio->instagram}}"><img style="width: 20px; margin: 5px;" src="/img/redes/instagram_icon.png" alt=""></a></div>
+                <div><a href="{{$comercio->tiktok}}"><img style="width: 20px; margin: 5px;" src="/img/redes/tiktok_icon.png" alt=""></a></div>
+                <div><a href="{{$comercio->facebook}}"><img style="width: 13px; margin: 5px;" src="/img/redes/facebook_icon.png" alt=""></a></div>
+                <div><a href="{{$comercio->twitter}}"><img style="width: 20px; margin: 5px;" src="/img/redes/x_icon.png" alt=""></a></div>
             </div>
             <img class="logo-qr qr-movil" src="/img/qr_barcoexpres.png" alt="">
         </div>

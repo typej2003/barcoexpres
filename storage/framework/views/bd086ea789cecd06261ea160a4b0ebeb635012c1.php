@@ -151,14 +151,14 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="form-group">
                                                 <label for="code">Código de la embarcación<span class="text-danger"> *</span></label>
-                                                <input type="text" wire:model.defer="state.code"  id="code" class="font-costo form-control <?php $__errorArgs = ['code'];
+                                                <input type="text" wire:model.defer="state.code" wire:keyup ='validarCode'  id="code" class="font-costo form-control <?php $__errorArgs = ['code'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" autofocus >
+unset($__errorArgs, $__bag); ?>" autofocus <?php if($disabled == 'disabled'): ?> style="border: 1px solid red; background-color:red; color: white;" <?php endif; ?>>
                                                 <?php $__errorArgs = ['code'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1661,7 +1661,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="card-footer d-flex justify-content-center">
                             <a href="/listProducts/<?php echo e($comercio->id); ?>" type="button" class="btn btn-secondary d-none" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancelar</a>
-                            <button type="submit" class="btn btn-app">
+                            <button type="submit" class="btn btn-app" <?php if($disabled == 'disabled'): ?> disabled <?php endif; ?>>
                                 <i class="fa fa-save mr-1"></i>
                                 <?php if($controlActivity): ?>
                                 <span>Guardar Cambios</span>
