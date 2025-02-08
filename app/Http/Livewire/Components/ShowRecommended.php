@@ -33,6 +33,33 @@ class ShowRecommended extends AdminComponent
         'infoRecibida' => 'actualizarInfo', 
         'refreshValoracion' => 'refreshValoracion', 
         'refreshShowProduct' => 'refreshShowProduct'];
+
+    public function mount($comercioId = 1, $parametro, $is_boat = false)
+    {
+        $this->is_boat = $is_boat; 
+
+        $this->comercio_id = $comercioId;
+        $this->parametro = $parametro;
+
+        $this->comercio = Comercio::find($this->comercio_id);
+
+        $setting = Setting::where('user_id', $this->comercio->user_id)->first();
+
+        $this->state['product_id'] = '0';
+        $this->state['ca_valoracion'] = 0;
+        $this->state['class'] = 'star';
+
+        if(auth()->user()){
+            $settingUser = SettingUser::where('user_id', auth()->user()->id)->first();
+            if($settingUser){
+                $currency = $settingUser->currency;
+            }else{
+                $currency = $setting->currency;
+            }            
+        }else{
+            $currency = request()->cookie('currency');
+        }
+    }
     
     public function sendCard($product_id, $quantity )
     {
@@ -86,34 +113,6 @@ class ShowRecommended extends AdminComponent
         $this->informacion = $data;
 
     }
-
-    public function mount($comercioId = 1, $parametro, $is_boat = false)
-    {
-        $this->is_boat = $is_boat; 
-        $this->comercio_id = $comercioId;
-        $this->parametro = $parametro;
-
-        $this->comercio = Comercio::find($this->comercio_id);
-
-        $setting = Setting::where('user_id', $this->comercio->user_id)->first();
-
-        $this->state['product_id'] = '0';
-        $this->state['ca_valoracion'] = 0;
-        $this->state['class'] = 'star';
-
-        if(auth()->user()){
-            $settingUser = SettingUser::where('user_id', auth()->user()->id)->first();
-            if($settingUser){
-                $currency = $settingUser->currency;
-            }else{
-                $currency = $setting->currency;
-            }            
-        }else{
-            $currency = request()->cookie('currency');
-        }
-    }
-
-    
 
     public function searchClass($puntuacion)
     {

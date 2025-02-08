@@ -22,11 +22,8 @@ class ViewDetails extends AdminComponent
         $this->embarcacion_id = $productId;
 
         $embarcacion = Embarcacion::find($this->embarcacion_id);
-
-        if($embarcacion->in_cart == 0)
-        {
+        
             $this->is_boat = $this->embarcacion_id;
-        }
         
         $this->currencyValue = request()->cookie('currency');
     }
