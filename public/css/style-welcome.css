@@ -323,7 +323,7 @@ background-color: #3d362d!important;
 }
 
 .btn-sale{
-background-color: var(--azul) !important;
+background-color: var(--naranja) !important;
 color: white !important;
 min-width: 125px!important;
 width: 125px !important;
@@ -333,7 +333,7 @@ margin-top: 5px !important;
 margin: 2px!important;
 }
 .btn-sale:hover {
-background-color: #332c24 !important;
+background-color: var(--azul) !important;
 color: white !important;
 }
 .btn-sale:active { 
