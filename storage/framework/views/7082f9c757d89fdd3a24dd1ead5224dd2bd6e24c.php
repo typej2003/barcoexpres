@@ -48,10 +48,18 @@
 
             </div>
             <div class="redessociales d-flex flex-row text-start my-3">
+                <?php if(!empty($comercio->instagram)): ?>
                 <div><a href="<?php echo e($comercio->instagram); ?>"><img style="width: 20px; margin: 5px;" src="/img/redes/instagram_icon.png" alt=""></a></div>
+                <?php endif; ?>
+                <?php if(!empty($comercio->tiktok)): ?>
                 <div><a href="<?php echo e($comercio->tiktok); ?>"><img style="width: 20px; margin: 5px;" src="/img/redes/tiktok_icon.png" alt=""></a></div>
+                <?php endif; ?>
+                <?php if(!empty($comercio->facebook)): ?>
                 <div><a href="<?php echo e($comercio->facebook); ?>"><img style="width: 13px; margin: 5px;" src="/img/redes/facebook_icon.png" alt=""></a></div>
+                <?php endif; ?>
+                <?php if(!empty($comercio->twitter)): ?>
                 <div><a href="<?php echo e($comercio->twitter); ?>"><img style="width: 20px; margin: 5px;" src="/img/redes/x_icon.png" alt=""></a></div>
+                <?php endif; ?>
             </div>
             <img class="logo-qr qr-movil" src="/img/qr_barcoexpres.png" alt="">
         </div>
