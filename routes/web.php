@@ -148,3 +148,5 @@ Route::get('/google-callback', function () {
 });
 
 Route::get('/errorFound/{error}', ShowError::class)->name('errorFound');
+
+Route::get('/initsession', [WelcomeController::class, 'initsession'])->name('initsession')->middleware('auth');

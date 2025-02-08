@@ -154,13 +154,17 @@
                                         <button class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
                                     <?php else: ?>
                                         <div class="d-flex align-item-start">
-                                            <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
-                                                <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
-                                            </a>
-                                            <a class="my-2 color-i" href="tel:+58<?php echo e(substr($product->comercio->contactcellphone, 1)); ?>">
-                                                <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
-                                            </a>
-                                        </div>                                                        
+                                            <?php if(auth()->guard()->check()): ?>
+                                                <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
+                                                    <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                                </a>
+                                                <a class="my-2 color-i" href="tel:+58<?php echo e(substr($product->comercio->contactcellphone, 1)); ?>">
+                                                    <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                                </a>
+                                            <?php else: ?>
+                                                <a href="/initsession" class="btn btn-sale text-center">Comprar ahora</a>
+                                            <?php endif; ?>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                                 <?php else: ?>
@@ -253,7 +257,7 @@
                                             Información de tienda
                                         </a>
                                     </h4>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div id="collapseThree" class="accordion-collapse collapse d-none" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <p>Dirección: <?php echo e($product->comercio->address); ?></p>
                                             <p>

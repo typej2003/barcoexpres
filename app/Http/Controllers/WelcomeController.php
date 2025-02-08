@@ -274,4 +274,9 @@ class WelcomeController extends Controller
         ]);
     }
 
+    public function initsession()
+    {
+        return redirect()->back();
+    }
+
 }

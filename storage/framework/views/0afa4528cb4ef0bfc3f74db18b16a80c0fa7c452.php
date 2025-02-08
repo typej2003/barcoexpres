@@ -41,7 +41,7 @@
                     <label for="roleS">Tipo de usuario</label>
                     <select class="form-control" name="roleS" id="roleS">
                         <option value="cliente" selected>CLIENTE</option>
-                        <option value="afiliado">AFILIADO</option>
+                        <!-- <option value="afiliado">AFILIADO</option> -->
                     </select>
                 </div>
                 <input type="hidden" value="cliente" id="role" name="role">
@@ -118,7 +118,7 @@ unset($__errorArgs, $__bag); ?>
                 <div class="form-group">
                     <label for="documento">Contraseña <span class="text-danger">*</span></label>            
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password" value="12345678">
+                        <input type="password" name="password" class="form-control" placeholder="Password" value="">
                         <div class="input-group-append">
                         <div class="input-group-text titulo">
                                 <span class="fas fa-lock"></span>
@@ -140,7 +140,7 @@ unset($__errorArgs, $__bag); ?>
                 <div class="form-group">
                     <label for="documento">Repita la contraseña <span class="text-danger">*</span></label>        
                     <div class="input-group mb-3">
-                        <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation" value="12345678">
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation" value="">
                         <div class="input-group-append">
                         <div class="input-group-text titulo">
                                 <span class="fas fa-lock"></span>

@@ -54,12 +54,16 @@
                                                         <a wire:click.prevent="sendCard(<?php echo e($product->id); ?>, 1)" class="btn btn-sale text-center">Comprar ahora</a>
                                                     <?php else: ?>
                                                         <div class="d-flex align-item-start">
-                                                            <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
-                                                                <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
-                                                            </a>
-                                                            <a class="my-2 color-i" href="tel:+58<?php echo e(substr($product->comercio->contactcellphone, 1)); ?>">
-                                                                <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
-                                                            </a>
+                                                            <?php if(auth()->guard()->check()): ?>
+                                                                <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
+                                                                    <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                                                </a>
+                                                                <a class="my-2 color-i" href="tel:+58<?php echo e(substr($product->comercio->contactcellphone, 1)); ?>">
+                                                                    <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                                                </a>
+                                                            <?php else: ?>
+                                                                <a href="/initsession" class="btn btn-sale text-center">Comprar ahora</a>
+                                                            <?php endif; ?>
                                                         </div>
                                                     <?php endif; ?>
                                                     </div>

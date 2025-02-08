@@ -79,13 +79,17 @@
                                                         <a wire:click.prevent="sendCard({{ $product->id }}, 1)" class="btn btn-sale text-center">Comprar ahora</a>
                                                     @else
                                                         <div class="d-flex align-item-start">
-                                                            <a class="my-2 mx-3 color-i" href="mailto:{{$product->comercio->email}}">
-                                                                <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
-                                                            </a>
-                                                            <a class="my-2 color-i" href="tel:+58{{substr($product->comercio->contactcellphone, 1)}}">
-                                                                <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
-                                                            </a>
-                                                        </div>                                                        
+                                                            @auth
+                                                                <a class="my-2 mx-3 color-i" href="mailto:{{$product->comercio->email}}">
+                                                                    <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
+                                                                </a>
+                                                                <a class="my-2 color-i" href="tel:+58{{substr($product->comercio->contactcellphone, 1)}}">
+                                                                    <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
+                                                                </a>
+                                                            @else
+                                                                <a href="/initsession" class="btn btn-sale text-center">Comprar ahora</a>
+                                                            @endauth
+                                                        </div>
                                                     @endif
                                                     </div>
                                                     <br>                                                     
