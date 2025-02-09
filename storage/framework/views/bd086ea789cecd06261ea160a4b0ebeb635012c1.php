@@ -241,117 +241,150 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <!--  Fotos y video -->
                                         <div class="col-xl-6 col-md-6">
-                                            <div style="overflow-y: auto; max-height: 600px;">
-                                            
-                                            <div class="form-group">
-                                                <label for="customFile">Imagen 1</label>
-                                                <div class="custom-file">
-                                                    <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
-                                                        <input wire:model="photo1" type="file" class="custom-file-input" id="customFile">
-                                                        <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
-                                                            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
-                                                                <span class="sr-only">40% Completo (exito)</span>
+                                            <div style="overflow-y: auto; max-height: 600px;">                                            
+                                                <div class="form-group">
+                                                    <label for="customFile">Imagen 1</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo1" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            <?php if($photo1): ?>
+                                                            <?php echo e($photo1->getClientOriginalName()); ?>
+
+                                                            <?php else: ?>
+                                                            Seleccione la imagen
+                                                            <?php endif; ?>
+                                                        </label>
                                                     </div>
-                                                    <label class="custom-file-label" for="customFile">
-                                                        <?php if($photo1): ?>
-                                                        <?php echo e($photo1->getClientOriginalName()); ?>
 
-                                                        <?php else: ?>
-                                                        Seleccione la imagen
-                                                        <?php endif; ?>
-                                                    </label>
+                                                    <?php if($photo1): ?>
+                                                    <img src="<?php echo e($photo1->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php else: ?>
+                                                    <img src="<?php echo e($state['image1_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php endif; ?>
                                                 </div>
-
-                                                <?php if($photo1): ?>
-                                                <img src="<?php echo e($photo1->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
-                                                <?php else: ?>
-                                                <img src="<?php echo e($state['image1_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
-                                                <?php endif; ?>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="customFile">Imagen 2</label>
-                                                <div class="custom-file">
-                                                    <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
-                                                        <input wire:model="photo2" type="file" class="custom-file-input" id="customFile">
-                                                        <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
-                                                            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
-                                                                <span class="sr-only">40% Completo (exito)</span>
+                                                <div class="form-group">
+                                                    <label for="customFile">Imagen 2</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo2" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            <?php if($photo2): ?>
+                                                            <?php echo e($photo2->getClientOriginalName()); ?>
+
+                                                            <?php else: ?>
+                                                            Seleccione la imagen
+                                                            <?php endif; ?>
+                                                        </label>
                                                     </div>
-                                                    <label class="custom-file-label" for="customFile">
-                                                        <?php if($photo2): ?>
-                                                        <?php echo e($photo2->getClientOriginalName()); ?>
 
-                                                        <?php else: ?>
-                                                        Seleccione la imagen
-                                                        <?php endif; ?>
-                                                    </label>
+                                                    <?php if($photo2): ?>
+                                                    <img src="<?php echo e($photo2->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php else: ?>
+                                                    <img src="<?php echo e($state['image2_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php endif; ?>
                                                 </div>
-
-                                                <?php if($photo2): ?>
-                                                <img src="<?php echo e($photo2->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
-                                                <?php else: ?>
-                                                <img src="<?php echo e($state['image2_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
-                                                <?php endif; ?>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="customFile">Imagen 3</label>
-                                                <div class="custom-file">
-                                                    <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
-                                                        <input wire:model="photo3" type="file" class="custom-file-input" id="customFile">
-                                                        <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
-                                                            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
-                                                                <span class="sr-only">40% Completo (exito)</span>
+                                                <div class="form-group">
+                                                    <label for="customFile">Imagen 3</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo3" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            <?php if($photo3): ?>
+                                                            <?php echo e($photo3->getClientOriginalName()); ?>
+
+                                                            <?php else: ?>
+                                                            Seleccione la imagen
+                                                            <?php endif; ?>
+                                                        </label>
                                                     </div>
-                                                    <label class="custom-file-label" for="customFile">
-                                                        <?php if($photo3): ?>
-                                                        <?php echo e($photo3->getClientOriginalName()); ?>
 
-                                                        <?php else: ?>
-                                                        Seleccione la imagen
-                                                        <?php endif; ?>
-                                                    </label>
+                                                    <?php if($photo3): ?>
+                                                    <img src="<?php echo e($photo3->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php else: ?>
+                                                    <img src="<?php echo e($state['image3_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php endif; ?>
                                                 </div>
-
-                                                <?php if($photo3): ?>
-                                                <img src="<?php echo e($photo3->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
-                                                <?php else: ?>
-                                                <img src="<?php echo e($state['image3_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
-                                                <?php endif; ?>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="customFile">Imagen 4</label>
-                                                <div class="custom-file">
-                                                    <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
-                                                        <input wire:model="photo4" type="file" class="custom-file-input" id="customFile">
-                                                        <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
-                                                            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
-                                                                <span class="sr-only">40% Completo (exito)</span>
+                                                <div class="form-group">
+                                                    <label for="customFile">Imagen 4</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo4" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            <?php if($photo4): ?>
+                                                            <?php echo e($photo4->getClientOriginalName()); ?>
+
+                                                            <?php else: ?>
+                                                            Seleccione la imagen
+                                                            <?php endif; ?>
+                                                        </label>
                                                     </div>
-                                                    <label class="custom-file-label" for="customFile">
-                                                        <?php if($photo4): ?>
-                                                        <?php echo e($photo4->getClientOriginalName()); ?>
 
-                                                        <?php else: ?>
-                                                        Seleccione la imagen
-                                                        <?php endif; ?>
-                                                    </label>
+                                                    <?php if($photo4): ?>
+                                                    <img src="<?php echo e($photo4->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php else: ?>
+                                                    <img src="<?php echo e($state['image4_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    <?php endif; ?>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="customFile">Video</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="video" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            <?php if($video): ?>
+                                                            <?php echo e($video->getClientOriginalName()); ?>
 
-                                                <?php if($photo4): ?>
-                                                <img src="<?php echo e($photo4->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
-                                                <?php else: ?>
-                                                <img src="<?php echo e($state['image4_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
-                                                <?php endif; ?>
-                                            </div>
+                                                            <?php else: ?>
+                                                            Seleccione el video
+                                                            <?php endif; ?>
+                                                        </label>
+                                                    </div>
 
+                                                    <?php if($video): ?>
+                                                    <video class="img d-block mt-2 w-100 rounded" style="width:280px !important;" controls>
+                                                        <source src="<?php echo e($video->temporaryUrl()); ?>" type="video/mp4">
+                                                        <source src="<?php echo e($video->temporaryUrl()); ?>" type="video/webm">
+                                                        <!-- Texto alternativo -->
+                                                    </video>
+                                                    <?php else: ?>
+                                                    <video class="img d-block mt-2 w-100 rounded" style="width:280px !important;" controls>
+                                                        <source src="<?php echo e($state['video_url'] ?? ''); ?>" type="video/mp4">
+                                                        <source src="<?php echo e($state['video_url'] ?? ''); ?>" type="video/webm">
+                                                        <!-- Texto alternativo -->
+                                                    </video>
+                                                    <?php endif; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

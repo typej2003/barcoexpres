@@ -17,6 +17,9 @@ class ViewDetails extends AdminComponent
 
     public $is_boat = false;    
 
+    public $class1 = '';
+    public $class2 = 'd-none';
+
     public function mount($productId)
     {
         $this->embarcacion_id = $productId;
@@ -29,7 +32,14 @@ class ViewDetails extends AdminComponent
     }
     public function cambiarSrc($src)
     {
+        $this->class1 = '';
+        $this->class2 = 'd-none';
         $this->dispatchBrowserEvent('addSrc', ['src' => $src]);
+    }
+    public function cambiarSrcV()
+    {
+        $this->class1 = 'd-none';
+        $this->class2 = '';
     }
 
     public function render()

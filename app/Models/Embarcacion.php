@@ -92,6 +92,7 @@ class Embarcacion extends Model
         'image2_url',
         'image3_url',
         'image4_url',
+        'video_url',
     ];
         
     public function valoracionBoat()
@@ -101,36 +102,6 @@ class Embarcacion extends Model
             'class' => 'star',
             'comment' => '',
         ]);
-    }
-
-    public function manufacturer()
-    {
-        return $this->hasOne(Manufacturer::class, 'manufacturer_id', 'id');
-    }
-
-    public function categories()
-    {
-        return $this->hasMany(Category::class, 'id', 'category_id');
-    }
-
-    public function subcategories()
-    {
-        return $this->hasMany(Subcategory::class, 'subcategory_id', 'id');
-    }
-
-    public function user()
-    {
-        return $this->hasOne(User::class, 'id', 'user_id');
-    }
-
-    public function comercio()
-    {
-        return $this->hasOne(Comercio::class, 'id', 'comercio_id');
-    }
-
-    public function area()
-    {
-        return $this->hasOne(Area::class, 'id', 'area_id');
     }
 
     public function getImage1UrlAttribute()
@@ -161,6 +132,14 @@ class Embarcacion extends Model
     {
         if ($this->image_path4 && Storage::disk('avatarsboats')->exists($this->image_path4)) {   
             return Storage::disk('avatarsboats')->url($this->image_path4);
+        }
+        return asset('noimage.png');
+    }
+
+    public function getVideoUrlAttribute()
+    {
+        if ($this->video_path1 && Storage::disk('avatarsboats')->exists($this->video_path1)) {   
+            return Storage::disk('avatarsboats')->url($this->video_path1);
         }
         return asset('noimage.png');
     }
@@ -350,6 +329,36 @@ class Embarcacion extends Model
         $categorias = CategoriesProduct::where('product_id', $this->id)->where('comercio_id', $this->comercio_id)->get();
         return $categorias;
         
+    }
+
+    public function manufacturer()
+    {
+        return $this->hasOne(Manufacturer::class, 'manufacturer_id', 'id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'id', 'category_id');
+    }
+
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategory::class, 'subcategory_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function comercio()
+    {
+        return $this->hasOne(Comercio::class, 'id', 'comercio_id');
+    }
+
+    public function area()
+    {
+        return $this->hasOne(Area::class, 'id', 'area_id');
     }
 
 }

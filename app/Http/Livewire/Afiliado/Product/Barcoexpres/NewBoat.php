@@ -33,6 +33,7 @@ class NewBoat extends AdminComponent
     public $photo2;
     public $photo3;
     public $photo4;
+    public $video;
 
     public  $disabled = '';
 
@@ -200,6 +201,16 @@ class NewBoat extends AdminComponent
             ); 
 		}
 
+        if ($this->video) {
+            // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+			if (Storage::disk('avatarsboats')->exists($this->embarcacion->video_path1)) {
+				Storage::disk('avatarsboats')->delete($this->embarcacion->video_path1);
+			}
+			$validatedData['video_path1'] = $this->video->storeAs(null,
+                $this->video->getClientOriginalName(), 'avatarsboats'
+            );     
+		}
+
         $comercio = Comercio::find($this->comercio_id);
 
         $validatedData['user_id'] = $comercio->user_id;
@@ -323,6 +334,16 @@ class NewBoat extends AdminComponent
 			}
 			$validatedData['image_path4'] = $this->photo4->storeAs(null,
                 $filename . '-4.png', 'avatarsboats'
+            );     
+		}
+
+        if ($this->video) {
+            // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+			if (Storage::disk('avatarsboats')->exists($this->embarcacion->video_path1)) {
+				Storage::disk('avatarsboats')->delete($this->embarcacion->video_path1);
+			}
+			$validatedData['video_path1'] = $this->video->storeAs(null,
+                $this->video->getClientOriginalName(), 'avatarsboats'
             );     
 		}
 
