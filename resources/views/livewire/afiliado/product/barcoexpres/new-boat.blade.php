@@ -256,8 +256,9 @@
                                                     <img src="{{ $state['image4_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
                                                     @endif
                                                 </div>
+                                                <!-- nuevo imagenes-->
                                                 <div class="form-group">
-                                                    <label for="customFile">Imagen 4</label>
+                                                    <label for="customFile">Imagen 5</label>
                                                     <div class="custom-file">
                                                         <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                             <input wire:model="photo5" type="file" class="custom-file-input" id="customFile">
@@ -283,7 +284,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="customFile">Imagen 4</label>
+                                                    <label for="customFile">Imagen 6</label>
                                                     <div class="custom-file">
                                                         <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                             <input wire:model="photo6" type="file" class="custom-file-input" id="customFile">
@@ -309,7 +310,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="customFile">Imagen 4</label>
+                                                    <label for="customFile">Imagen 7</label>
                                                     <div class="custom-file">
                                                         <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                             <input wire:model="photo7" type="file" class="custom-file-input" id="customFile">
@@ -335,7 +336,7 @@
                                                     @endif
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="customFile">Imagen 4</label>
+                                                    <label for="customFile">Imagen 8</label>
                                                     <div class="custom-file">
                                                         <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
                                                             <input wire:model="photo8" type="file" class="custom-file-input" id="customFile">
