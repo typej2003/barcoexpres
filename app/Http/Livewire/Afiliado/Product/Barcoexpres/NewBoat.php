@@ -116,7 +116,7 @@ class NewBoat extends AdminComponent
         $code = Embarcacion::where('code', $this->state['code'])->where('comercio_id', $this->comercio_id)->first();
 
         if($code){
-            if($this->embarcacion_id !== $code->id ){
+            if(intval($this->embarcacion_id) !== $code->id ){
                 $this->disabled = 'disabled';
             }else{
                 $this->disabled = '';    
