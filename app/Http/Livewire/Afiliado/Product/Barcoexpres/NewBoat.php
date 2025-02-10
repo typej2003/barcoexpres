@@ -33,6 +33,11 @@ class NewBoat extends AdminComponent
     public $photo2;
     public $photo3;
     public $photo4;
+    public $photo5;
+    public $photo6;
+    public $photo7;
+    public $photo8;
+
     public $video;
 
     public  $disabled = '';
@@ -185,19 +190,43 @@ class NewBoat extends AdminComponent
         if ($this->photo2) {
 			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
             $validatedData['image_path2'] = $this->photo2->storeAs(null,
-                $filename . '-1.png', 'avatarsboats'
+                $filename . '-2.png', 'avatarsboats'
             ); 
 		}
         if ($this->photo3) {
 			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
             $validatedData['image_path3'] = $this->photo3->storeAs(null,
-                $filename . '-1.png', 'avatarsboats'
+                $filename . '-3.png', 'avatarsboats'
             ); 
 		}
         if ($this->photo4) {
 			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
             $validatedData['image_path4'] = $this->photo4->storeAs(null,
-                $filename . '-1.png', 'avatarsboats'
+                $filename . '-4.png', 'avatarsboats'
+            ); 
+		}
+        if ($this->photo5) {
+			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
+            $validatedData['image_path5'] = $this->photo5->storeAs(null,
+                $filename . '-5.png', 'avatarsboats'
+            ); 
+		}
+        if ($this->photo6) {
+			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
+            $validatedData['image_path6'] = $this->photo6->storeAs(null,
+                $filename . '-6.png', 'avatarsboats'
+            ); 
+		}
+        if ($this->photo7) {
+			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
+            $validatedData['image_path7'] = $this->photo7->storeAs(null,
+                $filename . '-7.png', 'avatarsboats'
+            ); 
+		}
+        if ($this->photo8) {
+			//$validatedData['image_path1'] = $this->photo->store('/', 'avatarsproducts');
+            $validatedData['image_path8'] = $this->photo8->storeAs(null,
+                $filename . '-8.png', 'avatarsboats'
             ); 
 		}
 
@@ -334,6 +363,46 @@ class NewBoat extends AdminComponent
 			}
 			$validatedData['image_path4'] = $this->photo4->storeAs(null,
                 $filename . '-4.png', 'avatarsboats'
+            );     
+		}
+
+        if ($this->photo5) {
+            // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+			if (Storage::disk('avatarsboats')->exists($this->embarcacion->image_path5)) {
+				Storage::disk('avatarsboats')->delete($this->embarcacion->image_path5);
+			}
+			$validatedData['image_path5'] = $this->photo4->storeAs(null,
+                $filename . '-5.png', 'avatarsboats'
+            );     
+		}
+
+        if ($this->photo6) {
+            // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+			if (Storage::disk('avatarsboats')->exists($this->embarcacion->image_path6)) {
+				Storage::disk('avatarsboats')->delete($this->embarcacion->image_path6);
+			}
+			$validatedData['image_path6'] = $this->photo6->storeAs(null,
+                $filename . '-6.png', 'avatarsboats'
+            );     
+		}
+
+        if ($this->photo7) {
+            // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+			if (Storage::disk('avatarsboats')->exists($this->embarcacion->image_path7)) {
+				Storage::disk('avatarsboats')->delete($this->embarcacion->image_path7);
+			}
+			$validatedData['image_path7'] = $this->photo7->storeAs(null,
+                $filename . '-7.png', 'avatarsboats'
+            );     
+		}
+
+        if ($this->photo8) {
+            // $validatedData['avatar'] = $this->photo->store('/', 'avatarscomercios');
+			if (Storage::disk('avatarsboats')->exists($this->embarcacion->image_path8)) {
+				Storage::disk('avatarsboats')->delete($this->embarcacion->image_path8);
+			}
+			$validatedData['image_path8'] = $this->photo8->storeAs(null,
+                $filename . '-8.png', 'avatarsboats'
             );     
 		}
 

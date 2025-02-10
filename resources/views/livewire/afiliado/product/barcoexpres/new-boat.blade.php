@@ -257,6 +257,110 @@
                                                     @endif
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="customFile">Imagen 4</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo5" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            @if ($photo5)
+                                                            {{ $photo5->getClientOriginalName() }}
+                                                            @else
+                                                            Seleccione la imagen
+                                                            @endif
+                                                        </label>
+                                                    </div>
+
+                                                    @if ($photo5)
+                                                    <img src="{{ $photo5->temporaryUrl() }}" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    @else
+                                                    <img src="{{ $state['image5_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    @endif
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="customFile">Imagen 4</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo6" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            @if ($photo6)
+                                                            {{ $photo6->getClientOriginalName() }}
+                                                            @else
+                                                            Seleccione la imagen
+                                                            @endif
+                                                        </label>
+                                                    </div>
+
+                                                    @if ($photo4)
+                                                    <img src="{{ $photo6->temporaryUrl() }}" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    @else
+                                                    <img src="{{ $state['image6_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    @endif
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="customFile">Imagen 4</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo7" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            @if ($photo7)
+                                                            {{ $photo7->getClientOriginalName() }}
+                                                            @else
+                                                            Seleccione la imagen
+                                                            @endif
+                                                        </label>
+                                                    </div>
+
+                                                    @if ($photo7)
+                                                    <img src="{{ $photo7->temporaryUrl() }}" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    @else
+                                                    <img src="{{ $state['image7_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    @endif
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="customFile">Imagen 4</label>
+                                                    <div class="custom-file">
+                                                        <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                            <input wire:model="photo8" type="file" class="custom-file-input" id="customFile">
+                                                            <div x-show.transition="isUploading" class="progress progress-sm mt-2 rounded">
+                                                                <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" x-bind:style="`width: ${progress}%`">
+                                                                    <span class="sr-only">40% Completo (exito)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            @if ($photo8)
+                                                            {{ $photo8->getClientOriginalName() }}
+                                                            @else
+                                                            Seleccione la imagen
+                                                            @endif
+                                                        </label>
+                                                    </div>
+
+                                                    @if ($photo8)
+                                                    <img src="{{ $photo8->temporaryUrl() }}" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
+                                                    @else
+                                                    <img src="{{ $state['image8_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">
+                                                    @endif
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="customFile">Video</label>
                                                     <div class="custom-file">
                                                         <div x-data="{ isUploading: false, progress: 5 }" x-on:livewire-upload-start="isUploading = true" x-on:livewire-upload-finish="isUploading = false; progress = 5" x-on:livewire-upload-error="isUploading = false" x-on:livewire-upload-progress="progress = $event.detail.progress">

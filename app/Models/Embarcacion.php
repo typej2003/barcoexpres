@@ -33,6 +33,11 @@ class Embarcacion extends Model
         'image_path2',
         'image_path3',
         'image_path4',
+        'image_path5',
+        'image_path6',
+        'image_path7',
+        'image_path8',
+
         'video_path1',
         'manufacturer_id',
         'details1',
@@ -132,6 +137,38 @@ class Embarcacion extends Model
     {
         if ($this->image_path4 && Storage::disk('avatarsboats')->exists($this->image_path4)) {   
             return Storage::disk('avatarsboats')->url($this->image_path4);
+        }
+        return asset('noimage.png');
+    }
+
+    public function getImage5UrlAttribute()
+    {
+        if ($this->image_path5 && Storage::disk('avatarsboats')->exists($this->image_path5)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path5);
+        }
+        return asset('noimage.png');
+    }
+
+    public function getImage6UrlAttribute()
+    {
+        if ($this->image_path6 && Storage::disk('avatarsboats')->exists($this->image_path6)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path6);
+        }
+        return asset('noimage.png');
+    }
+
+    public function getImage7UrlAttribute()
+    {
+        if ($this->image_path7 && Storage::disk('avatarsboats')->exists($this->image_path7)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path7);
+        }
+        return asset('noimage.png');
+    }
+
+    public function getImage8UrlAttribute()
+    {
+        if ($this->image_path8 && Storage::disk('avatarsboats')->exists($this->image_path8)) {   
+            return Storage::disk('avatarsboats')->url($this->image_path8);
         }
         return asset('noimage.png');
     }
