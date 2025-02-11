@@ -303,7 +303,7 @@
                                                         </label>
                                                     </div>
 
-                                                    @if ($photo4)
+                                                    @if ($photo6)
                                                     <img src="{{ $photo6->temporaryUrl() }}" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
                                                     @else
                                                     <img src="{{ $state['image6_url'] ?? '' }}" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">

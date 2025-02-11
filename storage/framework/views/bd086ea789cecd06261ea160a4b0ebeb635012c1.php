@@ -399,7 +399,7 @@ unset($__errorArgs, $__bag); ?>
                                                         </label>
                                                     </div>
 
-                                                    <?php if($photo4): ?>
+                                                    <?php if($photo6): ?>
                                                     <img src="<?php echo e($photo6->temporaryUrl()); ?>" class="img d-block mt-2 w-100 rounded" style="width:280px !important;">
                                                     <?php else: ?>
                                                     <img src="<?php echo e($state['image6_url'] ?? ''); ?>" class="img d-block mb-2 w-100 rounded" style="width:280px !important;">

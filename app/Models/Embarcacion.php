@@ -97,6 +97,10 @@ class Embarcacion extends Model
         'image2_url',
         'image3_url',
         'image4_url',
+        'image5_url',
+        'image6_url',
+        'image7_url',
+        'image8_url',        
         'video_url',
     ];
         
