@@ -76,13 +76,21 @@
                 <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <?php if($promocionFirst): ?>
-                            <?php if($promocionFirst->embarcacion_id !== 0): ?>
-                            <a href="/routedetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
+                            <?php if(auth()->guard()->check()): ?>
+                                <?php if($promocionFirst): ?>
+                                    <?php if($promocionFirst->embarcacion_id !== 0): ?>
+                                        <a href="/routedetails/<?php echo e($promocionFirst->comercio_id); ?>/<?php echo e($promocionFirst->embarcacion_id); ?>"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
+                                    <?php else: ?>
+                                        <a href="/"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0 slide"></a>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             <?php else: ?>
-                            <a href="/"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0 slide"></a>
-                            <?php endif; ?>
-                            <?php endif; ?>
+                                <?php if($promocionFirst->embarcacion_id !== 0): ?>
+                                    <a href="/initsession"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0  slide"></a>
+                                <?php else: ?>
+                                    <a href="/initsession"><img class="img1Promocion" src="<?php echo e($promocionFirst->avatar_url); ?>" alt="0 slide"></a>
+                                <?php endif; ?>
+                            <?php endif; ?>                            
                         </div>
                         <?php $__currentLoopData = $promociones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clave => $promocion): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="carousel-item">

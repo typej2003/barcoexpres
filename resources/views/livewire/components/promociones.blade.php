@@ -76,13 +76,21 @@
                 <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            @if($promocionFirst)
-                            @if($promocionFirst->embarcacion_id !== 0)
-                            <a href="/routedetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
+                            @auth
+                                @if($promocionFirst)
+                                    @if($promocionFirst->embarcacion_id !== 0)
+                                        <a href="/routedetails/{{ $promocionFirst->comercio_id }}/{{ $promocionFirst->embarcacion_id }}"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
+                                    @else
+                                        <a href="/"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0 slide"></a>
+                                    @endif
+                                @endif
                             @else
-                            <a href="/"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0 slide"></a>
-                            @endif
-                            @endif
+                                @if($promocionFirst->embarcacion_id !== 0)
+                                    <a href="/initsession"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0  slide"></a>
+                                @else
+                                    <a href="/initsession"><img class="img1Promocion" src="{{ $promocionFirst->avatar_url }}" alt="0 slide"></a>
+                                @endif
+                            @endauth                            
                         </div>
                         @foreach($promociones as $clave => $promocion)
                         <div class="carousel-item">
