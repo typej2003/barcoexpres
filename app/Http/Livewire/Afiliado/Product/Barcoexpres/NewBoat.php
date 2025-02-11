@@ -376,7 +376,7 @@ class NewBoat extends AdminComponent
 			if (Storage::disk('avatarsboats')->exists($this->embarcacion->image_path5)) {
 				Storage::disk('avatarsboats')->delete($this->embarcacion->image_path5);
 			}
-			$validatedData['image_path5'] = $this->photo4->storeAs(null,
+			$validatedData['image_path5'] = $this->photo5->storeAs(null,
                 $filename . '-5.png', 'avatarsboats'
             );     
 		}
