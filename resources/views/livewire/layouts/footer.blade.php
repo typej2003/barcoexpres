@@ -1,3 +1,9 @@
+<style>
+@media only screen and (max-width: 1070px) {  
+
+}
+</style>
+
 <div class="navbar navbar-fixed-bottom footer-navigation">
 	@livewire('components.navigation-map', ['comercio_id' => $comercio_id])
 	<div class="footer footer-color">  

@@ -1,3 +1,9 @@
+<style>
+@media  only screen and (max-width: 1070px) {  
+
+}
+</style>
+
 <div class="navbar navbar-fixed-bottom footer-navigation">
 	<?php
 if (! isset($_instance)) {

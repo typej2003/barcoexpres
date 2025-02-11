@@ -375,6 +375,10 @@
 
     .w-full{display: none!important; }
 
+    .footer-navigation{
+      margin-left: 0px;
+    }
+
   } 
   .text-titulo {
     color: #FC5E27 !important;
