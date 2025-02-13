@@ -179,9 +179,8 @@
                                     <div class="h-50" style="height: 45px !important;"></div>
                                     <?php endif; ?>
                                 </div>
-                                <?php if($product->in_cart > 0): ?>
                                 <div class="col-md-6 d-flex justify-content-start">
-                                    <?php if($product->incart > 0): ?>
+                                    <?php if($product->in_cart > 0): ?>
                                         <button class="btn btn-sale m-2"><i class="text-white fa fa-shopping-cart" aria-hidden="true"></i> Comprar</button>
                                     <?php else: ?>
                                         <div class="d-flex align-item-start">
@@ -198,16 +197,7 @@
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                <?php else: ?>
-                                <div class="col-md-6 d-flex justify-content-start">                                
-                                    <a class="my-2 mx-3 color-i" href="mailto:<?php echo e($product->comercio->email); ?>">
-                                        <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i> Correo
-                                    </a>
-                                    <a class="my-2 color-i" href="tel:+58<?php echo e(substr($product->comercio->contactcellphone, 1)); ?>">
-                                        <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i> Llamar                                    
-                                    </a>
-                                </div>
-                                <?php endif; ?>
+                                
                                 <div class="col-md-3 d-none">
                                     <button class="btn h-75  border border-secondary"><i class="fa fa-solid fa-heart"></i></button>                        
                                 </div>
