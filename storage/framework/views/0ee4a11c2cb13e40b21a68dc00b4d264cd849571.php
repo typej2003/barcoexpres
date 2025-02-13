@@ -98,11 +98,32 @@
                                 <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('<?php echo e($product->image4_url); ?>')">4</button>
                             </div>
                             <?php endif; ?>
+                            <?php if(!empty($product->image_path5)): ?>
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('<?php echo e($product->image5_url); ?>')">5</button>
+                            </div>
+                            <?php endif; ?>
+                            <?php if(!empty($product->image_path6)): ?>
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('<?php echo e($product->image6_url); ?>')">6</button>
+                            </div>
+                            <?php endif; ?>
+                            <?php if(!empty($product->image_path7)): ?>
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('<?php echo e($product->image7_url); ?>')">7</button>
+                            </div>
+                            <?php endif; ?>
+                            <?php if(!empty($product->image_path8)): ?>
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('<?php echo e($product->image8_url); ?>')">8</button>
+                            </div>
+                            <?php endif; ?>
                             <?php if(!empty($product->video_path1)): ?>
                             <div >
                                 <button class="btn btn-light border-1" wire:click.prevent="cambiarSrcV">Video</button>
                             </div>
                             <?php endif; ?>
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-12">

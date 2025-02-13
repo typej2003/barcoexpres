@@ -81,9 +81,10 @@ echo $html;
 ?>
                         </div>
                     </div>
-                    <div class="nav-overlay">
+                    <div class="nav-overlay d-none">
                         <div class="accordion-container">
                             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($this->validar($category)): ?>
                                     <?php if(count($category->subcategories()) == 0): ?>)
                                         <div class="set">
                                             <a class="Text-Uppercase" style="cursor:pointer;" href="<?php echo e(route('cat', [
@@ -112,7 +113,25 @@ echo $html;
                                                 </div>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                                            
                                         </div>
-                                    <?php endif; ?>                                
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>        
+                    </div>
+
+                    <div class="nav-overlay">
+                        <div class="accordion-container">
+                            <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($this->validar($menu)): ?>
+                                        <div class="set">
+                                            <a class="Text-Uppercase" style="cursor:pointer;" href="<?php echo e(route('cat', [
+                                                'categ' => $menu->texto,
+                                                ])); ?>" style="font-weight: bold; ">
+                                                <?php echo e($menu->texto); ?>
+
+                                            </a>
+                                        </div>
+                                <?php endif; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>        
                     </div>
@@ -140,10 +159,10 @@ echo $html;
                                 <div class="set d-none">
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a class="titulo" href="mailto:<?php echo e($comercio->email); ?>">CORREO</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a class="titulo" href="tel:+58<?php echo e(substr($comercio->contactcellphone, 1)); ?>">LLAMAR</a>
                                 </div>
                             <?php endif; ?>
@@ -184,10 +203,10 @@ echo $html;
                                 <div class="set d-none">
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a href="mailto:<?php echo e($comercio->email); ?>" class="titulo">CORREO</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a href="tel:+58<?php echo e(substr($comercio->contactcellphone, 1)); ?>" class="titulo">LLAMAR</a>
                                 </div>
                             </div>
@@ -225,7 +244,7 @@ echo $html;
                         </form>
                     </div>
                     <!-- Menu horizontal -->
-                    <ul class="menu-horizontal d-flex justify-content-between" style="z-index: 10!important;">
+                    <ul class="menu-horizontal d-flex justify-content-end" style="z-index: 10!important;">
                             <?php if(auth()->guard()->check()): ?>
                                 <li class="nav-item">
                                     <ul class="navbar-nav">
@@ -312,7 +331,7 @@ echo $html;
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li class="d-none">
                                 <div class="row">
                                     <div class="col-md-12 mx-2 ">
                                         <div class="centro d-flex flex-column color-i">
@@ -326,10 +345,10 @@ echo $html;
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li class="d-none">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="centro d-flex flex-column color-i">
+                                        <div class="centro d-flex flex-column color-i d-none">
                                             <a class="my-2 color-i" href="tel:+58<?php echo e(substr($comercio->contactcellphone, 1)); ?>">
                                                 <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
                                             </a>
@@ -347,7 +366,7 @@ echo $html;
                 <div class="menu" style="z-index: 6!important">
                     <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu text-bold">MENÚ</span></div> 
                         <div class="menu-center w-full ">
-                            <div class="d-flex justify-content-around ">
+                            <div class="d-flex justify-content-start ">
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('components.menu-component',[
@@ -430,13 +449,13 @@ if (! isset($_instance)) {
 echo $html;
 ?>
                                 </div>
-                                <div class="centro d-flex flex-column my-2 color-i h2">
+                                <div class="centro d-flex flex-column my-2 color-i h2 d-none">
                                     <a class="color-i titulo" href="mailto:<?php echo e($comercio->email); ?>">
                                         <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
                                     </a>
                                     
                                 </div>
-                                <div class="centro d-flex flex-column my-2 color-i h2">
+                                <div class="centro d-flex flex-column my-2 color-i h2 d-none">
                                     <a class="color-i titulo" href="tel:+58<?php echo e(substr($comercio->contactcellphone, 1)); ?>">
                                         <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
                                     </a>

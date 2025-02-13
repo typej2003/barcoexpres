@@ -3,6 +3,7 @@
         
     </style>
                 @foreach($menus as $menu)
+                @if($this->validar($menu))
                     <div class="dropdownM mx-1">
                         @if($menu->origen =='link') 
                             <form action="searchM" method="get" id="{{ $menu->texto }}">
@@ -36,6 +37,7 @@
                             </div>
                         @endif
                     </div>
+                @endif
                 @endforeach
 
                 <script>

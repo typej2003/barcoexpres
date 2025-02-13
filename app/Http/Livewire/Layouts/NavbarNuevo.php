@@ -10,6 +10,7 @@ use App\Models\Tasa;
 use App\Models\Setting;
 use App\Models\SettingUser;
 use App\Models\Menu; 
+use App\Models\Embarcacion; 
 
 class NavbarNuevo extends Component
 {
@@ -103,6 +104,25 @@ class NavbarNuevo extends Component
             
         }
         
+    }
+
+    public function validar($categoria)
+    {
+        $texto = $categoria->name;
+        
+        $search = Embarcacion::where(function($q) use ($texto){
+            $q->where('artepesca','like', '%'. $texto . '%')
+                ->orwhereHas('categorias', function($q) use ($texto){
+                    $q->where('name','like', '%'. $texto . '%');
+                });                
+        })->get();
+
+        if($search->count() > 0)
+        {
+            return true;
+        }else{
+            return false;
+        }        
     }
 
     public function emitCurrency($currencyValue)

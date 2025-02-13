@@ -382,6 +382,11 @@ class Embarcacion extends Model
         return $this->hasMany(Category::class, 'id', 'category_id');
     }
 
+    public function categorias()
+    {
+        return $this->hasMany(Category::class, 'id', 'category_id');
+    }
+
     public function subcategories()
     {
         return $this->hasMany(Subcategory::class, 'subcategory_id', 'id');

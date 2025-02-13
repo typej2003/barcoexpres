@@ -3,6 +3,7 @@
         
     </style>
                 <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if($this->validar($menu)): ?>
                     <div class="dropdownM mx-1">
                         <?php if($menu->origen =='link'): ?> 
                             <form action="searchM" method="get" id="<?php echo e($menu->texto); ?>">
@@ -36,6 +37,7 @@
                             </div>
                         <?php endif; ?>
                     </div>
+                <?php endif; ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 <script>

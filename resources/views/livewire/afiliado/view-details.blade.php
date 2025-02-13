@@ -97,11 +97,32 @@
                                 <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image4_url }}')">4</button>
                             </div>
                             @endif
+                            @if(!empty($product->image_path5))
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image5_url }}')">5</button>
+                            </div>
+                            @endif
+                            @if(!empty($product->image_path6))
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image6_url }}')">6</button>
+                            </div>
+                            @endif
+                            @if(!empty($product->image_path7))
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image7_url }}')">7</button>
+                            </div>
+                            @endif
+                            @if(!empty($product->image_path8))
+                            <div >
+                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image8_url }}')">8</button>
+                            </div>
+                            @endif
                             @if(!empty($product->video_path1))
                             <div >
                                 <button class="btn btn-light border-1" wire:click.prevent="cambiarSrcV">Video</button>
                             </div>
                             @endif
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-12">

@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Components;
 
 use App\Http\Livewire\Admin\AdminComponent;
+use App\Models\Embarcacion; 
+use App\Models\Category; 
 use App\Models\Menu; 
 
 class MenuComponent extends AdminComponent
@@ -25,8 +27,31 @@ class MenuComponent extends AdminComponent
         //dd($this->motor_id);
     }
 
+    public function validar($menu)
+    {
+        $texto = $menu->texto;
+        
+        $search = Embarcacion::where(function($q) use ($texto){
+            $q->where('artepesca','like', '%'. $texto . '%')
+                ->orwhereHas('categorias', function($q) use ($texto){
+                    $q->where('name','like', '%'. $texto . '%');
+                });                
+        })->get();
+
+        if($search->count() > 0)
+        {
+            return true;
+        }else{
+            return false;
+        }        
+    }
+
     public function render()
     {
+        $embarcacion = Embarcacion::all();
+
+        $array = $embarcacion->toArray();
+
 
         $menus = Menu::where('comercio_id', $this->comercio_id)
             ->where('menu', 1)

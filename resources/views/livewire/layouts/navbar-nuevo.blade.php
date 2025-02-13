@@ -67,9 +67,10 @@
                             @livewire('components.currency')
                         </div>
                     </div>
-                    <div class="nav-overlay">
+                    <div class="nav-overlay d-none">
                         <div class="accordion-container">
                             @foreach($categories as $category)
+                                @if($this->validar($category))
                                     @if(count($category->subcategories()) == 0))
                                         <div class="set">
                                             <a class="Text-Uppercase" style="cursor:pointer;" href="{{ route('cat', [
@@ -96,7 +97,24 @@
                                                 </div>
                                             @endforeach                                            
                                         </div>
-                                    @endif                                
+                                    @endif
+                                @endif
+                            @endforeach
+                        </div>        
+                    </div>
+
+                    <div class="nav-overlay">
+                        <div class="accordion-container">
+                            @foreach($menus as $menu)
+                                @if($this->validar($menu))
+                                        <div class="set">
+                                            <a class="Text-Uppercase" style="cursor:pointer;" href="{{ route('cat', [
+                                                'categ' => $menu->texto,
+                                                ]) }}" style="font-weight: bold; ">
+                                                {{$menu->texto}}
+                                            </a>
+                                        </div>
+                                @endif
                             @endforeach
                         </div>        
                     </div>
@@ -124,10 +142,10 @@
                                 <div class="set d-none">
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a class="titulo" href="mailto:{{$comercio->email}}">CORREO</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a class="titulo" href="tel:+58{{substr($comercio->contactcellphone, 1)}}">LLAMAR</a>
                                 </div>
                             @endguest
@@ -167,10 +185,10 @@
                                 <div class="set d-none">
                                     <a href="" class="titulo">COMPRAS</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a href="mailto:{{$comercio->email}}" class="titulo">CORREO</a>
                                 </div>
-                                <div class="set">
+                                <div class="set d-none">
                                     <a href="tel:+58{{substr($comercio->contactcellphone, 1)}}" class="titulo">LLAMAR</a>
                                 </div>
                             </div>
@@ -208,7 +226,7 @@
                         </form>
                     </div>
                     <!-- Menu horizontal -->
-                    <ul class="menu-horizontal d-flex justify-content-between" style="z-index: 10!important;">
+                    <ul class="menu-horizontal d-flex justify-content-end" style="z-index: 10!important;">
                             @auth
                                 <li class="nav-item">
                                     <ul class="navbar-nav">
@@ -281,7 +299,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li class="d-none">
                                 <div class="row">
                                     <div class="col-md-12 mx-2 ">
                                         <div class="centro d-flex flex-column color-i">
@@ -295,10 +313,10 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <li class="d-none">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="centro d-flex flex-column color-i">
+                                        <div class="centro d-flex flex-column color-i d-none">
                                             <a class="my-2 color-i" href="tel:+58{{substr($comercio->contactcellphone, 1)}}">
                                                 <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>                                                
                                             </a>
@@ -316,7 +334,7 @@
                 <div class="menu" style="z-index: 6!important">
                     <div class="menu-left" onclick="openNav()">&#9776; <span class="wordMenu text-bold">MENÚ</span></div> 
                         <div class="menu-center w-full ">
-                            <div class="d-flex justify-content-around ">
+                            <div class="d-flex justify-content-start ">
                             @livewire('components.menu-component',[
                                 'comercioId' => 1,
                             ])
@@ -355,13 +373,13 @@
                                     </a>
                                     @livewire('carrito.cart-drop')
                                 </div>
-                                <div class="centro d-flex flex-column my-2 color-i h2">
+                                <div class="centro d-flex flex-column my-2 color-i h2 d-none">
                                     <a class="color-i titulo" href="mailto:{{$comercio->email}}">
                                         <i class="fas fa-regular fa-envelope mx-auto fa-lg" title="Correo"></i>
                                     </a>
                                     
                                 </div>
-                                <div class="centro d-flex flex-column my-2 color-i h2">
+                                <div class="centro d-flex flex-column my-2 color-i h2 d-none">
                                     <a class="color-i titulo" href="tel:+58{{substr($comercio->contactcellphone, 1)}}">
                                         <i class="fas fa-solid fa-phone mx-auto fa-lg" title="Llamar"></i>
                                     </a>
