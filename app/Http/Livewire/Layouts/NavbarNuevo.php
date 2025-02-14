@@ -106,9 +106,9 @@ class NavbarNuevo extends Component
         
     }
 
-    public function validar($categoria)
+    public function validar1($menu)
     {
-        $texto = $categoria->name;
+        $texto = $menu->texto;
         
         $search = Embarcacion::where(function($q) use ($texto){
             $q->where('artepesca','like', '%'. $texto . '%')

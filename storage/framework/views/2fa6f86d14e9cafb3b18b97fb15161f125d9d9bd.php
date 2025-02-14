@@ -84,7 +84,7 @@ echo $html;
                     <div class="nav-overlay d-none">
                         <div class="accordion-container">
                             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($this->validar($category)): ?>
+                                <?php if($this->validar1($category)): ?>
                                     <?php if(count($category->subcategories()) == 0): ?>)
                                         <div class="set">
                                             <a class="Text-Uppercase" style="cursor:pointer;" href="<?php echo e(route('cat', [
@@ -121,8 +121,9 @@ echo $html;
 
                     <div class="nav-overlay">
                         <div class="accordion-container">
+                            <div class="set texto Text-Uppercase">Embarcaciones de pesca</div>
                             <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($this->validar($menu)): ?>
+                                <?php if($this->validar1($menu)): ?>
                                         <div class="set">
                                             <a class="Text-Uppercase" style="cursor:pointer;" href="<?php echo e(route('cat', [
                                                 'categ' => $menu->texto,

@@ -70,7 +70,7 @@
                     <div class="nav-overlay d-none">
                         <div class="accordion-container">
                             @foreach($categories as $category)
-                                @if($this->validar($category))
+                                @if($this->validar1($category))
                                     @if(count($category->subcategories()) == 0))
                                         <div class="set">
                                             <a class="Text-Uppercase" style="cursor:pointer;" href="{{ route('cat', [
@@ -105,8 +105,9 @@
 
                     <div class="nav-overlay">
                         <div class="accordion-container">
+                            <div class="set texto Text-Uppercase">Embarcaciones de pesca</div>
                             @foreach($menus as $menu)
-                                @if($this->validar($menu))
+                                @if($this->validar1($menu))
                                         <div class="set">
                                             <a class="Text-Uppercase" style="cursor:pointer;" href="{{ route('cat', [
                                                 'categ' => $menu->texto,
