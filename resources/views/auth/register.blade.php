@@ -71,7 +71,7 @@
                     
                 </div>
 
-                <div class="form-group">
+                <div class="form-group my-3">
                     <label for="documento">Nombres <span class="text-danger">*</span></label>
                     <div class="input-group mb-3">                
                         <input type="text" name="names" class="form-control" placeholder="Nombres">
