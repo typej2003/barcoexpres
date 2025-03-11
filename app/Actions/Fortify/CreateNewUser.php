@@ -27,7 +27,8 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'identificationNac' => ['required', 'string', 'max:1'],
             'identificationNumber' => ['required', 'string', 'max:12'],
-            'name' => ['required', 'string', 'max:255'],
+            'names' => ['required', 'string', 'max:255'],
+            'surnames' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -48,7 +49,8 @@ class CreateNewUser implements CreatesNewUsers
         $user = User::create([
             'identificationNac' => $input['identificationNac'],
             'identificationNumber' => $input['identificationNumber'],
-            'name' => $input['name'],
+            'names' => $input['name'],
+            'surnames' => $input['surname'],
             'email' => $input['email'],
             'role' => $input['role'],
             'active' => $active,

@@ -111,7 +111,10 @@ class NavbarNuevo extends Component
         $texto = $menu->texto;
         
         $search = Embarcacion::where(function($q) use ($texto){
-            $q->where('artepesca','like', '%'. $texto . '%')
+            $q->where(function($s) use ($texto){
+                $s->where('artepesca','like', '%'. $texto . '%')
+                ->orWhere('details1', 'like', '%'. $texto . '%');
+            })
                 ->orwhereHas('categorias', function($q) use ($texto){
                     $q->where('name','like', '%'. $texto . '%');
                 });                

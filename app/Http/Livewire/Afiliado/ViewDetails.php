@@ -29,6 +29,8 @@ class ViewDetails extends AdminComponent
             $this->is_boat = $this->embarcacion_id;
         
         $this->currencyValue = request()->cookie('currency');
+
+        session()->put('previous_url', url()->previous());
     }
     public function cambiarSrc($src)
     {

@@ -72,15 +72,37 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="documento">Usuario <span class="text-danger">*</span></label>
+                    <label for="documento">Nombres <span class="text-danger">*</span></label>
                     <div class="input-group mb-3">                
-                        <input type="text" name="name" class="form-control" placeholder="Usuario">
+                        <input type="text" name="names" class="form-control" placeholder="Nombres">
                         <div class="input-group-append">
                             <div class="input-group-text titulo">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
-                        <?php $__errorArgs = ['name'];
+                        <?php $__errorArgs = ['names'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="text-danger"><?php echo e($message); ?></span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="documento">Apellidos <span class="text-danger">*</span></label>
+                    <div class="input-group mb-3">                
+                        <input type="text" name="surnames" class="form-control" placeholder="Apellidos">
+                        <div class="input-group-append">
+                            <div class="input-group-text titulo">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                        <?php $__errorArgs = ['surnames'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

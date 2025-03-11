@@ -72,15 +72,30 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="documento">Usuario <span class="text-danger">*</span></label>
+                    <label for="documento">Nombres <span class="text-danger">*</span></label>
                     <div class="input-group mb-3">                
-                        <input type="text" name="name" class="form-control" placeholder="Usuario">
+                        <input type="text" name="names" class="form-control" placeholder="Nombres">
                         <div class="input-group-append">
                             <div class="input-group-text titulo">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
-                        @error('name')
+                        @error('names')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="documento">Apellidos <span class="text-danger">*</span></label>
+                    <div class="input-group mb-3">                
+                        <input type="text" name="surnames" class="form-control" placeholder="Apellidos">
+                        <div class="input-group-append">
+                            <div class="input-group-text titulo">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                        @error('surnames')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

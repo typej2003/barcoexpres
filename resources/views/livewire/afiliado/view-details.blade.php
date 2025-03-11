@@ -13,6 +13,7 @@
                     
                 }   
             }
+
         </style>
         <head>
             @if(auth()->user())
@@ -79,44 +80,10 @@
                         <div class="row mx-1 d-flex row-cols-4">
                             @if(!empty($product->image_path1))
                             <div >
-                                <button class="btn btn-light border border-1" wire:click.prevent="cambiarSrc('{{ $product->image1_url }}')">1</button>
+                                <button class="btn btn-light border border-1" wire:click.prevent="cambiarSrc('{{ $product->image1_url }}')">Foto</button>
                             </div>
                             @endif
-                            @if(!empty($product->image_path2))
-                            <div >
-                                <button class="btn btn-light border border-1" wire:click.prevent="cambiarSrc('{{ $product->image2_url }}')">2</button>
-                            </div>
-                            @endif
-                            @if(!empty($product->image_path3))
-                            <div >
-                                <button class="btn btn-light" wire:click.prevent="cambiarSrc('{{ $product->image3_url }}')">3</button>
-                            </div>
-                            @endif
-                            @if(!empty($product->image_path4))
-                            <div >
-                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image4_url }}')">4</button>
-                            </div>
-                            @endif
-                            @if(!empty($product->image_path5))
-                            <div >
-                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image5_url }}')">5</button>
-                            </div>
-                            @endif
-                            @if(!empty($product->image_path6))
-                            <div >
-                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image6_url }}')">6</button>
-                            </div>
-                            @endif
-                            @if(!empty($product->image_path7))
-                            <div >
-                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image7_url }}')">7</button>
-                            </div>
-                            @endif
-                            @if(!empty($product->image_path8))
-                            <div >
-                                <button class="btn btn-light border-1" wire:click.prevent="cambiarSrc('{{ $product->image8_url }}')">8</button>
-                            </div>
-                            @endif
+                            
                             @if(!empty($product->video_path1))
                             <div >
                                 <button class="btn btn-light border-1" wire:click.prevent="cambiarSrcV">Video</button>
@@ -127,7 +94,59 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="d-flex" style="width:100%; height: 100%;" >
-                                    <img class="img-responsive mx-2 {{$class1}}" style="width:95%;" src="{{ $product->image1_url }}" alt="">
+                                    <!-- <img class="img-responsive mx-2 {{$class1}}" style="width:95%;" src="{{ $product->image1_url }}" alt=""> -->
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                                        <div class="carousel-inner">
+                                            @if(!empty($product->image_path1))
+                                                <div class="carousel-item active">
+                                                    <img src="{{ $product->image1_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                            @if(!empty($product->image_path2))
+                                                <div class="carousel-item">
+                                                    <img src="{{ $product->image2_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                            @if(!empty($product->image_path3))
+                                                <div class="carousel-item">
+                                                    <img src="{{ $product->image3_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                            @if(!empty($product->image_path4))
+                                                <div class="carousel-item">
+                                                    <img src="{{ $product->image4_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                            @if(!empty($product->image_path5))
+                                                <div class="carousel-item">
+                                                    <img src="{{ $product->image1_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                            @if(!empty($product->image_path6))
+                                                <div class="carousel-item">
+                                                    <img src="{{ $product->image6_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                            @if(!empty($product->image_path7))
+                                                <div class="carousel-item">
+                                                    <img src="{{ $product->image7_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                            @if(!empty($product->image_path8))
+                                                <div class="carousel-item">
+                                                    <img src="{{ $product->image8_url }}" style="width:95%; height: 200px;" alt="...">
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Before</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                        <span class="sr-only">Next</span>
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
                                     <video class="img-responsive mx-2  {{$class2}}" style="width:95%;" controls>
                                         <source src="{{$product->video_url}}" type="video/mp4">
                                         <source src="{{$product->video_url}}" type="video/webm">
