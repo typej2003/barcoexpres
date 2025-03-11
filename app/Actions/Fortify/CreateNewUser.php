@@ -49,8 +49,8 @@ class CreateNewUser implements CreatesNewUsers
         $user = User::create([
             'identificationNac' => $input['identificationNac'],
             'identificationNumber' => $input['identificationNumber'],
-            'names' => $input['name'],
-            'surnames' => $input['surname'],
+            'names' => $input['names'],
+            'surnames' => $input['surnames'],
             'email' => $input['email'],
             'role' => $input['role'],
             'active' => $active,
