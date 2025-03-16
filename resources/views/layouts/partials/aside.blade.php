@@ -435,6 +435,15 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ route('listCompras') }}" class="nav-link {{ request()->is('listCompras') ? 'active' : '' }}">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Compras
+                </p>
+              </a>
+            </li>
           @endif
 
           @if(auth()->user()->role == 'delivery')

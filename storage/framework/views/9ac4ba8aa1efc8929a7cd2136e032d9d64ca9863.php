@@ -435,6 +435,15 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="<?php echo e(route('listCompras')); ?>" class="nav-link <?php echo e(request()->is('listCompras') ? 'active' : ''); ?>">
+                <i class="fa fa-solid fa-file-invoice-dollar"></i>
+                <p>
+                  Compras
+                </p>
+              </a>
+            </li>
           <?php endif; ?>
 
           <?php if(auth()->user()->role == 'delivery'): ?>
