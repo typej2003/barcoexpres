@@ -30,6 +30,7 @@
                     <tr>
                         <td style="padding: 40px 30px 20px 30px; text-align: center;">
                             <img src="{{ asset('storage/avatarspromociones/panexpres_navidad.jpg') }}" alt="Pan Express">
+                            <img src="{{ \Storage::url('avatarspromociones/panexpres_navidad.jpg') }}" alt="Pan Express">
                             <hr style="width: 80%; border: 0; border-top: 5px solid #893e08; margin: 20px auto 0 auto; opacity: 1;">
                         </td>
                     </tr>
