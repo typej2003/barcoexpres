@@ -140,6 +140,23 @@ class EmailController extends Component
         });
     }
 
+    public function sendMailInfoInvitacionExcel($email, $name, $info)
+    {
+        $data = [
+            "email"    => $email,
+            "names"    => $name ?? 'Cliente', // Si el nombre es nulo, usa 'Cliente'
+            "surnames" => "", 
+            "title"    => 'Administrador - Pan Express',
+            "body"     => $info
+        ];
+        
+        Mail::send('emails.admin-msj-invitacion', $data, function($message) use ($data) {
+            $message->to($data["email"])
+                    ->from('admin@panexpres.com', 'Administrador Pan Express')
+                    ->subject($data["title"]);    
+        });
+    }
+
     public function sendMailAgenda(User $user, $info)
     {
         $data = [
