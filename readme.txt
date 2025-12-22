@@ -1,2 +1,3 @@
 readme
 klop
+Configuracion realizada
