@@ -1,0 +1,135 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //id 1
+        DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '12966576',
+            'name' => 'alex',
+            'names' => 'Alexander',
+            'surnames' => 'Diaz',
+            'email' => 'ddrsistemas@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'root',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('datos_basicos')->insert([
+            'user_id' => 1,
+            'cellphonecode' => '0414',
+            'cellphone' => '1899016',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+        //id 2
+        DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '99888777',
+            'name' => 'admin',
+            'names' => 'admin',
+            'surnames' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'admin',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('datos_basicos')->insert([
+            'user_id' => 2,
+            'cellphonecode' => '0416',
+            'cellphone' => '5800403',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+        
+        //id 3
+        // 1er Aliado
+        DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '22222222',
+            'name' => 'dimary',
+            'names' => 'dimary',
+            'surnames' => 'dimary',
+            'email' => 'dimary@gmail.com',
+            'password' => bcrypt('1dimary2025.'),
+            'role' => 'aliado',
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
+        ]);
+
+        DB::table('datos_basicos')->insert([
+            'user_id' => 2,
+            'cellphonecode' => '0414',
+            'cellphone' => '1869016',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
+        ]);
+        //Fin 1er aliado
+        //id 4
+        // 2do Aliado
+        DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '33333333',
+            'name' => 'loiradeparis',
+            'names' => 'loiradeparis',
+            'surnames' => 'loiradeparis',
+            'email' => 'panaderialoiradeparis@gmail.com',
+            'password' => bcrypt('1dimary2025.'),
+            'role' => 'aliado',
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
+        ]);
+
+        DB::table('datos_basicos')->insert([
+            'user_id' => 2,
+            'cellphonecode' => '0414',
+            'cellphone' => '1869016',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2025-12-20 11:00:36',
+            'updated_at' => '2025-12-20 11:00:36'
+        ]);
+        //Fin 2do aliado
+        //id 5
+        
+       DB::table('users')->insert([
+            'identificationNac' => 'V',
+            'identificationNumber' => '11222333',
+            'name' => 'cliente',
+            'names' => 'Cliente',
+            'surnames' => 'Cliente',
+            'email' => 'cliente@gmail.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'cliente',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+        DB::table('datos_basicos')->insert([
+            'user_id' => 4,
+            'cellphonecode' => '0416',
+            'cellphone' => '5800403',
+            'address' => 'Caracas, San Bernardino',
+            'created_at' => '2022-05-16 12:20:36',
+            'updated_at' => '2022-05-16 12:20:36'
+        ]);
+
+    }
+}
