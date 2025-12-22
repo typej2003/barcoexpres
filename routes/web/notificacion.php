@@ -15,6 +15,10 @@ use App\Http\Controllers\SmsTwilioController;
 
 use App\Http\Livewire\Notificacion\ListNotificaciones;
 use App\Http\Livewire\Notificacion\EmailManager;
+use App\Http\Livewire\Notificacion\MailSender;
+
+use App\Http\Livewire\Notificacion\SmsWhastappSender;
+
 
 Route::get('/emailmanager', EmailManager::class)->name('emailmanager');
 
@@ -57,3 +61,7 @@ Route::get('/probarEmailAdmin', function() {
     return redirect()->back();
 
 })->name('probarEmailAdmin')->middleware('auth');
+
+Route::get('mailSender', MailSender::class)->name('mailSender')->middleware('auth');
+
+Route::get('smsWhastappSender', SmsWhastappSender::class)->name('smsWhastappSender')->middleware('auth');

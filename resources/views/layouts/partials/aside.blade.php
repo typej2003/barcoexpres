@@ -45,6 +45,24 @@
             </li>
 
             <li class="nav-item">
+              <a href="/mailSender" class="nav-link {{ request()->is('mailSender') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Email Rafagas
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="/smsWhastappSender" class="nav-link {{ request()->is('smsWhastappSender') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Sms y Whatsapp
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a href="{{ route('listManufacturers', 1) }}" class="nav-link">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>
