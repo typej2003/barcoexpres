@@ -55,7 +55,7 @@ class MailSender extends Component
 
         foreach ($this->emails as $item) {
             // Enviamos los datos al controlador
-            $emailController->sendMailInfoExcel($item['email'], $item['name'], $this->mensajeCuerpo);
+            $emailController->sendMailInfoInvitacionExcel($item['email'], $item['name'], $this->mensajeCuerpo);
 
             $this->enviados++;
             $this->progreso = ($this->enviados / $this->total) * 100;
