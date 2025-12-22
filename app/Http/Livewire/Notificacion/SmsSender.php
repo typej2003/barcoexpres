@@ -24,9 +24,6 @@ class SmsSender extends Component
         $token = config('services.twilio.token');
         $from = config('services.twilio.from');
 
-        // $sid="AC6d08e9ee1a34c0c9481171fd8d517571";
-        // $token="ad0800810673e33bf45607ce04ec0183";
-        // $from="+17276177128";
 
         $client = new Client($sid, $token);
 
@@ -55,11 +52,6 @@ class SmsSender extends Component
         $sid = config('services.twilio.sid');
         $token = config('services.twilio.token');
         $from = config('services.twilio.from');
-
-        
-        // $sid="AC6d08e9ee1a34c0c9481171fd8d517571";
-        // $token="75f907929db1e626e33f396c6a29acfc";
-        // $from="+17276177128";
 
         $client = new Client($sid, $token);
 
