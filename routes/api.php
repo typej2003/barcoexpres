@@ -124,3 +124,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 // Fin delivery
+
+Route::middleware('auth:sanctum')->post('/data-batch', function (Request $request) {
+    $user = $request->user();
+    $positions = $request->input('positions');
+
+    foreach ($positions as $pos) {
+        \App\Models\GpsLog::create([
+            'user_id' => $user->id,
+            'lat' => $pos['lat'],
+            'lng' => $pos['lng'],
+            'speed' => $pos['speed'],
+            'recorded_at' => $pos['recorded_at'], // Usamos la hora en que se grabó, no la de ahora
+        ]);
+    }
+
+    return response()->json(['status' => 'synced']);
+});
