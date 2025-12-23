@@ -16,27 +16,21 @@ class MailSender extends Component
     public $enviados = 0;
     public $progreso = 0;
     public $mensajeCuerpo = "Hola, este es un mensaje informativo de Pan Express.";
+    public $procesando = false; // Nueva variable para controlar la UI
 
     public function cargarExcel()
     {
         $this->validate(['file' => 'required|mimes:xlsx,xls,csv']);
-
         $data = Excel::toArray([], $this->file->getRealPath());
         
         if (!empty($data[0])) {
             $this->emails = collect($data[0])
                 ->map(function($row) {
-                    // Limpiamos espacios accidentales
-                    $email = isset($row[0]) ? trim($row[0]) : '';
                     return [
-                        'email' => $email,
+                        'email' => isset($row[0]) ? trim($row[0]) : '',
                         'name'  => isset($row[1]) ? trim($row[1]) : 'Cliente',
                     ];
                 })
-                // FILTRO AUTOMÁTICO: 
-                // 1. Elimina si el email está vacío
-                // 2. Elimina si el texto no tiene formato de email
-                // 3. Elimina si la celda es nula
                 ->filter(function($row) {
                     return !empty($row['email']) && filter_var($row['email'], FILTER_VALIDATE_EMAIL);
                 })
@@ -45,25 +39,60 @@ class MailSender extends Component
 
             $this->total = count($this->emails);
             $this->enviados = 0;
+            $this->progreso = 0;
         }
     }
 
+    // Paso 1: Iniciamos el proceso
     public function iniciarEnvio()
     {
-        // Instanciamos el controlador para usar su lógica de envío
-        $emailController = new EmailController();
+        $this->procesando = true;
 
-        foreach ($this->emails as $item) {
-            // Enviamos los datos al controlador
+        foreach ($this->emails as $index => $item) {
+            // Encolamos con un retraso progresivo para no saturar el servidor de correo
+            // Por ejemplo: el primero sale ya, el segundo en 5 seg, el tercero en 10 seg...
+            EnviarCorreoMasivo::dispatch(
+                $item['email'], 
+                $item['name'], 
+                $this->mensajeCuerpo
+            )->delay(now()->addSeconds($index * 5)); 
+        }
+
+        // Limpiamos la vista ya que el trabajo quedó en manos del servidor
+        $this->enviados = $this->total;
+        $this->progreso = 100;
+        $this->procesando = false;
+
+        session()->flash('message', '¡Los 100 correos se han programado y se enviarán en los próximos minutos!');
+    }
+
+    // Paso 2: Enviamos un correo específico y pedimos el siguiente desde el cliente
+    public function enviarSiguiente($index)
+    {
+        if (!isset($this->emails[$index])) {
+            $this->procesando = false;
+            return;
+        }
+
+        $item = $this->emails[$index];
+        
+        // Ejecución del envío
+        try {
+            $emailController = new EmailController();
             $emailController->sendMailInfoInvitacionExcel($item['email'], $item['name'], $this->mensajeCuerpo);
+        } catch (\Exception $e) {
+            \Log::error("Error enviando a " . $item['email'] . ": " . $e->getMessage());
+        }
 
-            $this->enviados++;
-            $this->progreso = ($this->enviados / $this->total) * 100;
+        $this->enviados++;
+        $this->progreso = ($this->enviados / $this->total) * 100;
 
-            // Intervalo aleatorio de 3 a 7 segundos para evitar bloqueos
-            if ($this->enviados < $this->total) {
-                sleep(rand(3, 7));
-            }
+        // Si faltan correos, disparamos evento para que JS espere y llame al siguiente
+        if ($this->enviados < $this->total) {
+            $this->dispatchBrowserEvent('procesar-siguiente', ['nextIndex' => $this->enviados]);
+        } else {
+            $this->procesando = false;
+            $this->dispatchBrowserEvent('finalizado');
         }
     }
 
