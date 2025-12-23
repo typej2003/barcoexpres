@@ -21,7 +21,7 @@
 
                     <tr>
                         <td style="padding: 10px 7px 5px 7px; text-align: center;">
-                            <img src="{{ asset('img/panexpres_navidad.jpg') }}" alt="Logo Pan Express" width="350" style="display: block; margin: 0 auto; max-width: 220px; height: auto; border: 0;">
+                            <img src="{{ asset('img/panexpres_navidad.jpg') }}" alt="Logo Pan Express" width="350" style="display: block; margin: 0 auto; max-width: 350px; height: auto; border: 0;">
                         </td>
                     </tr>
 
