@@ -9,5 +9,5 @@ class GpsLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'lat', 'lng', 'speed', 'alt', 'recorded_at'];
+    protected $fillable = ['user_id', 'lat', 'lng', 'speed', 'recorded_at'];
 }

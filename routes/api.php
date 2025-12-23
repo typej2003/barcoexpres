@@ -1,9 +1,9 @@
 <?php
 
-
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Api\EnviarDatos;
 
@@ -126,18 +126,30 @@ Route::middleware('auth:sanctum')->group(function () {
 // Fin delivery
 
 Route::middleware('auth:sanctum')->post('/data-batch', function (Request $request) {
-    $user = $request->user();
-    $positions = $request->input('positions');
+    try {
+        $user = $request->user();
+        $positions = $request->input('positions');
 
-    foreach ($positions as $pos) {
-        \App\Models\GpsLog::create([
-            'user_id' => $user->id,
-            'lat' => $pos['lat'],
-            'lng' => $pos['lng'],
-            'speed' => $pos['speed'],
-            'recorded_at' => $pos['recorded_at'], // Usamos la hora en que se grabó, no la de ahora
-        ]);
+        if (!is_array($positions)) {
+            return response()->json(['error' => 'Formato de datos inválido'], 400);
+        }
+
+        foreach ($positions as $pos) {
+            \App\Models\GpsLog::create([
+                'user_id'     => $user->id,
+                'lat'         => $pos['lat'],
+                'lng'         => $pos['lng'],
+                'speed'       => $pos['speed'] ?? 0,
+                // Carbon ayuda a formatear bien la fecha que viene de JS
+                'recorded_at' => \Illuminate\Support\Carbon::parse($pos['recorded_at']),
+            ]);
+        }
+
+        return response()->json(['status' => 'synced', 'count' => count($positions)], 200);
+        
+    } catch (\Exception $e) {
+        // Esto enviará el error real al log para que lo encuentres
+        \Log::error("Error en data-batch: " . $e->getMessage());
+        return response()->json(['error' => 'Error interno del servidor'], 500);
     }
-
-    return response()->json(['status' => 'synced']);
 });
