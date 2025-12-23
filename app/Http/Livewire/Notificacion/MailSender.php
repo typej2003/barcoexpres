@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Notificacion;
 
+use App\Jobs\EnviarCorreoMasivo;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
