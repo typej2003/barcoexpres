@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\ComercioVehiculo;
 
+use Laravel\Sanctum\HasApiTokens; // <--- Importante
 use App\Mail\verification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +16,9 @@ use Mail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+
+    use HasApiTokens, Notifiable; // <--- Úsalo aquí
+    
     use HasFactory, Notifiable;
 
     const ROLE_ADMIN = 'admin';
