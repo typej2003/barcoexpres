@@ -21,14 +21,14 @@
 
                     <tr>
                         <td style="padding: 20px 40px 30px 40px;">
-                            <h1 style="color: #333333; font-size: 24px; margin-bottom: 20px; font-family: 'Segoe UI', Tahoma, sans-serif;">
+                            <h1 style="color: #333333; font-size: 18px; margin-bottom: 10px; font-family: 'Segoe UI', Tahoma, sans-serif;">
                                 Hola, {{ $names }} {{ $surnames }}
                             </h1>
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="padding: 40px 30px 20px 30px; text-align: center;">
+                        <td style="padding: 20px 15px 10px 15px; text-align: center;">
                             <img src="{{ asset('img/panexpres_navidad.jpg') }}" alt="Logo Pan Express" width="200" style="display: block; margin: 0 auto; max-width: 220px; height: auto; border: 0;">
                         </td>
                     </tr>
