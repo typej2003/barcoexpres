@@ -20,14 +20,6 @@
                     </tr>
 
                     <tr>
-                        <td style="padding: 10px 20px 15px 20px;">
-                            <h1 style="color: #333333; font-size: 18px; margin-bottom: 5px; font-family: 'Segoe UI', Tahoma, sans-serif;">
-                                Hola, {{ $names }} {{ $surnames }}
-                            </h1>
-                        </td>
-                    </tr>
-
-                    <tr>
                         <td style="padding: 10px 7px 5px 7px; text-align: center;">
                             <img src="{{ asset('img/panexpres_navidad.jpg') }}" alt="Logo Pan Express" width="250" style="display: block; margin: 0 auto; max-width: 220px; height: auto; border: 0;">
                         </td>
