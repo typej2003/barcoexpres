@@ -29,10 +29,7 @@
 
                     <tr>
                         <td style="padding: 40px 30px 20px 30px; text-align: center;">
-                            <img src="{{ $message->embed(public_path('storage/avatarspromociones/panexpres_navidad.jpg')) }}" 
-     style="width: 100%; max-width: 600px;" 
-     alt="Promoción Navidad">
-                            <hr style="width: 80%; border: 0; border-top: 5px solid #893e08; margin: 20px auto 0 auto; opacity: 1;">
+                            <img src="{{ asset('img/panexpres_navidad.jpg') }}" alt="Logo Pan Express" width="200" style="display: block; margin: 0 auto; max-width: 220px; height: auto; border: 0;">
                         </td>
                     </tr>
 
