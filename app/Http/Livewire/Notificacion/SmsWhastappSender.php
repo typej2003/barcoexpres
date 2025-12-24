@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Notificacion;
 
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
@@ -94,6 +95,21 @@ class SmsWhastappSender extends Component
         );
 
         dd('Msj enviado con SID: ' . $message->sid);
+    }
+
+    public function enviarWhatsApp($numero = '04165800403', $mensaje='Hola, este es un mjs de prueba con https://ultramsg.com')
+    {
+        $response = Http::post("https://api.ultramsg.com/" . env('ULTRAMSG_INSTANCE_ID') . "/messages/chat", [
+            'token' => env('ULTRAMSG_TOKEN'),
+            'to' => $numero, // Formato: +584120000000
+            'body' => $mensaje,
+        ]);
+
+        if ($response->successful()) {
+            return "Mensaje enviado con éxito";
+        }
+
+        return "Error al enviar: " . $response->body();
     }
 
     public function render()
