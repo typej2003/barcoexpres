@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Notificacion;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
+use Twilio\Rest\Client;
 
 class SmsWhastappSender extends Component
 {
@@ -16,6 +17,12 @@ class SmsWhastappSender extends Component
     public $mensaje = "Hola [nombre], gracias por preferir Pan Express.";
     public $urlImagen = ""; // URL pública para WhatsApp
     public $tipoEnvio = 'sms'; // 'sms' o 'whatsapp'
+
+    // Nuevo codigo
+    public $sid    = "AC1d6aafb3b8d19ad606afc02438d825ae";
+    public $token  = "[AuthToken]";
+
+    // fin nuevo codigo
 
     public function cargarExcel()
     {
@@ -62,6 +69,25 @@ class SmsWhastappSender extends Component
 
             sleep(rand(3, 7)); // Evitar bloqueos de Twilio/Meta
         }
+    }
+
+    public function iniciarEnvioPrimerNumero()
+    {
+
+        
+        // Ejemplo de cómo debe quedar
+        $sid = env('TWILIO_SID');
+        $sid = env('TWILIO_AUTH_TOKEN');
+
+        $twilio = new Client($sid, $token);
+
+        $message = $twilio->messages
+            ->create(
+                array(
+                        "body" => "Hola Hola"
+                )
+            );
+        dd('Msj: ' . $message->sid);
     }
 
     public function render()

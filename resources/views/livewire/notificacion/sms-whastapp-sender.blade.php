@@ -42,6 +42,9 @@
                 <button wire:click="iniciarEnvio" class="btn btn-primary px-5 shadow" wire:loading.attr="disabled">
                     🚀 Iniciar Envío Masivo
                 </button>
+                <button wire:click="iniciarEnvioPrimerNumero" class="btn btn-primary px-5 shadow" wire:loading.attr="disabled">
+                    🚀 Iniciar Envío Primer Numero
+                </button>
             </div>
 
             <table class="table mt-4 table-sm">
