@@ -82,7 +82,7 @@ class SmsWhastappSender extends Component
         // El primer argumento es el destinatario (ejemplo: '+123456789')
         // El segundo argumento es el array con el cuerpo y el remitente
         $message = $twilio->messages->create(
-            "+584168349158", // <--- REEMPLAZA por el número de destino (string)
+            "+584165800403", // <--- REEMPLAZA por el número de destino (string)
             [
                 "from" => $fromNumber, 
                 "body" => "Hola Hola"
