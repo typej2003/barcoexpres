@@ -99,7 +99,7 @@ class SmsWhastappSender extends Component
         return "Error al enviar (" . $response->status() . "): " . $response->body();
     }
 
-    public function enviarWhatsAppConImagen($numero = '+584165800403')
+    public function enviarWhatsAppConImagen($numero = '+584141899016')
     {
         // 1. Obtenemos las variables del .env
         $instanceId = env('ULTRAMSG_INSTANCE_ID');
@@ -121,8 +121,6 @@ class SmsWhastappSender extends Component
             'image'   => $urlImagen, // URL de la imagen
             'caption' => $mensaje,   // El texto que acompaña a la imagen
         ]);
-
-        dd($response->successful);
 
         if ($response->successful()) {
             return "Imagen enviada con éxito: " . $response->body();
