@@ -61,6 +61,7 @@ class Product extends Model
         'price_mayor', //precio al mayor
         'profit_mayor', // porcentaje de ganancia
         'price_offer', //precio de oferta
+        'nroproductdelivery',
         'profit_offer', // porcentaje de ganancia
         'price_divisa', //precio del dolar cuando se adquirió
         'shipping_cost', // costo de envio

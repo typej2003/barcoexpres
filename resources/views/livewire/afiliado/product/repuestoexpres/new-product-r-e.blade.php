@@ -478,6 +478,17 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nroproductdelivery">Cant Producto para la Oferta</label>
+                                                <input type="number" wire:model.defer="state.nroproductdelivery" autofocus class="font-costo form-control @error('nroproductdelivery') is-invalid @enderror" id="Cant Productos Oferta">
+                                                @error('nroproductdelivery')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group d-none">
                                                 <label for="profit_offer">Ganancia (%)</label>
                                                 <input type="number" wire:model.defer="state.profit_offer" autofocus class="font-costo form-control @error('profit_offer') is-invalid @enderror" id="profit_offer">
