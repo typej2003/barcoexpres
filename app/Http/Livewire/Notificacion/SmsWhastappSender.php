@@ -122,7 +122,7 @@ class SmsWhastappSender extends Component
             'caption' => $mensaje,   // El texto que acompaña a la imagen
         ]);
 
-        dd($response);
+        dd($response->successful);
 
         if ($response->successful()) {
             return "Imagen enviada con éxito: " . $response->body();
