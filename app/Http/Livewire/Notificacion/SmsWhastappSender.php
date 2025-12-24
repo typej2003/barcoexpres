@@ -107,13 +107,13 @@ class SmsWhastappSender extends Component
 
         // 2. Definimos la URL de la imagen y el texto (puedes usar emojis y negritas)
         // NOTA: La imagen debe ser una URL pública (ej: de tu servidor o S3)
-        $urlImagen = "https://panexpres.com/sistema/public/img/panexpres_navidad.jpg"; 
+        $urlImagen = "https://barcoexpres.com/img/panexpres_navidad.jpg"; 
         
         $mensaje = "*¡INVITACIÓN ESPECIAL!* 🚢\n\n" .
                 "Hola, te invitamos a conocer nuestros nuevos servicios.\n" .
                 "Haz clic aquí para más info: https://panexpres.com";
 
-        dd($response);
+        
         // 3. Usamos el endpoint /messages/image
         $response = Http::asForm()->post("https://api.ultramsg.com/{$instanceId}/messages/image", [
             'token'   => $token,
@@ -121,6 +121,8 @@ class SmsWhastappSender extends Component
             'image'   => $urlImagen, // URL de la imagen
             'caption' => $mensaje,   // El texto que acompaña a la imagen
         ]);
+
+        dd($response);
 
         if ($response->successful()) {
             return "Imagen enviada con éxito: " . $response->body();
