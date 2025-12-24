@@ -104,7 +104,7 @@ class SmsWhastappSender extends Component
     {
         // 1. Usamos asForm() para que sea compatible con la API de UltraMsg
         // 2. Usamos config() o aseguramos que env() lea bien los datos
-        dd(env('ULTRAMSG_INSTANCE_ID'));
+        
         $instanceId = env('ULTRAMSG_INSTANCE_ID');
         $token = env('ULTRAMSG_TOKEN');
 
