@@ -122,6 +122,35 @@ class SmsWhastappSender extends Component
         return "Error al enviar (" . $response->status() . "): " . $response->body();
     }
 
+    public function enviarWhatsAppConImagen($numero = '+584165800403')
+    {
+        // 1. Obtenemos las variables del .env
+        $instanceId = env('ULTRAMSG_INSTANCE_ID');
+        $token = env('ULTRAMSG_TOKEN');
+
+        // 2. Definimos la URL de la imagen y el texto (puedes usar emojis y negritas)
+        // NOTA: La imagen debe ser una URL pública (ej: de tu servidor o S3)
+        $urlImagen = "https://panexpres.com/sistema/public/img/panexpres_navidad.jpg"; 
+        
+        $mensaje = "*¡INVITACIÓN ESPECIAL!* 🚢\n\n" .
+                "Hola, te invitamos a conocer nuestros nuevos servicios.\n" .
+                "Haz clic aquí para más info: https://panexpres.com";
+
+        // 3. Usamos el endpoint /messages/image
+        $response = Http::asForm()->post("https://api.ultramsg.com/{$instanceId}/messages/image", [
+            'token'   => $token,
+            'to'      => $numero,
+            'image'   => $urlImagen, // URL de la imagen
+            'caption' => $mensaje,   // El texto que acompaña a la imagen
+        ]);
+
+        if ($response->successful()) {
+            return "Imagen enviada con éxito: " . $response->body();
+        }
+
+        return "Error al enviar (" . $response->status() . "): " . $response->body();
+    }
+
     public function handle(Request $request)
     {
         $data = $request->all();
