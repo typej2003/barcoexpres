@@ -101,6 +101,7 @@ class SmsWhastappSender extends Component
 
     public function enviarWhatsAppConImagen($numero = '+584141899016')
     {
+        //otra prueba
         // 1. Obtenemos las variables del .env
         $instanceId = env('ULTRAMSG_INSTANCE_ID');
         $token = env('ULTRAMSG_TOKEN');
