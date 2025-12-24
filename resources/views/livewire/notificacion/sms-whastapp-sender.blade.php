@@ -45,6 +45,9 @@
                 <button wire:click="enviarWhatsApp" class="btn btn-primary px-5 shadow" wire:loading.attr="disabled">
                     🚀 Iniciar Envío Primer Numero
                 </button>
+                <button wire:click="enviarWhatsAppConImagen" class="btn btn-primary px-5 shadow" wire:loading.attr="disabled">
+                    🚀 Iniciar Envío Primer Numero
+                </button>
             </div>
 
             <table class="table mt-4 table-sm">
