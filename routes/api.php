@@ -26,6 +26,7 @@ use App\Http\Livewire\Mikrotik\Hotspot\ListPlanes;
 use App\Models\GpsLog;
 // Fin de la app
 
+use App\Http\Livewire\Notificacion\SmsWhastappSender;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -153,3 +154,5 @@ Route::middleware('auth:sanctum')->post('/data-batch', function (Request $reques
         return response()->json(['error' => 'Error interno del servidor'], 500);
     }
 });
+
+Route::post('/whatsapp/webhook', [SmsWhastappSender::class, 'handle']);

@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire\Notificacion;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -97,20 +100,44 @@ class SmsWhastappSender extends Component
         dd('Msj enviado con SID: ' . $message->sid);
     }
 
-    public function enviarWhatsApp($numero = '+584165800403', $mensaje='Hola, este es un mjs de prueba con https://ultramsg.com')
+    public function enviarWhatsApp($numero = '+584165800403', $mensaje = 'Hola, este es un mjs de prueba con UltraMsg')
     {
-        dd('$numero: ' . $numero);
-        $response = Http::post("https://api.ultramsg.com/" . env('ULTRAMSG_INSTANCE_ID') . "/messages/chat", [
-            'token' => env('ULTRAMSG_TOKEN'),
-            'to' => $numero, // Formato: +584120000000
-            'body' => $mensaje,
+        // 1. Usamos asForm() para que sea compatible con la API de UltraMsg
+        // 2. Usamos config() o aseguramos que env() lea bien los datos
+        dd(env('ULTRAMSG_INSTANCE_ID'));
+        $instanceId = env('ULTRAMSG_INSTANCE_ID');
+        $token = env('ULTRAMSG_TOKEN');
+
+        $response = Http::asForm()->post("https://api.ultramsg.com/{$instanceId}/messages/chat", [
+            'token' => $token,
+            'to'    => $numero,
+            'body'  => $mensaje,
         ]);
 
         if ($response->successful()) {
-            return "Mensaje enviado con éxito";
+            return "Mensaje enviado con éxito: " . $response->body();
         }
 
-        return "Error al enviar: " . $response->body();
+        // Si falla, esto nos dirá exactamente por qué (ej: token inválido, instancia desconectada)
+        return "Error al enviar (" . $response->status() . "): " . $response->body();
+    }
+
+    public function handle(Request $request)
+    {
+        $data = $request->all();
+
+        // Loguear para ver qué llega (útil para pruebas)
+        Log::info('WhatsApp Webhook:', $data);
+
+        // Verificar si es un mensaje recibido
+        if (isset($data['event_type']) && $data['event_type'] == 'message_received') {
+            $remitente = $data['data']['from']; // Quién escribe
+            $texto = $data['data']['body'];     // Qué escribió
+
+            // Aquí puedes disparar una lógica de Laravel (ej: guardar en DB o responder)
+        }
+
+        return response('OK', 200);
     }
 
     public function render()

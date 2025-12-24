@@ -65,3 +65,4 @@ Route::get('/probarEmailAdmin', function() {
 Route::get('mailSender', MailSender::class)->name('mailSender')->middleware('auth');
 
 Route::get('smsWhastappSender', SmsWhastappSender::class)->name('smsWhastappSender')->middleware('auth');
+
