@@ -75,30 +75,7 @@ class SmsWhastappSender extends Component
         }
     }
 
-    public function iniciarEnvioPrimerNumero()
-    {
-        // 1. Obtener las credenciales
-        $sid = config('services.twilio.sid') ?? env('TWILIO_SID');
-        $token = config('services.twilio.token') ?? env('TWILIO_AUTH_TOKEN');
-        
-        // 2. Obtener tu número de Twilio desde el .env
-        $fromNumber = env('TWILIO_NUMBER'); // Ejemplo: +12603683354
-        $fromNumber = "+12603683354";
-
-        $twilio = new Client($sid, $token);
-
-        // El primer argumento es el destinatario (ejemplo: '+123456789')
-        // El segundo argumento es el array con el cuerpo y el remitente
-        $message = $twilio->messages->create(
-            "+584165800403", // <--- REEMPLAZA por el número de destino (string)
-            [
-                "from" => $fromNumber, 
-                "body" => "Hola Hola"
-            ]
-        );
-
-        dd('Msj enviado con SID: ' . $message->sid);
-    }
+   
 
     public function enviarWhatsApp($numero = '+584165800403', $mensaje = 'Hola, este es un mjs de prueba con UltraMsg')
     {
@@ -136,6 +113,7 @@ class SmsWhastappSender extends Component
                 "Hola, te invitamos a conocer nuestros nuevos servicios.\n" .
                 "Haz clic aquí para más info: https://panexpres.com";
 
+        dd($response);
         // 3. Usamos el endpoint /messages/image
         $response = Http::asForm()->post("https://api.ultramsg.com/{$instanceId}/messages/image", [
             'token'   => $token,
