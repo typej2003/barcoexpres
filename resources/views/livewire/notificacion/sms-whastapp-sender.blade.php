@@ -43,10 +43,10 @@
                     🚀 Iniciar Envío Masivo
                 </button>
                 <button wire:click="enviarWhatsApp" class="btn btn-primary px-5 shadow" wire:loading.attr="disabled">
-                    🚀 Iniciar Envío Primer Numero
+                    🚀 Iniciar Envío Solo Texto
                 </button>
                 <button wire:click="enviarWhatsAppConImagen" class="btn btn-primary px-5 shadow" wire:loading.attr="disabled">
-                    🚀 Iniciar Envío Primer Numero
+                    🚀 Iniciar Envío con Imagenes
                 </button>
             </div>
 
