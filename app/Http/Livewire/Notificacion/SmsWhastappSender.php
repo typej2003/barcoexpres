@@ -73,9 +73,13 @@ class SmsWhastappSender extends Component
 
     public function iniciarEnvioPrimerNumero()
     {
+        // 1. Obtener las credenciales
         $sid = config('services.twilio.sid') ?? env('TWILIO_SID');
         $token = config('services.twilio.token') ?? env('TWILIO_AUTH_TOKEN');
-        $fromNumber = env('TWILIO_NUMBER'); // Tu número de Twilio
+        
+        // 2. Obtener tu número de Twilio desde el .env
+        $fromNumber = env('TWILIO_NUMBER'); // Ejemplo: +12603683354
+        $fromNumber = "+12603683354";
 
         $twilio = new Client($sid, $token);
 
