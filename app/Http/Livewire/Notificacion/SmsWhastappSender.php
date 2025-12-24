@@ -99,6 +99,7 @@ class SmsWhastappSender extends Component
 
     public function enviarWhatsApp($numero = '+584165800403', $mensaje='Hola, este es un mjs de prueba con https://ultramsg.com')
     {
+        dd('$numero: ' . $numero);
         $response = Http::post("https://api.ultramsg.com/" . env('ULTRAMSG_INSTANCE_ID') . "/messages/chat", [
             'token' => env('ULTRAMSG_TOKEN'),
             'to' => $numero, // Formato: +584120000000
