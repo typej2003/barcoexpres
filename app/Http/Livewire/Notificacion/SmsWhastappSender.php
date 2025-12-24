@@ -77,7 +77,7 @@ class SmsWhastappSender extends Component
         
         // Ejemplo de cómo debe quedar
         $sid = env('TWILIO_SID');
-        $sid = env('TWILIO_AUTH_TOKEN');
+        $token = env('TWILIO_AUTH_TOKEN');
 
         $twilio = new Client($sid, $token);
 
