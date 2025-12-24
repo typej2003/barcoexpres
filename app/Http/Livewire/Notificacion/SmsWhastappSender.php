@@ -97,7 +97,7 @@ class SmsWhastappSender extends Component
         dd('Msj enviado con SID: ' . $message->sid);
     }
 
-    public function enviarWhatsApp($numero = '04165800403', $mensaje='Hola, este es un mjs de prueba con https://ultramsg.com')
+    public function enviarWhatsApp($numero = '+584165800403', $mensaje='Hola, este es un mjs de prueba con https://ultramsg.com')
     {
         $response = Http::post("https://api.ultramsg.com/" . env('ULTRAMSG_INSTANCE_ID') . "/messages/chat", [
             'token' => env('ULTRAMSG_TOKEN'),
