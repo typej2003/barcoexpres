@@ -1,94 +1,121 @@
-<div>
-    <div class="container-fluid">
-        <h3>Rastreo en Tiempo Real - BarcoExpres (Google Maps)</h3>
-        <div id="map" style="height: 500px; width: 100%; border-radius: 10px; border: 2px solid #ddd;"></div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa BarcoExpres - Test Local</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    
+    <style>
+        body { margin: 0; padding: 20px; background-color: #f0f2f5; font-family: sans-serif; }
+        .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        /* El contenedor DEBE tener altura fija */
+        #map { 
+            height: 500px; 
+            width: 100%; 
+            border-radius: 10px;
+            background: #e0e0e0; /* Color gris de fondo */
+        }
+        .error-msg { color: red; font-weight: bold; margin-bottom: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>Prueba de Mapa - Caracas</h3>
+        <div id="error" class="error-msg">⚠️ La librería no cargó. Revisa tu conexión.</div>
+        <div id="map"></div>
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_AQUI&callback=initMap" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <script>
-        let map;
-        let markers = {};
+    // --- CONFIGURACIÓN CONFIGURABLE ---
+    // 10000 ms = 10 segundos. Cambia este valor según necesites.
+    var intervaloRastreo = 10000; 
+    // ----------------------------------
 
-        // Esta función se ejecuta automáticamente cuando carga Google Maps
-        function initMap() {
-            // Inicializar el mapa centrado en Caracas
-            map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 12,
-                center: { lat: 10.4806, lng: -66.9036 },
-                mapTypeControl: true,
-                streetViewControl: false
-            });
+    var map;
+    var markers = {};
+    var rastreoTimer; // Variable para controlar el temporizador
 
-            // Una vez cargado el mapa, empezamos a rastrear
-            actualizarMapa();
-            setInterval(actualizarMapa, 10000);
-        }
+    document.addEventListener("DOMContentLoaded", function() {
+        // Inicializar Mapa
+        map = L.map('map').setView([10.4806, -66.9036], 12);
 
-        async function actualizarMapa() {
-            try {
-                const response = await fetch('/api/admin/repartidores-ultima-posicion');
-                const data = await response.json();
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO'
+        }).addTo(map);
 
+        setTimeout(() => { map.invalidateSize(); }, 500);
+
+        // Iniciar el rastreo inicial
+        actualizarMapa();
+
+        // Configurar la repetición usando nuestra variable
+        iniciarTemporizador();
+    });
+
+    function iniciarTemporizador() {
+        // Limpiamos cualquier intervalo previo por seguridad
+        if (rastreoTimer) clearInterval(rastreoTimer);
+        
+        // Iniciamos el nuevo intervalo
+        rastreoTimer = setInterval(actualizarMapa, intervaloRastreo);
+        console.log("Rastreo configurado cada: " + (intervaloRastreo / 1000) + " segundos.");
+    }
+
+    function actualizarMapa() {
+        fetch('/api/admin/repartidores-ultima-posicion')
+            .then(res => res.json())
+            .then(data => {
                 data.forEach(rep => {
-                    const position = { lat: parseFloat(rep.lat), lng: parseFloat(rep.lng) };
-                    const contentString = `
-                        <div style="color:black;">
-                            <b>Repartidor:</b> ${rep.name}<br>
-                            <b>Vel:</b> ${rep.speed} km/h<br>
-                            <hr>
-                            <button onclick="enviarAlerta(${rep.user_id})" class="btn btn-xs btn-warning" style="background:#ffc107; border:1px solid #000; padding:2px 5px; cursor:pointer;">
+                    const popupContent = `
+                        <div style="text-align: center; min-width: 120px;">
+                            <b>${rep.name}</b><br>
+                            Vel: ${rep.speed || 0} km/h<br>
+                            <small>ID: ${rep.user_id}</small><br>
+                            <button onclick="enviarAlerta(${rep.user_id}, '${rep.name}')" 
+                                    class="btn btn-sm btn-warning mt-2" 
+                                    style="font-size: 10px; cursor: pointer; padding: 2px 5px; border-radius: 4px; border: 1px solid #d39e00; background-color: #ffc107;">
                                 Enviar Alerta
                             </button>
                         </div>
                     `;
 
                     if (markers[rep.user_id]) {
-                        // Si ya existe, solo movemos la posición
-                        markers[rep.user_id].marker.setPosition(position);
-                        // Actualizamos el contenido del popup por si cambió la velocidad
-                        markers[rep.user_id].infoWindow.setContent(contentString);
+                        // Actualizar posición suavemente
+                        markers[rep.user_id].setLatLng([rep.lat, rep.lng]);
+                        markers[rep.user_id].getPopup().setContent(popupContent);
                     } else {
-                        // Si es nuevo, creamos el Marcador y su Ventana de Información (Popup)
-                        const infoWindow = new google.maps.InfoWindow({
-                            content: contentString
-                        });
-
-                        const marker = new google.maps.Marker({
-                            position: position,
-                            map: map,
-                            title: rep.name,
-                            icon: 'https://maps.google.com/mapfiles/kml/shapes/motorcycling.png' // Icono de moto
-                        });
-
-                        // Abrir popup al hacer clic
-                        marker.addListener("click", () => {
-                            infoWindow.open(map, marker);
-                        });
-
-                        // Guardamos ambos en nuestro objeto global
-                        markers[rep.user_id] = { marker, infoWindow };
+                        // Crear nuevo marcador
+                        markers[rep.user_id] = L.marker([rep.lat, rep.lng])
+                            .addTo(map)
+                            .bindPopup(popupContent);
                     }
                 });
-            } catch (error) {
-                console.error("Error al obtener posiciones:", error);
-            }
-        }
+            })
+            .catch(err => console.error("Error al obtener posiciones:", err));
+    }
 
-        function enviarAlerta(userId) {
-            const msg = prompt("Escribe el mensaje para el repartidor:");
-            if (msg) {
-                fetch(`/api/admin/enviar-alerta/${userId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Token de seguridad de Laravel
-                    },
-                    body: JSON.stringify({ mensaje: msg })
-                }).then(res => {
-                    if(res.ok) alert("Mensaje enviado");
-                });
-            }
+    // Función de alerta (se mantiene igual)
+    function enviarAlerta(userId, userName) {
+        const msg = prompt(`Mensaje para ${userName}:`);
+        if (msg) {
+            fetch(`/api/admin/enviar-alerta/${userId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ mensaje: msg })
+            }).then(res => {
+                if(res.ok) alert("Alerta enviada a " + userName);
+            });
         }
-    </script>
-</div>
+    }
+</script>
+</body>
+</html>
