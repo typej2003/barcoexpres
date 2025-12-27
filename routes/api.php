@@ -163,5 +163,5 @@ Route::apiResource('pedidos', PedidoController::class);
 
 Route::get('/pedidos', [PedidoController::class, 'index']);
 
-Route::get('/pedidos/actualizar-estado', [PedidoController::class, 'actualizarEstado']);
+Route::post('/pedidos/actualizar-estado', [PedidoController::class, 'actualizarEstado']);
 
