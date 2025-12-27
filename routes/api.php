@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\ApiController;
 // Para los repartidores
 use App\Http\Controllers\Api\AuthController;
 
+use App\Http\Controllers\Api\PedidoController;
+
 use App\Http\Controllers\Api\ApiProcessPaymentController;
 use App\Http\Controllers\Api\MikrotikPasarelaController;
 
@@ -156,3 +158,7 @@ Route::middleware('auth:sanctum')->post('/data-batch', function (Request $reques
 });
 
 Route::post('/whatsapp/webhook', [SmsWhastappSender::class, 'handle']);
+
+Route::apiResource('pedidos', PedidoController::class);
+
+Route::get('/pedidos', [PedidoController::class, 'index']);
