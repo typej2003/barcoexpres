@@ -162,3 +162,6 @@ Route::post('/whatsapp/webhook', [SmsWhastappSender::class, 'handle']);
 Route::apiResource('pedidos', PedidoController::class);
 
 Route::get('/pedidos', [PedidoController::class, 'index']);
+
+Route::get('/pedidos/actualizar-estado', [PedidoController::class, 'actualizarEstado']);
+
