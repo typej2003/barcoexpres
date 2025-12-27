@@ -40,7 +40,6 @@ class PedidoController extends Controller
         $pedidos = Pedido::where('userdelivery_id', $id)->get();
 
         return response()->json([
-            'token' => $token,
             'pedidos' => $pedidos,
         ]);
     }
